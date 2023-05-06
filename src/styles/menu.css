@@ -1,0 +1,59 @@
+
+/***************    Menu css start here  *****************/
+a.menuitem {
+    padding: 10px;
+    color: #000!important;
+    text-decoration: none;
+   
+    font-weight: 400;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+}
+
+
+a.postjob-btn {
+    text-decoration: none;
+    
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 25px;
+    background-color: #138578;
+    color: #fff !important;
+    margin:5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+a.findjob-btn {
+     text-decoration: none;
+    
+     font-weight: 600;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    padding: 8px 30px;
+    background-color: #000;
+    color: #fff;
+    margin:5px;
+    word-spacing: 2px;
+}
+
+a.login-btn.mx-3 ,a.signup-btn  {
+    text-decoration: none;
+    background-color: transparent;
+    color: #000!important;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    
+}

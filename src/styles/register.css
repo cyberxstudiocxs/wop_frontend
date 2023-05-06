@@ -1,0 +1,133 @@
+
+.main-register-box{
+    background-image: url("../assets/images/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+a.emp-btns {
+    background-color: #fff;
+    color: #138677 !important;
+    padding: 8px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+a.worker-btns:hover{
+    text-decoration: none;
+}
+.emp-outer-box {
+    text-align: center;
+    padding-top: 172px;
+}
+
+.worker-outer-box {
+    text-align: center;
+    padding-top: 172px;
+}
+.worker-btns {
+    color: #fff;
+    text-decoration: none;
+    background-color: #138677 !important;
+    border-color:#138677 !important; 
+    padding: 8px 25px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+}
+.worker-btns:hover {
+    background-color: #fff !important;
+    border-color:#138677 !important;
+    color:#138677 !important; 
+    border: 1px solid;
+}
+.emp-outer-box h3 {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-family: 'Raleway', sans-serif;
+}
+.emp-outer-box  p {
+    color: #fff;
+    font-size: 18px;
+}
+.worker-outer-box h3{
+    color: #138677;
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-family: 'Raleway', sans-serif;
+}
+.middle-box {
+    background-image: url("../assets/images/CTA-(1).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 80px 30px;
+    margin: 30px;
+}
+.middle-box  p{
+    max-width: 52%;
+}
+
+
+/*employe register pop up style start here   */
+.emp-box.modal-header {
+    border-bottom: none;
+}
+
+.modal-content {
+    padding: 40px 10px;
+}
+h3.emp-heading {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+input#formBasicName {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+
+input#formBasicEmail {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+
+input#formBasicPassword {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+button.loginbtn.btn.btn-primary {
+    
+    background-color: #138677;
+    border: 1px solid #138677;
+    color: #fff;
+    padding: 5px 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    width: 90%;
+}
+.middle-box {
+   
+}

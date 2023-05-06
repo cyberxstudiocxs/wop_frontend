@@ -1,0 +1,32 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+}
+h1, h2, h3 , h4, h5, h6{
+    font-family: 'Raleway', sans-serif;
+}
+p{
+    font-family: 'Montserrat', sans-serif;
+}
+a,link{
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+a:hover{
+    text-decoration: none;
+}
+
+/* common css */
+
+input.form-control {
+    background-color: #F7F7F7;
+}
+
+select#inputCountry ,select#inputTime {
+    background-color: #F7F7F7;
+}
+
+
+
