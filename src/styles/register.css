@@ -115,6 +115,11 @@ input#formBasicPassword {
    padding: 12px 20px;
    outline: none;
 }
+
+input#formBasicName:focus ,input#formBasicEmail:focus ,input#formBasicPassword:focus {
+    border: 3px solid #138677;
+
+}
 button.loginbtn.btn.btn-primary {
     
     background-color: #138677;

@@ -1,0 +1,58 @@
+.onlinejob-box {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-bottom: 40px;
+    padding: 40px 30px;
+}
+
+
+
+.onlinejob-info h3 {
+    font-size:18px;
+    font-weight:600;
+}
+.linee {
+    border: 1px solid #696a6a26;
+    margin: 15px 0px 0px 0px;
+}
+.onlinejob-info h3 span {
+     background-color:#13857826;
+    padding:7px;
+    border-radius: 5px;
+    font-size:12px;
+    color: #138578;
+    font-weight: 600;
+    border: 1px solid #138578;
+}
+
+.onlinejob-info p {
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 14px;
+}
+
+.inline-skills {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+    p.skills {
+        background-color: #8080801f;
+        margin: 5px 3px 5px 3px  !important;
+        padding: 7px 25px;
+        color: #555;
+        border-radius: 5px;
+        margin-bottom: 10px !important;
+    }
+
+    span.price {
+        background-color: #8080809e;
+        padding: 5px 5px 5px 8px;
+        border-radius: 50%;
+        color: #fff;
+        margin-right: 10px;
+    margin-left: 10px;
+    }
+
+    section.find-online-jobs {
+        background-color: #8080801f;
+    }

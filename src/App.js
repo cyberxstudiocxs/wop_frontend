@@ -9,6 +9,9 @@ import Login from './components/Login';
 import Footer from './components/Footer';
 import ManageProfile from './components/ManageProfile';
 import ProtectedRoute from './utils/ProtectedRoute';
+import SearchJobByTitle from './components/SearchJobByTitle';
+import JoobSeeker from './components/JobSeeker';
+import ContactUs from './components/ContactUs';
 
 function App() {
   return (
@@ -21,6 +24,10 @@ function App() {
    
           <Routes>
             <Route path='/' element={<Home />} />
+               <Route  path="/contactus" element={ <ContactUs />} />
+            <Route  path="/searchjob"  element={<SearchJobByTitle />} />
+
+            <Route  path="/jobseeker" element={<JoobSeeker />} />
             <Route path='/login' element={<Login />} />
 
             <Route path='/signup' element={<EmpRegister />} />
