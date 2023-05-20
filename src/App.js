@@ -8,7 +8,7 @@ import Menu from './components/Menu';
 import Login from './components/Login';
 import Footer from './components/Footer';
 import ManageProfile from './components/ManageProfile';
-
+import ProtectedRoute from './utils/ProtectedRoute';
 
 function App() {
   return (
@@ -24,9 +24,14 @@ function App() {
             <Route path='/login' element={<Login />} />
 
             <Route path='/signup' element={<EmpRegister />} />
-
-            <Route  path='/manageprofile'  element={<ManageProfile /> } />
-
+            
+            <Route  path='/manageprofile'  element={
+              <ProtectedRoute>
+            <ManageProfile /> 
+            </ProtectedRoute>
+            }
+             />
+           
           </Routes>
 
    

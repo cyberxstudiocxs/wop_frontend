@@ -37,10 +37,11 @@ const EmpRegister = () => {
     if (checks === false) {
       setError(" Please Select The Check box");
     } else {
+      //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
         .post(
-          "https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app/wop-api/employers",
+          "http://localhost:8080/wop-api/employers",
           users,
           {}
         )

@@ -5,29 +5,29 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 const Login = () => {
- 
-    const [users, setUser] = useState({
-        fullname: "",
-        email: "",
-        password: "",
-      });
-      const onChangeValues = (e) => {
-        setUser({ ...users, [e.target.name]: e.target.value });
-        console.log(users);
-      };
+  const [users, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const onChangeValues = (e) => {
+    setUser({ ...users, [e.target.name]: e.target.value });
+    console.log(users);
+  };
   const navigat = useNavigate();
+
   const ProcedLogin = (e) => {
     e.preventDefault();
-    
+
     axios
       .post(
-        "https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app/wop-api/employers/login",
-        users,
+        "http://localhost:8080/wop-api/employers/login",
+        users
       )
       .then((result) => {
-        console.log(result.data);
+        console.log(result.data.data);
         alert(result.data.message);
         localStorage.setItem("token", result.data.token);
+        if(result.data.token)
         navigat("/empdashhboard");
       })
       .catch((err) => {
