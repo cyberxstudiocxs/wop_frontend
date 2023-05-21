@@ -43,7 +43,7 @@ const ManageProfile = () => {
          
         axios
         .get(
-          `http://localhost:8080/wop-api/employers/getUserProfile/${decoded.result.id}`,confii
+          `https://api.mazglobal.co.uk/wop-api/employers/getUserProfile/${decoded.result.id}`,confii
         )
         .then((result) => {
             console.log(result.data,config)
@@ -63,7 +63,7 @@ const ManageProfile = () => {
      e.preventDefault();
      axios
      .put(
-       `http://localhost:8080/wop-api/employers/updateProfile/${user.id}`,
+       `https://api.mazglobal.co.uk/wop-api/employers/updateProfile/${user.id}`,
        updateEmp,config
      )
      .then((result) => {

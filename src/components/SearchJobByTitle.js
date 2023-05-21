@@ -1,11 +1,50 @@
 import Form from "react-bootstrap/Form";
+import { useState, useEffect } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import logo from "../assets/images/main-logo.png";
 import { Link } from "react-router-dom";
 import "../styles/searchjobbytitle.css";
+import axios from "axios";
 
 const SearchJobByTitle = () => {
+  const [jobs, setJobs] = useState([]);
+  const [tValue, setTValue] = useState();
+
+  useEffect(() => {
+    //https://api.mazglobal.co.uk/wop-api/joblistings
+    axios
+      .get(`https://api.mazglobal.co.uk/wop-api/joblistings`)
+      .then((result) => {
+        console.log("results", result.data.data);
+        setJobs(result.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+const handleChange=(e)=>{
+
+  console.log(e.target.value)
+  setTValue(e.target.value)
+}
+  const searchJob=()=>{
+    console.log("ttt",tValue)
+    let body={
+      title:tValue
+    }
+    axios
+    .post(`https://api.mazglobal.co.uk/wop-api/joblistings/title`,
+       body
+    )
+    .then((result) => {
+      console.log("results", result);
+      setJobs(result.data.data);
+    })
+    .catch((err) => console.log(err));
+};
+  
+
+
   return (
     <div>
       <section className="find-job-outer-box">
@@ -17,18 +56,19 @@ const SearchJobByTitle = () => {
                   <div className="serach-icons">
                     <BsSearch />
                   </div>
-                  <Form.Control
+                  <input
                     type="text"
+                    value={tValue}
+                    onChange={e=>handleChange(e)}
                     placeholder="Search for a job title or comapany "
                     className="jobs-search-fields"
                     id="seaechsss"
                   />
                 </InputGroup>
-                <button type="button" className="talent-btnss jobsearchs">
+                <button type="button" onClick={searchJob} className="talent-btnss jobsearchs">
                   Search
                 </button>
               </div>
-              
             </div>
           </div>
         </div>{" "}
@@ -51,42 +91,37 @@ const SearchJobByTitle = () => {
 
             <div className="col-lg-8">
               <div className="jobright-box">
-                <div className="jobs-box">
-                  <div className="image-box">
-                    <img
-                      src={logo}
-                      className="logo"
-                      alt="wop-logo"
-                      width={"100%"}
-                    />
-                  </div>
-                  <div className="job-info">
-                    <h3>
-                      {" "}
-                      shopify ecommerce copy writer <span> full time</span>{" "}
-                    </h3>
-                    <p>
-                      {" "}
-                      menia malik . <span> posted on Apr 17,2023</span>
-                    </p>
-                    <p> $850.00 to $120.000/month</p>
+               
+                  {jobs.map((job) => (
+                     <div className="jobs-box">
+                     <div className="image-box">
+                       <img
+                         src={logo}
+                         className="logo"
+                         alt="wop-logo"
+                         width={"100%"}
+                       />
+                     </div>
+                    <div className="job-info">
+                      <h3>
+                        {" "}
+                        {job.title}
+                        <span> {job.job_type_description}</span>{" "}
+                      </h3>
+                      <p>
+                        {" "}
+                        {job.contact_person} .{" "}
+                        <span> posted on Apr 17,2023</span>
+                      </p>
+                      <p> {job.salary}</p>
 
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you a complete account of the system, and expound the
-                      actual teachings of the great explorer of the truth, the
-                      master-builder of human happiness. No one rejects,
-                      dislikes, or avoids pleasure itself, because it is
-                      pleasure, but because those who do not know how to pursue
-                      pleasure rationally encounter consequences that are
-                      extremely painful.{" "}
-                    </p>
-                  </div>
-                </div>
+                      <p className="mt-3"> {job.description} </p>
+                    </div>
+                    </div>
+                  ))}
+               
 
-                <div className="jobs-box">
+                {/* <div className="jobs-box">
                   <div className="image-box"></div>
                   <div className="job-info">
                     <h3>
@@ -236,7 +271,7 @@ const SearchJobByTitle = () => {
                       extremely painful.{" "}
                     </p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

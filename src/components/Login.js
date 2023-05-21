@@ -1,10 +1,15 @@
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 const Login = () => {
+  
+  const [errorMsg, setErrorMsg] = React.useState(false);
+  const [errormodal, setErrorModal] = React.useState(false);
+  const errortoggle = () => setErrorModal(!errormodal);
+
   const [users, setUser] = useState({
     email: "",
     password: "",
@@ -17,18 +22,28 @@ const Login = () => {
 
   const ProcedLogin = (e) => {
     e.preventDefault();
-
+    //https://api.mazglobal.co.uk/wop-api
+    
     axios
       .post(
-        "http://localhost:8080/wop-api/employers/login",
+        "https://api.mazglobal.co.uk/wop-api/employers/login",
         users
       )
       .then((result) => {
-        console.log(result.data.data);
-        alert(result.data.message);
-        localStorage.setItem("token", result.data.token);
-        if(result.data.token)
-        navigat("/empdashhboard");
+        console.log("result",result);
+        if(result.data.success==0){
+          errortoggle()
+          setErrorMsg(result.data.message);
+        }
+        else{
+          localStorage.setItem("token", result.data.token);
+          navigat("/login")
+          setTimeout(()=>{
+            navigat("/empdashhboard");
+          },2000)
+        
+        }
+     
       })
       .catch((err) => {
         console.log(err);
@@ -83,6 +98,18 @@ const Login = () => {
           </div>
         </div>
       </div>
+
+     <Modal isOpen={errormodal} toggle={errortoggle}>
+        <ModalHeader toggle={errortoggle}>Error</ModalHeader>
+        <ModalBody>
+          <>!{errorMsg}</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={errortoggle}>
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

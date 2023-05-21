@@ -46,7 +46,7 @@ const EmpRegister = () => {
       console.log(users);
       axios
         .post(
-          "http://localhost:8080/wop-api/employers",
+          "https://api.mazglobal.co.uk/wop-api/employers",
           users,
           {}
         )
@@ -76,7 +76,7 @@ const EmpRegister = () => {
       console.log(users);
       axios
         .post(
-          "http://localhost:8080/wop-api/employers",
+          "https://api.mazglobal.co.uk/wop-api/employers",
           users,
           {}
         )

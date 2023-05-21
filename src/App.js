@@ -1,7 +1,7 @@
 
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-
+import { useState,useEffect } from 'react';
 import EmpRegister from './components/EmpRegister';
 import Home from './components/Home';
 import Menu from './components/Menu';
@@ -14,11 +14,25 @@ import JoobSeeker from './components/JobSeeker';
 import ContactUs from './components/ContactUs';
 
 function App() {
+
+  const [spin, setSpin] = useState(false);
+  useEffect(() => {
+    setSpin(true)
+    if (localStorage.getItem("token")) {
+
+     }
+     else{
+     }
+
+     setSpin(false)
+}, [] )
   return (
-    
+
     <div >
 
      
+          {spin==false?
+          <>
           <Menu />
          
    
@@ -43,7 +57,9 @@ function App() {
 
    
           <Footer  />
+          </>:""}
           </div>
+    
   );
 }
 

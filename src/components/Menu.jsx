@@ -4,15 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { NavDropdown } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../assets/images/main-logo.png'
 import "../styles/menu.css";
 
 
-
-
-
 const Menu = () => {
+
+  const navigat = useNavigate();
   const [login, setLoggedIn] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -24,6 +24,14 @@ const Menu = () => {
      }
 
 }, [] )
+
+const removeToken=()=>{
+  localStorage.removeItem('token')
+  setTimeout(()=>{
+    navigat("/")
+  },2000)
+  
+}
   return (
 
 
@@ -54,14 +62,35 @@ const Menu = () => {
 
 
           </Nav>
-           {login ? <Avatar
-                  alt="ABC"
-                  src="/static/images/avatar/1.jpg"
-                />:<>
+           {login ? 
+           <NavDropdown
+          style={{marginRight:'120px'}}
+           id="nav-dropdown-dark-example"
+           title={
+             <Avatar
+               alt="AAAAA"
+               src="/static/images/avatar/1.jpg"
+             />
+           }
+           menuVariant="light"
+         >
+           <Link to="/manageprofile">
+             <NavDropdown.Item href="/userProfile/profile"  >
+               Manage Profile
+             </NavDropdown.Item>
+           </Link>
+
+           <NavDropdown.Divider />
+           <NavDropdown.Item  >
+             <p onClick={() => removeToken()}>Logout</p>
+           </NavDropdown.Item>
+         </NavDropdown>
+         :
+            <>
            <Link to="/login" className="login-btn mx-3">Login </Link>
            <Link to="/signup" className="signup-btn" >SignUp </Link>
            </>
- }
+           }
 
 
 
