@@ -2,7 +2,8 @@ import Form from "react-bootstrap/Form";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import React,{ useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Validation from "./Validations";
 import "../styles/login.css";
 const Login = () => {
   
@@ -14,7 +15,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+
+  const [errorsmeaasage, setErrormessage] = useState({});
   const onChangeValues = (e) => {
+    setErrormessage(Validation(users));
     setUser({ ...users, [e.target.name]: e.target.value });
     console.log(users);
   };
@@ -31,7 +35,7 @@ const Login = () => {
       )
       .then((result) => {
         console.log("result",result);
-        if(result.data.success==0){
+        if(result.data.success===0){
           errortoggle()
           setErrorMsg(result.data.message);
         }
@@ -68,6 +72,12 @@ const Login = () => {
                     name="email"
                     onChange={(e) => onChangeValues(e)}
                   />
+                    {errorsmeaasage.email && (
+                          <p style={{ color: "red" }}>
+                            {" "}
+                            {errorsmeaasage.email}{" "}
+                          </p>
+                        )}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -78,6 +88,12 @@ const Login = () => {
                     name="password"
                     onChange={(e) => onChangeValues(e)}
                   />
+                     {errorsmeaasage.password && (
+                          <p style={{ color: "red" }}>
+                            {" "}
+                            {errorsmeaasage.password}{" "}
+                          </p>
+                        )}
                 </Form.Group>
                 <div className="text-center my-3">
                   <Button

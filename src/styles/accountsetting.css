@@ -1,0 +1,51 @@
+.Accontsettig-box{
+    background-color: #7e7e7e2b
+    
+    ;
+}
+
+.account-outer-box {
+    /* display: flex; */
+    background-color: #fff;
+    padding: 10px 30px;
+}
+
+.parallel-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.outer-accout {
+    box-shadow: 0px 5px 12px -3px gray;
+    padding: 20px;
+    background-color: #000000;
+}
+
+.outer-accout h6{
+    font-size: 20px;
+    font-weight: 600;
+    color:#fff;
+}
+
+.quick-box {
+    background-color: #b2b2b2;
+    padding: 30px;
+  
+    text-align: center;
+    height: 240px;
+}
+
+.quick-box:hover {
+    background-color: #138578;
+    color: #fff;
+    transform: translateY(-10px);
+    transition: 0.6s;
+    height: 260px;
+}
+
+.quick-box h3 {
+    margin: 30px;
+    font-size: 16px;
+}

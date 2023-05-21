@@ -12,6 +12,7 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import SearchJobByTitle from './components/SearchJobByTitle';
 import JoobSeeker from './components/JobSeeker';
 import ContactUs from './components/ContactUs';
+import AccountSetting from "./components/AccountSetting";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
    
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route  path='/accountsetting'  element={<AccountSetting />} />
                <Route  path="/contactus" element={ <ContactUs />} />
             <Route  path="/searchjob"  element={<SearchJobByTitle />} />
 

@@ -54,7 +54,7 @@ const removeToken=()=>{
 
             <Link className="menuitem" to="/contactus">Contact Us</Link>
          
-            <Link className="menuitem" to="/manageprofile">Manage Profile</Link>
+         
 
             <Link className="postjob-btn"  >Post A job</Link>
             <Link className="findjob-btn"   to="/searchjob" >Find jobs</Link>
@@ -74,9 +74,9 @@ const removeToken=()=>{
            }
            menuVariant="light"
          >
-           <Link to="/manageprofile">
+           <Link to="/accountsetting">
              <NavDropdown.Item href="/userProfile/profile"  >
-               Manage Profile
+               Account Setting
              </NavDropdown.Item>
            </Link>
 
