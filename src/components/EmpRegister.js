@@ -17,6 +17,8 @@ const EmpRegister = () => {
   const jobhandleClose = () => jobsetShow(false);
   const jobhandleShow = () => jobsetShow(true);
 
+  const [spinner, setSpinner] = useState(false);
+
   const [users, setUser] = useState({
     fullname: "",
     email: "",
@@ -35,12 +37,14 @@ const EmpRegister = () => {
 
   const UserRegistration = (e) => {
     e.preventDefault();
+    setSpinner(true);
     setErrormessage(Validation(users));
     // if (false ){
 
     // }
     if (checks === false) {
       setError(" Please Select The Check box");
+      setSpinner(false);
     } else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
@@ -52,12 +56,16 @@ const EmpRegister = () => {
         )
         .then((result) => {
           console.log(result.data);
+          setSpinner(false)
           alert(result.data.message);
+          
           //   navigat("/login")
+
         })
         .catch((err) => {
           console.log(err);
           console.log(err.response.data.message);
+          setSpinner(false)
           alert(err.response.data.message);
         });
     }
@@ -199,6 +207,9 @@ const EmpRegister = () => {
                           className="loginbtn"
                           onClick={UserRegistration}
                         >
+                          { spinner  && 
+                           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+}
                           Register
                         </Button>
                       </div>
