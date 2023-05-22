@@ -32,8 +32,9 @@ const handleChange=(e)=>{
     let body={
       title:tValue
     }
+    
     axios
-    .post(`https://api.mazglobal.co.uk/wop-api/joblistings/title`,
+    .get(`https://api.mazglobal.co.uk/wop-api/joblistings/title`,
        body
     )
     .then((result) => {

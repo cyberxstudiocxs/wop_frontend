@@ -8,8 +8,12 @@ import "../styles/login.css";
 const Login = () => {
   
   const [errorMsg, setErrorMsg] = React.useState(false);
+  const [uId, setUId] = React.useState();
   const [errormodal, setErrorModal] = React.useState(false);
   const errortoggle = () => setErrorModal(!errormodal);
+
+  const [modal, setModal] = React.useState(false);
+  const toggle = () => setModal(!modal);
 
   const [users, setUser] = useState({
     email: "",
@@ -28,7 +32,36 @@ const Login = () => {
     e.preventDefault();
     //https://api.mazglobal.co.uk/wop-api
     
-    axios
+    if(uId==1)
+    {
+      axios
+      .post(
+        "https://api.mazglobal.co.uk/wop-api/jobseekers/login",
+        users
+      )
+      .then((result) => {
+        console.log("result",result);
+        if(result.data.success===0){
+          errortoggle()
+          setErrorMsg(result.data.message);
+        }
+        else{
+          localStorage.setItem("token", result.data.token);
+          navigat("/login")
+          setTimeout(()=>{
+            navigat("/jobseeker");
+          },2000)
+        
+        }
+     
+      })
+      .catch((err) => {
+        console.log(err);
+
+        alert(err.response.data.message);
+      });
+    }else if(uId==2){
+      axios
       .post(
         "https://api.mazglobal.co.uk/wop-api/employers/login",
         users
@@ -54,9 +87,22 @@ const Login = () => {
 
         alert(err.response.data.message);
       });
+
+    }else{
+
+    }
+   
   };
 
-  useEffect(() => {}, []);
+  const setIds=(id)=>{
+    setUId(id)
+    toggle()
+
+  }
+
+  useEffect(() => {
+    toggle()
+  }, []);
   return (
     <div className="container">
       <div className="row  outer-box-one">
@@ -122,6 +168,21 @@ const Login = () => {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={errortoggle}>
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Select</ModalHeader>
+        <ModalBody>
+          <div style={{display:'flex',flexDirection:'row'}}>
+          <Button onClick={()=>setIds(1)}>As A JobSeeker</Button>
+          <Button onClick={()=>setIds(2)}>As A Employer</Button>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggle}>
             OK
           </Button>
         </ModalFooter>

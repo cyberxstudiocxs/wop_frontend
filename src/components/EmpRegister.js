@@ -9,12 +9,26 @@ import Validation from "./Validations";
 
 const EmpRegister = () => {
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setUser({
+      fullname: "",
+    email: "",
+    password: "",
+    })
+    setShow(false);
+  }
   const handleShow = () => setShow(true);
 
 
   const [jobshow, jobsetShow] = useState(false);
-  const jobhandleClose = () => jobsetShow(false);
+  const jobhandleClose = () => {
+    setUser({
+      fullname: "",
+    email: "",
+    password: "",
+    })
+    jobsetShow(false);
+  }
   const jobhandleShow = () => jobsetShow(true);
 
   const [spinner, setSpinner] = useState(false);
@@ -24,6 +38,7 @@ const EmpRegister = () => {
     email: "",
     password: "",
   });
+
   const [errorsmeaasage, setErrormessage] = useState({});
 
   const [checks, setChecks] = useState(false);
@@ -84,7 +99,7 @@ const EmpRegister = () => {
       console.log(users);
       axios
         .post(
-          "https://api.mazglobal.co.uk/wop-api/employers",
+          "https://api.mazglobal.co.uk/wop-api/jobseekers",
           users,
           {}
         )

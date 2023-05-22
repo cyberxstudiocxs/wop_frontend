@@ -26,10 +26,11 @@ const Menu = () => {
 }, [] )
 
 const removeToken=()=>{
+  console.log("jjjjjjjjjj")
   localStorage.removeItem('token')
-  setTimeout(()=>{
-    navigat("/")
-  },2000)
+  
+    navigat("/login")
+ 
   
 }
   return (

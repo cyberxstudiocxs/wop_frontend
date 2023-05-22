@@ -40,7 +40,8 @@ const ManageProfile = () => {
                   },
             }
           setConfig(confii)
-         
+          console.log("local",localStorage.getItem('token'))
+          console.log("decoded",decoded.result)
         axios
         .get(
           `https://api.mazglobal.co.uk/wop-api/employers/getUserProfile/${decoded.result.id}`,confii
