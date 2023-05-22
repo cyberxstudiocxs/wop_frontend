@@ -1,5 +1,6 @@
 
-import { Avatar } from "@material-ui/core";
+//import { Avatar } from "@material-ui/core";
+import Avatar from 'react-avatar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -65,13 +66,10 @@ const removeToken=()=>{
           </Nav>
            {login ? 
            <NavDropdown
-          style={{marginRight:'120px'}}
+          style={{marginRight:'100px'}}
            id="nav-dropdown-dark-example"
            title={
-             <Avatar
-               alt="AAAAA"
-               src="/static/images/avatar/1.jpg"
-             />
+            <Avatar name="Foo Bar" round={true} size="50"/>
            }
            menuVariant="light"
          >
