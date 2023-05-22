@@ -1,0 +1,116 @@
+.job-search-box {
+    display: flex;
+    align-items: flex-start;
+}
+.jobsearchfield.mb-3.input-group {
+    width: 86%;
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    background-color: grey;
+    padding: 0px 12px;
+    margin-right: 12px;
+}
+input#seaechsss::placeholder {
+    color: #fff;
+}
+button.talent-btnss.jobsearchs {
+    width: 14%;
+}
+
+
+
+input.jobs-search-fields.form-control {
+    background-color: gray;
+    border: none;
+    border-radius: 50px;
+    margin-left: 5px;
+  
+    padding-left: 12px;
+}
+
+.job-search-box .serach-icons {
+    margin: 0px 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: unset;
+}
+
+
+/*  */
+
+.box-shape {
+    border: 13px solid #138578;
+    border-top-left-radius: 10px;
+    margin-bottom: 40px;
+    border-top-right-radius: 10px;
+}
+.sidebar-box {
+    border: 2px solid #7c7c7c7c;
+    border-radius: 12px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.sidebar-box p {
+    margin-bottom:0px;
+    color: #555;
+
+    font-size: 16px;
+}
+
+.sidebar-box h6 {
+    font-size: 25px;
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+button.subscribenow {
+    background-color: #fff;
+    border: 1px solid #7c7c7c7c;;
+    border-radius: 50px;
+    padding: 10px 30px;
+    margin: 10px 0px 20px;
+    color:#138578;
+}
+
+.jobright-box {
+    
+    border: 5px solid #7c7c7c7c;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.jobs-box {
+    display: flex;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+margin-bottom: 40px;
+    padding: 40px 30px;
+}
+
+.job-info  h3{
+    text-transform:capitalize;
+}
+.job-info  h3  span{
+    background-color:#13857826;
+    padding:7px;
+    border-radius: 5px;
+    font-size:12px;
+    color: #138578;
+    font-weight: 600;
+    border: 1px solid #138578;
+    
+}
+.job-info span.anyy{
+    background-color: #949d9c26;
+    padding: 7px;
+    font-size: 12px;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #adadad;
+}
+.job-info p {
+    margin-bottom: 0px;
+}
