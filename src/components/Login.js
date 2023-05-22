@@ -174,18 +174,19 @@ const Login = () => {
       </Modal>
 
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>Select</ModalHeader>
+        <ModalHeader toggle={toggle} className="emp-box"></ModalHeader>
+        <h3 className="emp-heading"> select</h3>
         <ModalBody>
-          <div style={{display:'flex',flexDirection:'row'}}>
-          <Button onClick={()=>setIds(1)}>As A JobSeeker</Button>
-          <Button onClick={()=>setIds(2)}>As A Employer</Button>
+          <div style={{display:'flex', justifyContent: "space-evenly",flexDirection:'row'}}>
+          <Button onClick={()=>setIds(1)} className="worker-btns" >As A JobSeeker</Button>
+          <Button onClick={()=>setIds(2)} className="emp-btns" >As A Employer</Button>
           </div>
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+        {/* <ModalFooter> */}
+          {/* <Button color="primary" onClick={toggle}>
             OK
-          </Button>
-        </ModalFooter>
+          </Button> */}
+        {/* </ModalFooter> */}
       </Modal>
     </div>
   );

@@ -7,10 +7,11 @@
     height: 100vh;
 }
 
-a.emp-btns {
-    background-color: #fff;
+.emp-btns {
+    background-color: #fff !important;
     color: #138677 !important;
     padding: 8px 30px;
+    border: 2px solid #138677 !important ;
     border-radius: 5px;
     text-decoration: none;
     text-transform: uppercase;
@@ -132,7 +133,4 @@ button.loginbtn.btn.btn-primary {
     letter-spacing: 1px;
     font-size: 16px;
     width: 90%;
-}
-.middle-box {
-   
 }

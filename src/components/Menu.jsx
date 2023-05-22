@@ -52,6 +52,7 @@ const removeToken=()=>{
           >
           
             <Link className="menuitem" to="/result">How Its Work</Link>
+            <Link className="menuitem" to="/jobseeker">JobSeeker </Link>
 
             <Link className="menuitem" to="/contactus">Contact Us</Link>
          
