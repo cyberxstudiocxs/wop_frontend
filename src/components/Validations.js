@@ -14,7 +14,7 @@ const Validation = (users) =>{
         errorsmeaasage.email="E-Mail is invalid."
     }
      if(users.password === ""){
-    errorsmeaasage.password="Password Is Required."
+    errorsmeaasage.password="Must be at least 6 characters."
      }else if(users.password.length < 5){
     errorsmeaasage.password="Password Must Be  Digits."
 

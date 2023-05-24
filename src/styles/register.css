@@ -10,11 +10,11 @@
 .emp-btns {
     background-color: #fff !important;
     color: #138677 !important;
-    padding: 8px 30px;
+    padding: 10px 30px;
     border: 2px solid #138677 !important ;
     border-radius: 5px;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 14px;
     font-weight: 600;
 }
@@ -24,19 +24,19 @@ a.worker-btns:hover{
 }
 .emp-outer-box {
     text-align: center;
-    padding-top: 172px;
+    padding-top: 272px;
 }
 
 .worker-outer-box {
     text-align: center;
-    padding-top: 172px;
+    padding-top: 272px;
 }
 .worker-btns {
     color: #fff;
     text-decoration: none;
     background-color: #138677 !important;
     border-color:#138677 !important; 
-    padding: 8px 25px;
+    padding: 10px 25px;
     border-radius: 5px;
     text-transform: capitalize;
     font-size: 14px;
@@ -52,7 +52,7 @@ a.worker-btns:hover{
     color: #fff;
     font-size: 35px;
     font-weight: 700;
-    text-transform: capitalize;
+   
     font-family: 'Raleway', sans-serif;
 }
 .emp-outer-box  p {
@@ -63,7 +63,7 @@ a.worker-btns:hover{
     color: #138677;
     font-size: 35px;
     font-weight: 700;
-    text-transform: capitalize;
+ 
     font-family: 'Raleway', sans-serif;
 }
 .middle-box {
@@ -76,7 +76,7 @@ a.worker-btns:hover{
     margin: 30px;
 }
 .middle-box  p{
-    max-width: 52%;
+    max-width: 500px;
 }
 
 
@@ -129,8 +129,31 @@ button.loginbtn.btn.btn-primary {
     padding: 5px 30px;
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 1px;
     font-size: 16px;
     width: 90%;
 }
+
+.cta-banner{
+    padding: 50px 0px;
+}
+
+@media screen and (max-width: 600px) {
+    .emp-outer-box  ,.worker-outer-box {
+    padding-top: 100px;
+    }
+    .emp-outer-box h3 ,.emp-outer-box p , .worker-outer-box h3 , .worker-outer-box p {
+        color: #000;
+    }
+    .cta-banner{
+        padding: 20px 0px;
+    }
+    .middle-box{
+        padding: 20px 20px;
+        background-color: #fff;
+    }
+    .middle-box p{
+        width: 100%;
+    }
+    }

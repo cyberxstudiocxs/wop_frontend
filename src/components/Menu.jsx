@@ -58,7 +58,7 @@ const removeToken=()=>{
          
          
 
-            <Link className="postjob-btn"  >Post A job</Link>
+            <Link className="postjob-btn"  to="/postjob" >Post A job</Link>
             <Link className="findjob-btn"   to="/searchjob" >Find jobs</Link>
             
 

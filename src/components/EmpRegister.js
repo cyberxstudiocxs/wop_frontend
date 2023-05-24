@@ -12,23 +12,22 @@ const EmpRegister = () => {
   const handleClose = () => {
     setUser({
       fullname: "",
-    email: "",
-    password: "",
-    })
+      email: "",
+      password: "",
+    });
     setShow(false);
-  }
+  };
   const handleShow = () => setShow(true);
-
 
   const [jobshow, jobsetShow] = useState(false);
   const jobhandleClose = () => {
     setUser({
       fullname: "",
-    email: "",
-    password: "",
-    })
+      email: "",
+      password: "",
+    });
     jobsetShow(false);
-  }
+  };
   const jobhandleShow = () => jobsetShow(true);
 
   const [spinner, setSpinner] = useState(false);
@@ -43,6 +42,8 @@ const EmpRegister = () => {
 
   const [checks, setChecks] = useState(false);
   const [error, setError] = useState("");
+
+  const [pakerror, setPakError] = useState("");
 
   const onChangeValues = (e) => {
     setUser({ ...users, [e.target.name]: e.target.value });
@@ -59,28 +60,25 @@ const EmpRegister = () => {
     // }
     if (checks === false) {
       setError(" Please Select The Check box");
+      setPakError(" Please Select The Pakistani Check box");
+    
       setSpinner(false);
     } else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
-        .post(
-          "https://api.mazglobal.co.uk/wop-api/employers",
-          users,
-          {}
-        )
+        .post("https://api.mazglobal.co.uk/wop-api/employers", users, {})
         .then((result) => {
           console.log(result.data);
-          setSpinner(false)
+          setSpinner(false);
           alert(result.data.message);
-          
-          //   navigat("/login")
 
+          //   navigat("/login")
         })
         .catch((err) => {
           console.log(err);
           console.log(err.response.data.message);
-          setSpinner(false)
+          setSpinner(false);
           alert(err.response.data.message);
         });
     }
@@ -94,15 +92,12 @@ const EmpRegister = () => {
     // }
     if (checks === false) {
       setError(" Please Select The Check box");
+      setPakError(" Please Select The Pakistani Check box");
     } else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
-        .post(
-          "https://api.mazglobal.co.uk/wop-api/jobseekers",
-          users,
-          {}
-        )
+        .post("https://api.mazglobal.co.uk/wop-api/jobseekers", users, {})
         .then((result) => {
           console.log(result.data);
           alert(result.data.message);
@@ -119,15 +114,15 @@ const EmpRegister = () => {
   return (
     <div>
       <section className="main-register-box">
-        <div className="container-fluid">
+        <div className="container-fluid   " >
           <div className="row ">
             <div className="col-lg-6">
               <div className="emp-outer-box">
-                <h3>I’m an employer</h3>
+                <h3>I’m an Employer</h3>
 
-                <p>looking for amazing hires</p>
+                <p>Seeking Exceptional Hires </p>
                 <Link className="emp-btns" onClick={handleShow}>
-                  Start Hiring today
+                  Start Recruitment Now!
                 </Link>
                 <Modal
                   show={show}
@@ -137,7 +132,7 @@ const EmpRegister = () => {
                   className="emp-box-outer"
                 >
                   <Modal.Header closeButton className="emp-box"></Modal.Header>
-                  <h3 className="emp-heading">Create a Employer Account </h3>
+                  <h3 className="emp-heading">Register as an Employer </h3>
                   <Modal.Body>
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">
@@ -148,9 +143,7 @@ const EmpRegister = () => {
                           placeholder="Enter Your Name"
                           name="fullname"
                           className="shadow-none"
-                          value={users
-                          .fullname
-                        }
+                          value={users.fullname}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.fullname && (
@@ -168,9 +161,7 @@ const EmpRegister = () => {
                           placeholder="Enter E-Mail"
                           name="email"
                           className="shadow-none"
-                          value={users
-                            .email
-                          }
+                          value={users.email}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.email && (
@@ -192,9 +183,7 @@ const EmpRegister = () => {
                           placeholder="Password"
                           name="password"
                           className="shadow-none"
-                          value={users
-                            .password
-                          }
+                          value={users.password}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.password && (
@@ -208,10 +197,22 @@ const EmpRegister = () => {
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
+                        <Form.Check    
+                          type="checkbox"
+                          onChange={() => setPakError(true)}
+                          label="Subscribe me to your complimentary outsourcing education emails."
+                        />
+                      </Form.Group>
+                      <div className="text-center my-3">
+                        {pakerror && <p style={{ color: "red" }}>{pakerror} </p>}  </div>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formBasicCheckbox"
+                      >
                         <Form.Check
                           type="checkbox"
                           onChange={() => setChecks(true)}
-                          label="I agree to the Terms of Service and Privacy Policy"
+                          label="I consent to the Terms of Service and Privacy Policy."
                         />
                       </Form.Group>
                       <div className="text-center my-3">
@@ -222,9 +223,13 @@ const EmpRegister = () => {
                           className="loginbtn"
                           onClick={UserRegistration}
                         >
-                          { spinner  && 
-                           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-}
+                          {spinner && (
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          )}
                           Register
                         </Button>
                       </div>
@@ -245,10 +250,9 @@ const EmpRegister = () => {
                 <h3>I’m a Job Seeker</h3>
                 <p>Seeking Best Employment Opportunities</p>
 
-                <Button className="worker-btns"   onClick={jobhandleShow}>
+                <Link className="worker-btns" onClick={jobhandleShow}>
                   Create Account
-                </Button>
-
+                </Link>
 
                 <Modal
                   show={jobshow}
@@ -258,7 +262,7 @@ const EmpRegister = () => {
                   className="emp-box-outer"
                 >
                   <Modal.Header closeButton className="emp-box"></Modal.Header>
-                  <h3 className="emp-heading">Create Job Seeker Account </h3>
+                  <h3 className="emp-heading">Sign Up for a Job Seeker Account for Free </h3>
                   <Modal.Body>
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">
@@ -269,9 +273,7 @@ const EmpRegister = () => {
                           placeholder="Enter Your Name"
                           name="fullname"
                           className="shadow-none"
-                          value={users
-                          .fullname
-                        }
+                          value={users.fullname}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.fullname && (
@@ -289,9 +291,7 @@ const EmpRegister = () => {
                           placeholder="Enter E-Mail"
                           name="email"
                           className="shadow-none"
-                          value={users
-                            .email
-                          }
+                          value={users.email}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.email && (
@@ -313,9 +313,7 @@ const EmpRegister = () => {
                           placeholder="Password"
                           name="password"
                           className="shadow-none"
-                          value={users
-                            .password
-                          }
+                          value={users.password}
                           onChange={(e) => onChangeValues(e)}
                         />
                         {errorsmeaasage.password && (
@@ -325,7 +323,21 @@ const EmpRegister = () => {
                           </p>
                         )}
                       </Form.Group>
+                     
                       <Form.Group
+                        className="mb-3"
+                        controlId="formBasicCheckbox"
+                      >
+                        <Form.Check    
+                          type="checkbox"
+                          onChange={() => setPakError(true)}
+                          label="As a Pakistani, I'm aware that WOP is exclusively for Pakistani workers."
+                        />
+                      </Form.Group>
+                      <div className="text-center my-3">
+                        {pakerror && <p style={{ color: "red" }}>{pakerror} </p>}  </div>
+
+                        <Form.Group
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
@@ -335,8 +347,9 @@ const EmpRegister = () => {
                           label="I agree to the Terms of Service and Privacy Policy"
                         />
                       </Form.Group>
+
                       <div className="text-center my-3">
-                        {error && <p style={{ color: "red" }}>{error} </p>}
+                        {error && <p style={{ color: "red" }}>{error} </p>}  </div>
                         <Button
                           variant="primary"
                           type="submit"
@@ -345,7 +358,7 @@ const EmpRegister = () => {
                         >
                           Register
                         </Button>
-                      </div>
+                     
                       <div className="text-center my-3">{}</div>
                       <div className="text-center">
                         <p className="already-reg"> Already Register</p>
@@ -356,21 +369,18 @@ const EmpRegister = () => {
                     </Form>
                   </Modal.Body>
                 </Modal>
-
-              
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="container p-5">
+<section className="cta-banner">
+<div className="container ">
         <div className="row">
           <div className="col-lg-12 m-auto">
             <div className="middle-box">
               <p>
-                {" "}
-                We’ re here to help! If you need any assistance with the
+                We {"’"} re here to help! If you need any assistance with the
                 registration process, please don't hesitate to reach out to us.
                 Our team is able to provide guidance and support to ensure a
                 smooth and hassle-free experience.
@@ -380,6 +390,8 @@ const EmpRegister = () => {
           </div>
         </div>
       </div>
+</section>
+     
     </div>
   );
 };

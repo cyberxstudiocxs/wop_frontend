@@ -1,14 +1,15 @@
 section.footer-main-box {
     background-color: #138578;
-    padding: 50px 0px;
+    padding: 70px 0px 70px 60px;
 }
 
 .socials-links h3 ,.footer-links h3 {
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
     word-spacing: 2px;
     letter-spacing: 1px;
     margin-bottom: 20px;
+    font-size: 22px;
 }
 
 .common-link ul {
@@ -26,4 +27,23 @@ section.footer-main-box {
     font-size: 16px;
     font-weight: 500;
     letter-spacing: 1px;
+}
+
+
+.common-link ul li i {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.common-link ul li:hover i{
+    color: #000;
+    transform: translateX(5px);
+    transition: 0.6s;
+}
+
+
+
+.common-link ul li:hover a  {
+transform: translateY(5px);
+    transition: 0.6s;
 }

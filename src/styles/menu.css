@@ -1,12 +1,11 @@
 
 /***************    Menu css start here  *****************/
 a.menuitem {
-    padding: 10px;
+    padding: 10px 15px;
     color: #000!important;
     text-decoration: none;
-   
     font-weight: 400;
-    word-spacing: 5px;
+    font-size: 16px;
     letter-spacing: 1px;
 }
 
@@ -19,13 +18,13 @@ a.postjob-btn {
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    padding: 5px 25px;
+    padding: 0px 25px;
     background-color: #138578;
     color: #fff !important;
     margin:5px;
     word-spacing: 2px;
     letter-spacing: 1px;
-    text-transform: capitalize;
+    text-transform: uppercase;
 }
 
 a.findjob-btn {
@@ -39,13 +38,15 @@ a.findjob-btn {
     border-radius: 20px;
     word-spacing: 5px;
     letter-spacing: 1px;
-    padding: 8px 30px;
+    padding: 0px 25px;
     background-color: #000;
     color: #fff;
     margin:5px;
     word-spacing: 2px;
 }
-
+a.findjob-btn:hover{
+    color: #fff;
+}
 a.login-btn.mx-3 ,a.signup-btn  {
     text-decoration: none;
     background-color: transparent;

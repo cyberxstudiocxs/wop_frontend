@@ -13,6 +13,8 @@ import SearchJobByTitle from './components/SearchJobByTitle';
 import JoobSeeker from './components/JobSeeker';
 import ContactUs from './components/ContactUs';
 import AccountSetting from "./components/AccountSetting";
+import EmpDashboard  from "./components/EmpDashboard";
+import PostAJob from './components/PostAJob';
 
 function App() {
 
@@ -39,8 +41,10 @@ function App() {
    
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/empdashhboard' element={<EmpDashboard />} />
             <Route  path='/accountsetting'  element={<AccountSetting />} />
-               <Route  path="/contactus" element={ <ContactUs />} />
+            <Route path='/postjob'  element={<PostAJob />} />
+            <Route  path="/contactus" element={ <ContactUs />} />
             <Route  path="/searchjob"  element={<SearchJobByTitle />} />
 
             <Route  path="/jobseeker" element={<JoobSeeker />} />

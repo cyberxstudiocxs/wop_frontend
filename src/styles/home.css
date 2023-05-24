@@ -10,11 +10,12 @@
     margin-top: 30px;
 }
 .banner-box h1{
+    font-size: 45px;
     font-weight: 700;
    
 }
 .banner-box  p{
-    color: #7e7e7e ;
+    padding: 0px 100px;
     margin-bottom: 0px;
 }
 span.talent {
@@ -25,16 +26,22 @@ span.talent {
     font-family: 'Raleway', sans-serif;
 }
 
-.talent-left-box {
-    text-align: end;
+.talent-left-box p {
+    padding-left: 150px;
+    font-size: 20px;
+    
 }
 p.talent {
     font-size: 20px;
+    padding-left: 40px;
 }
-
+h3.em-heading {
+    font-size: 40px;
+    font-weight: 600;
+}
 h3.Talent-heading {
-    font-size: 45px;
-    font-weight: 700;
+    font-size: 40px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-align: center;
     word-spacing: 4px;
@@ -74,16 +81,22 @@ h3.Talent-heading:after {
     display: flex;
     justify-content: end;
 }
+
+.serach-icons {
+    margin: 0px 5px;
+}
 input.box-search.form-control {
     border: none;
     outline: none;
+    background-color: transparent;
+    font-size: 14px;
     
 }
 
 .outer-box-search.mb-3.input-group {
     border: 1px solid #7c7c7c7c;
     border-radius: 50px;
-    padding: 10px;
+    padding: 6px 12px;
     display: flex;
     align-items: center;
     width: 80%;
@@ -91,13 +104,15 @@ input.box-search.form-control {
 
 button.talent-btnss {
     background-color: #138578;
-    padding: 7px 20px;
+    padding: 3px 30px 6px 30px;
     border-radius: 50px;
     border-top-left-radius: 50px !important;
     border-bottom-left-radius: 50px !important;
     border: 1px solid #138578;
     color: #fff;
     margin-left: 0px !important;
+    font-size: 16px;
+    font-weight: 500;
 }
 .space {
     padding: 100px;
@@ -109,8 +124,9 @@ button.talent-btnss {
 }
 
 .points-lists  ul  li a {
-    color: #7e7e7e !important;
+    color: #555 !important;
     font-size: 16px;
+    font-weight: 400;
     
 }
 a.more-skillss {
@@ -142,8 +158,11 @@ a.leftarrow-btn {
     padding: 10px;
     border-radius: 5px;
 }
+a.leftarrow-btn.mr-1:hover ,a.leftarrow-btn:hover  {
+    color: #fff;
+}
 .roundd-box {
-    background-color: #7e7e7e2b;
+    background-color: #7e7e7e12;
     padding: 40px;
     border-radius: 50px;
     margin: 20px 10px;
@@ -169,4 +188,71 @@ h4.card-title {
     color: #138578 ;
     text-transform: capitalize;
     font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
 }
+
+.space2{
+    padding: 30px 0px;
+}
+.arrows-box {
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    span.navbar-brand {
+        width: 50%;
+    }
+    .banner-box{
+        padding: 20px;
+        text-align: left;
+    }
+    .banner-box h1 {
+       
+        font-size: 25px;
+    }
+    .banner-box h1 br{
+        display: none;
+    }
+    .banner-box p{
+        padding: 0px 0px;
+    }
+    
+    .Talent-search-box{
+        justify-content: center;
+    }
+    .talent-left-box p{
+        padding-left: 0px;
+        text-align: center;
+    }
+    p.talent {
+        text-align: center;
+        padding-left: 0px;
+    }
+    
+    .work-search-box {
+        justify-content: center;
+        display: flex;
+    }
+    .outer-box-search.mb-3.input-group{
+        width: 95%;
+    }
+    .space {
+        padding: 20px;
+    }
+    h3.Talent-heading {
+        font-size: 31px;
+    }
+    h3.em-heading {
+        font-size: 25px;
+        text-align: center;
+    }
+    .arrows-box {
+        text-align: center;
+        margin: 10px 0p;
+    }
+    .space2 {
+        padding: 14px 0px;
+    }
+    
+  }

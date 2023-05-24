@@ -7,8 +7,12 @@
 h1, h2, h3 , h4, h5, h6{
     font-family: 'Raleway', sans-serif;
 }
+
+
 p{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    color:#555;
+    font-weight: 400;
 }
 a,link{
     text-decoration: none;
@@ -20,13 +24,8 @@ a:hover{
 
 /* common css */
 
-input.form-control {
-    background-color: #F7F7F7;
-}
 
-select#inputCountry ,select#inputTime {
-    background-color: #F7F7F7;
-}
+
 
 
 

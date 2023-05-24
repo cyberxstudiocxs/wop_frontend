@@ -8,31 +8,31 @@ const Footer = () => {
   return (
     <div>
       <section className="footer-main-box">
-        <div className="container-fluid p-5">
-          <div className="row pl-5">
+        <div className="container-fluid ">
+          <div className="row ">
             <div className="col-lg-3">
               <div className="footer-links">
                 <h3> EMPLOYERS</h3>
                 <div className="common-link">
                   <ul>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">How It Works</Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links"> Register </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Post A JOb </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Blogs </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">FAQ </Link>{" "}
                     </li>
                   </ul>
@@ -49,15 +49,15 @@ const Footer = () => {
                       <Link className="f-links"> How It Works</Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links"> Register </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Job Search </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Employer Search </Link>{" "}
                     </li>
                   </ul>
@@ -71,23 +71,23 @@ const Footer = () => {
                 <div className="common-link">
                   <ul>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links"> Contact Us</Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links"> About Us </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Privary Policy </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Terms of Use </Link>{" "}
                     </li>
                     <li>
-                      {" "}
+                    <i className="fa fa-arrow-right"></i>
                       <Link className="f-links">Get In Touch </Link>{" "}
                     </li>
                   </ul>
@@ -101,7 +101,7 @@ const Footer = () => {
                 <div className="common-link">
                   <ul>
                     <li>
-                      {" "}
+                  
                       <Link className="f-links">
                         {" "}
                         <FaEnvelope /> Info@gmail.com

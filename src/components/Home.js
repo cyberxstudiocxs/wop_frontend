@@ -19,22 +19,20 @@ const Home = () => {
             <div className='row'>
                 <div className='col-lg-12'>
                     <div className='banner-box'>
-                        <h1>  Connecting Pakistani Talent to  </h1>
+                        <h1>  Connecting Pakistani Talent to   <br></br>
 
-                        <h1> International Businesses For Online Work </h1>
+                        International Businesses For Online Work </h1>
                         <div className="home-banner-space"></div>
 
                         <p> Welcome to Work Online Pakistan, the premier resource for finding remote employment and hiring top talent in Pakistan's online employment market!
-                        </p>
-
-                        <p>  Our platform gives companies simple access to a talent pool from all around Pakistan while also connecting job seekers with the greatest remote employment opportunities.</p>                    </div>
+                          Our platform gives companies simple access to a talent pool from all around Pakistan while also connecting job seekers with the greatest remote employment opportunities.</p>                    </div>
                 </div>
             </div>
 
             <div className='row'>
                 <div className='col-lg-6'>
                     <div className='talent-left-box'>
-                        < p className='talent'> Looking  for   <span className='talent'>  Talent  </span></p>
+                        < p > Seeking Exceptional      <span className='talent'>  Talent ? </span></p>
                         <div className="Talent-search-box">
                             <InputGroup className="outer-box-search mb-3">
                                 <div className="serach-icons"> <BsSearch /></div>
@@ -42,7 +40,7 @@ const Home = () => {
                                     type="text"
 
                                     placeholder="Search Worker Profiles"
-                                    className="box-search"
+                                    className="box-search shadow-none"
                                 />
                                 <button type="button" className="talent-btnss">Search</button>
                             </InputGroup>
@@ -51,15 +49,15 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='col-lg-6'>
-                    <p className='talent'> Looking  for   <span className='talent'>  Work</span> </p>
+                    <p className='talent'> Job Hunting? Let's   <span className='talent'>  Connect !</span> </p>
                     <div className="work-search-box">
                         <InputGroup className="outer-box-search mb-3">
                             <div className="serach-icons"> <BsSearch /></div>
                             <Form.Control
                                 type="text"
-
+                            
                                 placeholder="Search Jobs"
-                                className="box-search"
+                                className="box-search shadow-none"
                             />
                             <button type="button" className="talent-btnss">Search</button>
                         </InputGroup>
@@ -77,8 +75,9 @@ const Home = () => {
                         <h3 className='Talent-heading'> Popular Talent Hunts</h3>
                     </div>
                 </div>
+                <div className='space2'></div>
 
-                <div className="row p-5">
+                <div className="row ">
                     <div className="col-lg-4">
                         <div className="points-lists">
                             <ul>
@@ -184,16 +183,19 @@ const Home = () => {
             <section className="pt-5 pb-5">
                 <div className="container">
                     <div className="row">
-                        <div className="col-6">
-                            <h3 className="mb-3">What our Employers say </h3>
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+                            <h3 className="em-heading "> What Our Employers Say </h3>
                         </div>
-                        <div className="col-6 text-right">
-                            <a className="leftarrow-btn  mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <div className="col-lg-6 col-md-6 col-sm-12 ">
+                            <div className="arrows-box">
+                            <a className="leftarrow-btn  mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                                 <i className="fa fa-arrow-left"></i>
                             </a>
-                            <a className="leftarrow-btn  mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                            <a className="leftarrow-btn  " href="#carouselExampleIndicators2" role="button" data-slide="next">
                                 <i className="fa fa-arrow-right"></i>
                             </a>
+                            </div>
+                          
                         </div>
                         <div className="col-12">
                             <div id="carouselExampleIndicators2" className="carousel slide" data-ride="carousel">
@@ -220,7 +222,7 @@ const Home = () => {
                                             <div className="col-md-4 mb-3">
                                                 <div className="card">
                                                     <div className="roundd-box">
-                                                        <p className="card-text">". Work Online Pakistan has provided me with an affordable and efficient solution to my talent acquisition needs"</p>
+                                                        <p className="card-text">"Work Online Pakistan has provided me with an affordable and efficient solution to my talent acquisition needs"</p>
                                                     </div>
                                                     <div class="card-body">
                                                         <img className="person" alt="100%x280" src={imagess} />
@@ -235,7 +237,7 @@ const Home = () => {
                                             <div className="col-md-4 mb-3">
                                                 <div className="card">
                                                     <div className="roundd-box">
-                                                        <p className="card-text">“ Thanks to WOP, finally now I have a job that allows me to work from anywhere in Pakistan!" </p>
+                                                        <p className="card-text">“Thanks to WOP, finally now I have a job that allows me to work from anywhere in Pakistan!" </p>
                                                     </div>
                                                     <div class="card-body">
                                                         <img className="person" alt="100%x280" src={imagess} />
