@@ -15,6 +15,11 @@ import ContactUs from './components/ContactUs';
 import AccountSetting from "./components/AccountSetting";
 import EmpDashboard  from "./components/EmpDashboard";
 import PostAJob from './components/PostAJob';
+import JobListing from './components/JobListing';
+import SuccessfullyPostSubmit from './components/SuccessfullyPostSubmit';
+import TermOfUse from './components/TermsOfUse';
+import PrivacyPolicay from './components/PrivacyPolicy';
+import HowItWorks from './components/HowItWorks';
 
 function App() {
 
@@ -44,13 +49,20 @@ function App() {
             <Route path='/empdashhboard' element={<EmpDashboard />} />
             <Route  path='/accountsetting'  element={<AccountSetting />} />
             <Route path='/postjob'  element={<PostAJob />} />
-            <Route  path="/contactus" element={ <ContactUs />} />
             <Route  path="/searchjob"  element={<SearchJobByTitle />} />
-
+            <Route  path="/contactus" element={ <ContactUs />} />
             <Route  path="/jobseeker" element={<JoobSeeker />} />
-            <Route path='/login' element={<Login />} />
+           
 
+          
+            <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<EmpRegister />} />
+            <Route path='/joblisting'  element={ <JobListing />} />
+            <Route path='/jobseekerworks' element={<HowItWorks />} />
+            <Route path='/succesfullypostsubmit'   element={<SuccessfullyPostSubmit />} />
+            <Route path='/termsofuse'  element={<TermOfUse />} />
+
+            <Route path='/privacypolicy'  element={ <PrivacyPolicay />} />
             
             <Route  path='/manageprofile'  element={
               <ProtectedRoute>

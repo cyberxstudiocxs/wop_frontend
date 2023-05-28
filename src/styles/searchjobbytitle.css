@@ -26,7 +26,7 @@ select#formPrimarySkill:focus,
 select#formPrimarySkill2:focus{
     border: 2px solid #138578 ;
 }
-button.reviewss.btn.btn-primary {
+.reviewss{
   background-color: #138578;
   color: #fff;
   padding: 7px 30px;
@@ -34,6 +34,7 @@ button.reviewss.btn.btn-primary {
   border: 1px solid #138578;
   font-size: 16px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 /* post job css ending */

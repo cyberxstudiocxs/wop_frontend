@@ -4,6 +4,7 @@ import { FaEnvelope } from "react-icons/fa";
 import logo from "../assets/images/main-logo.png";
 import { BsFacebook, BsTwitter } from "react-icons/bs";
 
+
 const Footer = () => {
   return (
     <div>
@@ -16,23 +17,31 @@ const Footer = () => {
                 <div className="common-link">
                   <ul>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links">How It Works</Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+
                       <Link className="f-links"> Register </Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links">Post A JOb </Link>{" "}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+
+                      <Link className="f-links">Post A JOb </Link>
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+
                       <Link className="f-links">Blogs </Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links">FAQ </Link>{" "}
                     </li>
                   </ul>
@@ -44,20 +53,29 @@ const Footer = () => {
                 <h3> WORKERS</h3>
                 <div className="common-link">
                   <ul>
+                  <li>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+                      <Link className="f-links"> About Us </Link>{" "}
+                    </li>
                     <li>
-                      {" "}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links"> How It Works</Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links"> Register </Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links">Job Search </Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
                       <Link className="f-links">Employer Search </Link>{" "}
                     </li>
                   </ul>
@@ -70,25 +88,22 @@ const Footer = () => {
                 <h3> OTHERS</h3>
                 <div className="common-link">
                   <ul>
+                   
+                    
                     <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links"> Contact Us</Link>{" "}
+                    <i class="fa fa-angle-double-right " aria-hidden="true"></i>
+
+                      <Link className="f-links" to="/privacypolicy"> Privary Policy </Link>{" "}
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links"> About Us </Link>{" "}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+                      <Link className="f-links" to="/termsofuse">Terms of Use </Link>
                     </li>
                     <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links">Privary Policy </Link>{" "}
-                    </li>
-                    <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links">Terms of Use </Link>{" "}
-                    </li>
-                    <li>
-                    <i className="fa fa-arrow-right"></i>
-                      <Link className="f-links">Get In Touch </Link>{" "}
+                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+
+                      <Link className="f-links" to="/contactus">Get In Touch </Link>{" "}
                     </li>
                   </ul>
                 </div>
@@ -104,21 +119,21 @@ const Footer = () => {
                   
                       <Link className="f-links">
                         {" "}
-                        <FaEnvelope /> Info@gmail.com
+                        <FaEnvelope className="iconsss" /> Info@gmail.com
                       </Link>{" "}
                     </li>
                     <li>
                       {" "}
                       <Link className="f-links">
                         {" "}
-                        <BsFacebook /> Facebook.com
+                        <BsFacebook  className="iconsss" /> Facebook.com
                       </Link>{" "}
                     </li>
                     <li>
                       {" "}
                       <Link className="f-links">
                         {" "}
-                        <BsTwitter /> twitter.com
+                        <BsTwitter  className="iconsss" /> twitter.com
                       </Link>{" "}
                     </li>
                   </ul>

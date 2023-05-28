@@ -116,12 +116,17 @@ input#formBasicPassword {
    padding: 12px 20px;
    outline: none;
 }
-
-input#formBasicName:focus ,input#formBasicEmail:focus ,input#formBasicPassword:focus {
+input#formBasicPhone{
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+input#formBasicName:focus ,input#formBasicEmail:focus ,input#formBasicPassword:focus  , input#formBasicPhone:focus{
     border: 3px solid #138677;
 
 }
-button.loginbtn.btn.btn-primary {
+button.loginbtns.btn.btn-primary {
     
     background-color: #138677;
     border: 1px solid #138677;
@@ -132,7 +137,9 @@ button.loginbtn.btn.btn-primary {
     text-transform: capitalize;
     letter-spacing: 1px;
     font-size: 16px;
-    width: 90%;
+    width: 60%;
+    margin: 0 auto;
+    outline: none;
 }
 
 .cta-banner{

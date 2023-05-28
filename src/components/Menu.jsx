@@ -1,106 +1,124 @@
 
-import { Avatar } from "@material-ui/core";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import React, { useState, useEffect } from 'react';
+import Container from "react-bootstrap/Container";
+import Avatar from 'react-avatar';
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import React, { useState, useEffect } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../assets/images/main-logo.png'
+import logo from "../assets/images/main-logo.png";
 import "../styles/menu.css";
 
-
 const Menu = () => {
-
   const navigat = useNavigate();
   const [login, setLoggedIn] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("token")) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  }, []);
 
-      setLoggedIn(true)
-     }
-     else{
-      setLoggedIn(false)
-     }
+  const removeToken = () => {
+    console.log("jjjjjjjjjj");
+    localStorage.removeItem("token");
 
-}, [] )
-
-const removeToken=()=>{
-  console.log("jjjjjjjjjj")
-  localStorage.removeItem('token')
-  
-    navigat("/login")
- 
-  
-}
+    navigat("/login");
+  };
   return (
-
-
-
-    <Navbar  expand="lg">
+    <Navbar expand="lg">
       <Container fluid>
-        
-        <Navbar.Brand >
-        <Link to="/" >  <img src={logo} className="logo" alt="wop-logo" width={"100%"} /> </Link>
-           </Navbar.Brand>
+        <Navbar.Brand>
+          <Link to="/">    
+            <img
+              src={logo}
+              className="logo"
+              alt="wop-logo"
+              width={"100%"}
+            />
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="m-auto my-2 my-lg-0"
-
-            navbarScroll
-          >
-          
-            <Link className="menuitem" to="/result">How Its Work</Link>
-            <Link className="menuitem" to="/jobseeker">JobSeeker </Link>
-
-            <Link className="menuitem" to="/contactus">Contact Us</Link>
-         
-         
-
-            <Link className="postjob-btn"  to="/postjob" >Post A job</Link>
-            <Link className="findjob-btn"   to="/searchjob" >Find jobs</Link>
+          <Nav className="m-auto my-2 my-lg-0" navbarScroll>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                How Its Work
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <Link className="dropdown-item menuitem" href="#">
+                Employer Work
+                </Link>
+                <Link class="dropdown-item menuitem" to="/jobseekerworks">
+                 Job Seeker 
+                 </Link>
+                
+              </div>
+            </li>
             
+            <Link className="menuitem" to="/jobseeker">
+              JobSeeker{" "}
+            </Link>
 
+            <Link className="menuitem" to="/contactus">
+              Contact Us
+            </Link>
 
+            <Link className="postjob-btn" to="/postjob">
+              Post A job
+            </Link>
+            <Link className="findjob-btn" to="/searchjob">
+              Find jobs
+            </Link>
           </Nav>
-           {login ? 
-           <NavDropdown
-          style={{marginRight:'120px'}}
-           id="nav-dropdown-dark-example"
-           title={
-             <Avatar
-               alt="AAAAA"
-               src="/static/images/avatar/1.jpg"
-             />
-           }
-           menuVariant="light"
-         >
-           <Link to="/accountsetting">
-             <NavDropdown.Item href="/userProfile/profile"  >
-               Account Setting
-             </NavDropdown.Item>
-           </Link>
+          {login ? (
+            <NavDropdown
+              style={{ marginRight: "120px" }}
+              id="nav-dropdown-dark-example"
+              
+               title={  <Avatar  alt="AAAAA" src="/static/images/avatar/1.jpg"/>}  
+         
+              menuVariant="light"
+            >
+              <Link to="/accountsetting">
+                <NavDropdown.Item href="/userProfile/profile">
+                  Account Setting
+                </NavDropdown.Item>
+              </Link>
+              <Link to="/joblisting">
+                <NavDropdown.Item href="/blisting">
+                  Job Listing
+                </NavDropdown.Item>
+              </Link>
 
-           <NavDropdown.Divider />
-           <NavDropdown.Item  >
-             <p onClick={() => removeToken()}>Logout</p>
-           </NavDropdown.Item>
-         </NavDropdown>
-         :
+              <NavDropdown.Divider />
+              <NavDropdown.Item>
+                <p onClick={() => removeToken()}>Logout</p>
+              </NavDropdown.Item>
+            </NavDropdown>
+          ) : (
             <>
-           <Link to="/login" className="login-btn mx-3">Login </Link>
-           <Link to="/signup" className="signup-btn" >SignUp </Link>
-           </>
-           }
-
-
-
+              <Link to="/login" className="login-btn mx-3">
+                Login{" "}
+              </Link>
+              <Link to="/signup" className="signup-btn">
+                SignUp{" "}
+              </Link>
+            </>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>
+  );
+};
 
-  )
-}
-
-export default Menu
+export default Menu;

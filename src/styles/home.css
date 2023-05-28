@@ -26,15 +26,19 @@ span.talent {
     font-family: 'Raleway', sans-serif;
 }
 
-.talent-left-box p {
+.talent-left-box p  {
     padding-left: 150px;
     font-size: 20px;
+    font-weight: 400;
     
 }
-p.talent {
-    font-size: 20px;
+
+p.talent{
     padding-left: 40px;
+    font-size: 20px;
+    font-weight: 400;
 }
+
 h3.em-heading {
     font-size: 40px;
     font-weight: 600;
@@ -53,8 +57,8 @@ h3.Talent-heading {
 h3.Talent-heading:before {
     position: absolute;
     content: "";
-    width: 12%;
-    border: 1px solid #138578;
+    width: 14%;
+    border: 3px solid #138578;
     bottom: -10px;
     margin: 0 auto;
     left: 0;
@@ -82,9 +86,8 @@ h3.Talent-heading:after {
     justify-content: end;
 }
 
-.serach-icons {
-    margin: 0px 5px;
-}
+
+
 input.box-search.form-control {
     border: none;
     outline: none;

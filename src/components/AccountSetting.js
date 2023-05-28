@@ -61,7 +61,7 @@ const AccountSetting = () => {
               <   FaFileCsv   size='2.5rem' />
      
                 <h3> Quick search for talented resumes</h3>
-                <Link className="more-skillss">Search Talent</Link>
+                <Link className="more-skillss">Post A Job</Link>
               </div>
             </div>
 
@@ -69,7 +69,7 @@ const AccountSetting = () => {
               <div className="quick-box1">
               <     FaBuffer  size='2.5rem'/>
                 <h3> Find the right worker through skill you need.</h3>
-                <Link className="more-skillss">See More Skills</Link>
+                <Link className="more-skillss">Advanced Search</Link>
               </div>
             </div>
 
@@ -77,7 +77,7 @@ const AccountSetting = () => {
               <div className="quick-box1">
                 <FaRecycle size='2.5rem' />
                 <h3> Read case studies from our valued customers</h3>
-                <Link className="more-skillss">Read More</Link>
+                <Link className="more-skillss">Browse Profile</Link>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ const AccountSetting = () => {
               <div className="quick-box1">
               <  BsFillCameraFill size='2.5rem' />
                 <h3> A quick Video on how to get started with onlinejobs.pk</h3>
-                <Link className="more-skillss">Watch Video</Link>
+                <Link className="more-skillss">Contact For Support </Link>
               </div>
             </div>
           </div>
@@ -95,12 +95,11 @@ const AccountSetting = () => {
           <div className="row">
             <div className="col-lg-12 m-auto">
               <div className="middle-box">
+                <h5> We More Help ?</h5>
                 <p>
-                  {" "}
-                  We’ re here to help! If you need any assistance with the
-                  registration process, please don't hesitate to reach out to
-                  us. Our team is able to provide guidance and support to ensure
-                  a smooth and hassle-free experience.
+              
+                Check out our FAQs now to get answers to some common queries about our platform, and get back to focusing on what really matters – building your dream team!
+
                 </p>
               </div>
             </div>

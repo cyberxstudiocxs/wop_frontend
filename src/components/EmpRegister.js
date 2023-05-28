@@ -49,18 +49,17 @@ const EmpRegister = () => {
     setUser({ ...users, [e.target.name]: e.target.value });
     console.log(users);
   };
-  // const navigat = useNavigate();
+ 
 
   const UserRegistration = (e) => {
     e.preventDefault();
     setSpinner(true);
     setErrormessage(Validation(users));
-    // if (false ){
-
-    // }
+   
     if (checks === false) {
-      setError(" Please Select The Check box");
+     
       setPakError(" Please Select The Pakistani Check box");
+      setError(" Please Select The Check box");
     
       setSpinner(false);
     } else {
@@ -73,7 +72,7 @@ const EmpRegister = () => {
           setSpinner(false);
           alert(result.data.message);
 
-          //   navigat("/login")
+          
         })
         .catch((err) => {
           console.log(err);
@@ -86,13 +85,13 @@ const EmpRegister = () => {
 
   const JobSeekerRegistration = (e) => {
     e.preventDefault();
+    setSpinner(true);
     setErrormessage(Validation(users));
-    // if (false ){
-
-    // }
+   
     if (checks === false) {
       setError(" Please Select The Check box");
       setPakError(" Please Select The Pakistani Check box");
+      setSpinner(false);
     } else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
@@ -100,12 +99,14 @@ const EmpRegister = () => {
         .post("https://api.mazglobal.co.uk/wop-api/jobseekers", users, {})
         .then((result) => {
           console.log(result.data);
+          setSpinner(false);
           alert(result.data.message);
-          //   navigat("/login")
+        
         })
         .catch((err) => {
           console.log(err);
           console.log(err.response.data.message);
+          setSpinner(false);
           alert(err.response.data.message);
         });
     }
@@ -220,7 +221,7 @@ const EmpRegister = () => {
                         <Button
                           variant="primary"
                           type="submit"
-                          className="loginbtn"
+                          className="loginbtns"
                           onClick={UserRegistration}
                         >
                           {spinner && (
@@ -349,16 +350,23 @@ const EmpRegister = () => {
                       </Form.Group>
 
                       <div className="text-center my-3">
-                        {error && <p style={{ color: "red" }}>{error} </p>}  </div>
+                        {error && <p style={{ color: "red" }}>{error} </p>}  
                         <Button
                           variant="primary"
                           type="submit"
-                          className="loginbtn"
+                          className="loginbtns"
                           onClick={JobSeekerRegistration}
                         >
+                           {spinner && (
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          )}
                           Register
                         </Button>
-                     
+                        </div>
                       <div className="text-center my-3">{}</div>
                       <div className="text-center">
                         <p className="already-reg"> Already Register</p>

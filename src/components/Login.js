@@ -1,10 +1,13 @@
 import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { BsShieldLock } from "react-icons/bs";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Validation from "./Validations";
 import "../styles/login.css";
+import {  BsFillPeopleFill} from "react-icons/bs";
 const Login = () => {
   
   const [errorMsg, setErrorMsg] = React.useState(false);
@@ -14,6 +17,7 @@ const Login = () => {
 
   const [modal, setModal] = React.useState(false);
   const toggle = () => setModal(!modal);
+
 
   const [users, setUser] = useState({
     email: "",
@@ -30,6 +34,7 @@ const Login = () => {
 
   const ProcedLogin = (e) => {
     e.preventDefault();
+ 
     //https://api.mazglobal.co.uk/wop-api
     
     if(uId==1)
@@ -112,38 +117,49 @@ const Login = () => {
             <h3 className="emp-heading">Access Exclusive Online Job Opportunities - </h3>
             <h3 className="emp-heading">Login to WOP!</h3>
               <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
+             
+         
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Email address</Form.Label>
+                <InputGroup className="outer-inputss mb-3">
+               
+                  <div className="serach-icons">
+                  <   BsFillPeopleFill className="f-icpons" />
+                  </div>
                   <Form.Control
-                    type="email"
-                    placeholder="Enter E-Mail"
-                    name="email"
-                    className="shadow-none"
-                    onChange={(e) => onChangeValues(e)}
+                     type="email"
+                     placeholder="Enter E-Mail"
+                     name="email"
+                     className="shadow-none"
+                     onChange={(e) => onChangeValues(e)}
                   />
-                    {errorsmeaasage.email && (
-                          <p style={{ color: "red" }}>
-                            {" "}
-                            {errorsmeaasage.email}{" "}
-                          </p>
-                        )}
-                </Form.Group>
-
+                 
+                </InputGroup>
+                 
+             </Form.Group>
+                
+                   
+              
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
+
+                  <InputGroup className="outer-inputss  mb-3">
+               
+                  <div className="serach-icons">
+                  <BsShieldLock  className="f-icpons"/>
+                
+                  </div>
                   <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    className="shadow-none"
-                    onChange={(e) => onChangeValues(e)}
+                   type="password"
+                   placeholder="Password"
+                   name="password"
+                   className="shadow-none"
+                   onChange={(e) => onChangeValues(e)}
                   />
-                     {errorsmeaasage.password && (
-                          <p style={{ color: "red" }}>
-                            {" "}
-                            {errorsmeaasage.password}{" "}
-                          </p>
-                        )}
+                 
+                </InputGroup>
+                 
+                     
                 </Form.Group>
                 <div className="text-center my-3">
                   <Button

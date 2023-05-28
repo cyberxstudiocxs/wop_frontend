@@ -16,7 +16,7 @@ const Validation = (users) =>{
      if(users.password === ""){
     errorsmeaasage.password="Must be at least 6 characters."
      }else if(users.password.length < 5){
-    errorsmeaasage.password="Password Must Be  Digits."
+    errorsmeaasage.password="Password Must Be Greater Then 6 characters."
 
 
 

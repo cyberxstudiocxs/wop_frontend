@@ -2,7 +2,8 @@
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+
+import { Link } from "react-router-dom";
 
 const PostAJob = () => {
   return (
@@ -130,9 +131,8 @@ const PostAJob = () => {
               </div>
 
               <div className="text-center">
-              <Button className="reviewss" type="submit">
-                    Submit For Review 
-                  </Button>
+                <Link className="reviewss" type="submit" to="/succesfullypostsubmit"> Submit For Review   </Link>
+           
 
               </div>
             </div>

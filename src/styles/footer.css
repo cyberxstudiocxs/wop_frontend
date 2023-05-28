@@ -1,49 +1,76 @@
 section.footer-main-box {
-    background-color: #138578;
-    padding: 70px 0px 70px 60px;
+  background:   linear-gradient(
+      rgb(19, 133, 120),
+rgba(19, 133, 120, 0.55)
+    ),
+    url(../assets/images/footer4.jpg);
+
+  padding: 100px 0px 100px 60px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-.socials-links h3 ,.footer-links h3 {
-    color: #fff;
-    font-weight: 600;
-    word-spacing: 2px;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    font-size: 22px;
+.socials-links h3,
+.footer-links h3 {
+  color: #fff;
+  font-weight: 600;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  font-size: 22px;
+
+  position: relative;
 }
+
+.footer-links h3:before ,.socials-links h3:before {
+  position: absolute;
+  content: "";
+  width: 35%;
+  height: 3px;
+  border-bottom: 3px solid #000;
+  top: 30px;
+}
+
+
 
 .common-link ul {
-    padding-left: 0px;
+  padding-left: 0px;
 }
 
 .common-link ul li {
-    list-style-type:none;
-    padding:5px 0px;
+  list-style-type: none;
+  padding: 5px 0px;
 }
 
 .common-link ul li a.f-links {
-    color:#fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
-
 
 .common-link ul li i {
-    color: #fff;
-    margin-right: 10px;
+  color: #000;
+  margin-right: 10px;
+  font-size: 18px;
 }
 
-.common-link ul li:hover i{
-    color: #000;
-    transform: translateX(5px);
-    transition: 0.6s;
+.common-link ul li:hover i {
+  color: #fff;
+  transform: translateX(5px);
+  transition: 0.6s;
 }
 
-
-
-.common-link ul li:hover a  {
-transform: translateY(5px);
-    transition: 0.6s;
+.common-link ul li:hover a {
+  transform: translateY(5px);
+  transition: 0.6s;
 }
+svg.iconsss {
+  color: #000;
+  margin-right: 10px;
+}
+
+.common-link ul li:hover svg.iconsss {
+color:#fff;}

@@ -16,3 +16,23 @@ white;
  padding:40px 20px;
  
 }
+.outer-inputss.mb-3.input-group {
+    background-color: #e8f0fe;
+}
+
+.serach-icons {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 0px 12px;
+}
+
+button.loginbtn.btn.btn-secondary {
+    border: 2px solid #138578;
+
+    background-color: #138578 ;
+    color: #fff;
+    padding: 5px 30px;
+    outline: none;
+   
+}
