@@ -1,5 +1,5 @@
 
-import "../styles/manageprofile.css";
+import "../../styles/manageprofile.css";
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from 'react';
 import Col from "react-bootstrap/Col";
@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 
-const ManageProfile = () => {
+const EmpManageProfile = () => {
   const [empprfile, setState] = useState({
     id: null,
     business_name: "",
@@ -176,4 +176,4 @@ const ManageProfile = () => {
   );
 };
 
-export default ManageProfile;
+export default EmpManageProfile;

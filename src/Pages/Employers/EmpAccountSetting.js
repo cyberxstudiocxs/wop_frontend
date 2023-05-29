@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import "../styles/accountsetting.css";
 import { FaBuffer ,FaFileCsv,FaRecycle} from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
+import "../../styles/accountsetting.css";
 
-const AccountSetting = () => {
+const EmpAccountSetting = () => {
   return (
     <div>
       <section className="Accontsettig-box">
@@ -110,4 +110,4 @@ const AccountSetting = () => {
   );
 };
 
-export default AccountSetting;
+export default EmpAccountSetting;

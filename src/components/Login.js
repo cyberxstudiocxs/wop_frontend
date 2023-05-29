@@ -5,7 +5,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Validation from "./Validations";
+
 import "../styles/login.css";
 import {  BsFillPeopleFill} from "react-icons/bs";
 const Login = () => {
@@ -23,10 +23,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [spinner, setSpinner] = useState(false);
 
-  const [errorsmeaasage, setErrormessage] = useState({});
   const onChangeValues = (e) => {
-    setErrormessage(Validation(users));
+   
     setUser({ ...users, [e.target.name]: e.target.value });
     console.log(users);
   };
@@ -34,8 +34,8 @@ const Login = () => {
 
   const ProcedLogin = (e) => {
     e.preventDefault();
- 
-    //https://api.mazglobal.co.uk/wop-api
+    setSpinner(true);
+    
     
     if(uId==1)
     {
@@ -49,6 +49,7 @@ const Login = () => {
         if(result.data.success===0){
           errortoggle()
           setErrorMsg(result.data.message);
+          setSpinner(false);
         }
         else{
           localStorage.setItem("token", result.data.token);
@@ -56,6 +57,7 @@ const Login = () => {
           setTimeout(()=>{
             navigat("/jobseeker");
           },2000)
+          setSpinner(false);
         
         }
      
@@ -64,8 +66,9 @@ const Login = () => {
         console.log(err);
 
         alert(err.response.data.message);
+        setSpinner(false);
       });
-    }else if(uId==2){
+    }else if(uId===2){
       axios
       .post(
         "https://api.mazglobal.co.uk/wop-api/employers/login",
@@ -168,6 +171,13 @@ const Login = () => {
                     className="loginbtn"
                     onClick={ProcedLogin}
                   >
+                    {spinner && (
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          )}
                     LogIn
                   </Button>
                 </div>

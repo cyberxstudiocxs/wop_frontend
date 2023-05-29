@@ -1,4 +1,4 @@
-const SuccessfullyPostSubmit =() =>{
+const JobPostConfirmation =() =>{
     return(
         <div >
 <section className="contact-us-main">
@@ -28,4 +28,4 @@ const SuccessfullyPostSubmit =() =>{
     )
 }
 
-export default SuccessfullyPostSubmit
+export default JobPostConfirmation

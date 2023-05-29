@@ -2,7 +2,7 @@ import { FaBuffer ,FaFileCsv,FaRecycle} from "react-icons/fa";
 import { BsFillCameraFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-const EmpDashboard = () => {
+const EmpDashoBard = () => {
   // const [users, setUsers] = useState([]);
   return (
     <div>
@@ -79,4 +79,4 @@ const EmpDashboard = () => {
   );
 };
 
-export default EmpDashboard;
+export default EmpDashoBard;

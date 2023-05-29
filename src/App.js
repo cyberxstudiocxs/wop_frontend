@@ -2,24 +2,29 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { useState,useEffect } from 'react';
-import EmpRegister from './components/EmpRegister';
-import Home from './components/Home';
+
+import Home from './Pages/Home';
+import ContactUs from './Pages/ContactUs';
+import TermOfUse from './Pages/TermsOfUse';
+import PrivacyPolicay from './Pages/PrivacyPolicy';
+import EmpDashBoard  from "./Pages/Employers/EmpDashBoard";
+import EmpAccountSetting from './Pages/Employers/EmpAccountSetting';
+import EmpManageProfile from './Pages/Employers/EmpManageProfile';
+import EmpPostAJob from './Pages/Employers/EmpPostAJobs';
+import EmpJobListing from './Pages/Employers/EmpJobListing';
+import JobPostConfirmation from './Pages/Employers/JobPostConfirmation';
+import HowItWorkJobSeeker from './Pages/HowItWorkJobSeeker';
+
+
 import Menu from './components/Menu';
-import Login from './components/Login';
 import Footer from './components/Footer';
-import ManageProfile from './components/ManageProfile';
+import Login from './components/Login';
 import ProtectedRoute from './utils/ProtectedRoute';
-import SearchJobByTitle from './components/SearchJobByTitle';
-import JoobSeeker from './components/JobSeeker';
-import ContactUs from './components/ContactUs';
-import AccountSetting from "./components/AccountSetting";
-import EmpDashboard  from "./components/EmpDashboard";
-import PostAJob from './components/PostAJob';
-import JobListing from './components/JobListing';
-import SuccessfullyPostSubmit from './components/SuccessfullyPostSubmit';
-import TermOfUse from './components/TermsOfUse';
-import PrivacyPolicay from './components/PrivacyPolicy';
-import HowItWorks from './components/HowItWorks';
+import JobSearching from './Pages/JobSeekers/JobSearching';
+import LatestJObPost from './Pages/JobSeekers/LatestJobPost';
+import SignUp from './Pages/SignUp';
+
+
 
 function App() {
 
@@ -39,34 +44,34 @@ function App() {
     <div >
 
      
-          {spin==false?
+          {spin===false?
           <>
           <Menu />
          
    
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/empdashhboard' element={<EmpDashboard />} />
-            <Route  path='/accountsetting'  element={<AccountSetting />} />
-            <Route path='/postjob'  element={<PostAJob />} />
-            <Route  path="/searchjob"  element={<SearchJobByTitle />} />
+            <Route path='/empdashhboard' element={<EmpDashBoard />} />
+            <Route  path='/accountsetting'  element={<EmpAccountSetting />} />
+            <Route path='/postjob'  element={<EmpPostAJob />} />
+            <Route  path="/searchjob"  element={<JobSearching />} />
             <Route  path="/contactus" element={ <ContactUs />} />
-            <Route  path="/jobseeker" element={<JoobSeeker />} />
+            <Route  path="/jobseeker" element={<LatestJObPost />} />
            
 
           
             <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<EmpRegister />} />
-            <Route path='/joblisting'  element={ <JobListing />} />
-            <Route path='/jobseekerworks' element={<HowItWorks />} />
-            <Route path='/succesfullypostsubmit'   element={<SuccessfullyPostSubmit />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route path='/joblisting'  element={ <EmpJobListing />} />
+            <Route path='/jobseekerworks' element={<HowItWorkJobSeeker />} />
+            <Route path='/succesfullypostsubmit'   element={<JobPostConfirmation />} />
             <Route path='/termsofuse'  element={<TermOfUse />} />
 
             <Route path='/privacypolicy'  element={ <PrivacyPolicay />} />
             
             <Route  path='/manageprofile'  element={
               <ProtectedRoute>
-            <ManageProfile /> 
+            <EmpManageProfile /> 
             </ProtectedRoute>
             }
              />

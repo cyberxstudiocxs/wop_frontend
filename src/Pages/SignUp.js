@@ -5,9 +5,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import "../styles/register.css";
-import Validation from "./Validations";
+import Validation from "../components/Validations"
 
-const EmpRegister = () => {
+const SignUp = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setUser({
@@ -393,7 +393,7 @@ const EmpRegister = () => {
                 Our team is able to provide guidance and support to ensure a
                 smooth and hassle-free experience.
               </p>
-              <Link className="worker-btns">Contact Us</Link>
+              <Link className="worker-btns"  to="/contactus">Contact Us</Link>
             </div>
           </div>
         </div>
@@ -404,4 +404,4 @@ const EmpRegister = () => {
   );
 };
 
-export default EmpRegister;
+export default SignUp;

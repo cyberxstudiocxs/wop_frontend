@@ -1,6 +1,6 @@
 import "../styles/aboutus.css";
 
-const HowItWorks = () => {
+const HowItWorkJobSeeker = () => {
   return (
     <div>
       <section className="about-us">
@@ -138,4 +138,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowItWorkJobSeeker;

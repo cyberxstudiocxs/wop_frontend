@@ -1,7 +1,7 @@
-import "../styles/joblisting.css"
+import "../../styles/joblisting.css"
 
 
-const JobListing = () => {
+const EmpJobListing = () => {
   return (
     <div>
       <section className="Accontsettig-box">
@@ -72,4 +72,4 @@ const JobListing = () => {
   );
 };
 
-export default JobListing;
+export default EmpJobListing;

@@ -1,11 +1,11 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
-import imagess from "../assets/images/download.png";
+import imagess from "../../assets/images/download.png";
 import { Link } from "react-router-dom";
-import "../styles/jobsekeer.css";
+import "../../styles/jobsekeer.css";
 
-const JoobSeeker = () => {
+const LatestJObPost = () => {
   return (
     <div>
       <section className="find-job-outer-box">
@@ -276,7 +276,7 @@ const JoobSeeker = () => {
                   us. Our team is able to provide guidance and support to ensure
                   a smooth and hassle-free experience.
                 </p>
-                <Link className="worker-btns">Contact Us</Link>
+                <Link className="worker-btns"  to="/contactus">Contact Us</Link>
               </div>
             </div>
           </div>
@@ -286,4 +286,4 @@ const JoobSeeker = () => {
     </div>
   );
 };
-export default JoobSeeker;
+export default LatestJObPost;
