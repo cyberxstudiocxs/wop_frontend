@@ -1,5 +1,5 @@
-
 import { useState, useEffect } from "react";
+import {useLocation} from 'react-router-dom';
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import logo from "../../assets/images/main-logo.png";
@@ -10,41 +10,57 @@ import "../../styles/searchjobbytitle.css";
 
 const JobSearching = () => {
   const [jobs, setJobs] = useState([]);
+  const [jobs_data, setJobsData] = useState([]);
   const [tValue, setTValue] = useState();
+  const location = useLocation();
 
   useEffect(() => {
     //https://api.mazglobal.co.uk/wop-api/joblistings
+    let data = [];
     axios
-      .get(`https://api.mazglobal.co.uk/wop-api/joblistings`)
+      .get(`http://localhost:8080/wop-api/joblistings`)
       .then((result) => {
-        console.log("results", result.data.data);
-        setJobs(result.data.data);
+        data = result.data.data;
+        setJobsData(result.data.data);
       })
       .catch((err) => console.log(err));
+
+    if (location.state) {
+      console.log('location',location)
+      if (location.state.jobs.length != 0) {
+        setJobs(location.state.jobs);
+        setTValue(location.state.title);
+      } else {
+        setTValue(location.state.title);
+        setJobs([]);
+      }
+    } else {
+      setJobs(data);
+    }
   }, []);
 
 const handleChange=(e)=>{
 
   console.log(e.target.value)
   setTValue(e.target.value)
+  if(e.target.value==''){
+    setJobs(jobs_data)
+  }
 }
   const searchJob=()=>{
-    console.log("ttt",tValue)
-    let body={
-      title:tValue
-    }
-    
+
     axios
-    .get(`https://api.mazglobal.co.uk/wop-api/joblistings/title`,
-       body
+    .post(`http://localhost:8080/wop-api/joblistings/title`,
+       {title:tValue}
     )
     .then((result) => {
       console.log("results", result);
       setJobs(result.data.data);
+  
     })
     .catch((err) => console.log(err));
 };
-  
+   
 
 
   return (
@@ -94,7 +110,9 @@ const handleChange=(e)=>{
             <div className="col-lg-8">
               <div className="jobright-box">
                
-                  {jobs.map((job) => (
+              {jobs.length!=0?
+              <>
+              {jobs.map((job) => (
                      <div className="jobs-box">
                      <div className="image-box">
                        <img
@@ -106,14 +124,14 @@ const handleChange=(e)=>{
                      </div>
                     <div className="job-info">
                       <h3>
-                      
+                        {" "}
                         {job.title}
-                        <span> {job.job_type_description}</span>
+                        <span> {job.job_type_description}</span>{" "}
                       </h3>
                       <p>
-                      
-                        {job.contact_person} .
-                        <span> posted on Apr 17,2023</span>
+                        {" "}
+                        {job.contact_person} .{" "}
+                        <span> posted on {job.created_at}</span>
                       </p>
                       <p> {job.salary}</p>
 
@@ -121,6 +139,8 @@ const handleChange=(e)=>{
                     </div>
                     </div>
                   ))}
+                  </>
+                  :<p>!No Job Found</p>}
                
 
           

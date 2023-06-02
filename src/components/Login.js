@@ -1,3 +1,4 @@
+
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsShieldLock } from "react-icons/bs";
@@ -5,7 +6,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import Validation from "./Validations";
 import "../styles/login.css";
 import {  BsFillPeopleFill} from "react-icons/bs";
 const Login = () => {
@@ -18,15 +19,15 @@ const Login = () => {
   const [modal, setModal] = React.useState(false);
   const toggle = () => setModal(!modal);
 
-
   const [users, setUser] = useState({
     email: "",
     password: "",
   });
   const [spinner, setSpinner] = useState(false);
 
+  const [errorsmeaasage, setErrormessage] = useState({});
   const onChangeValues = (e) => {
-   
+    setErrormessage(Validation(users));
     setUser({ ...users, [e.target.name]: e.target.value });
     console.log(users);
   };
@@ -45,7 +46,6 @@ const Login = () => {
         users
       )
       .then((result) => {
-        console.log("result",result);
         if(result.data.success===0){
           errortoggle()
           setErrorMsg(result.data.message);
@@ -53,7 +53,7 @@ const Login = () => {
         }
         else{
           localStorage.setItem("token", result.data.token);
-          navigat("/login")
+          localStorage.setItem("userId", 1);
           setTimeout(()=>{
             navigat("/jobseeker");
           },2000)
@@ -63,27 +63,30 @@ const Login = () => {
      
       })
       .catch((err) => {
-        console.log(err);
-
-        alert(err.response.data.message);
-        setSpinner(false);
+        setSpinner(false)
+        setErrorMsg(err.response.data.message);
+        errortoggle()
+       
       });
-    }else if(uId===2){
+    }else if(uId==2){
+      //https://api.mazglobal.co.uk/wop-api
       axios
       .post(
-        "https://api.mazglobal.co.uk/wop-api/employers/login",
+        "http://localhost:8080/wop-api/employers/login",
         users
       )
       .then((result) => {
         console.log("result",result);
         if(result.data.success===0){
-          errortoggle()
+          setSpinner(false);
           setErrorMsg(result.data.message);
+          errortoggle()
         }
         else{
           localStorage.setItem("token", result.data.token);
-          navigat("/login")
+          localStorage.setItem("userId", 2);
           setTimeout(()=>{
+            setSpinner(false);
             navigat("/empdashhboard");
           },2000)
         
@@ -91,9 +94,9 @@ const Login = () => {
      
       })
       .catch((err) => {
-        console.log(err);
-
-        alert(err.response.data.message);
+        setSpinner(false);
+        setErrorMsg(err.response.data.message);
+        errortoggle()
       });
 
     }else{
@@ -120,29 +123,25 @@ const Login = () => {
             <h3 className="emp-heading">Access Exclusive Online Job Opportunities - </h3>
             <h3 className="emp-heading">Login to WOP!</h3>
               <Form>
-             
-         
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Email address</Form.Label>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
                 <InputGroup className="outer-inputss mb-3">
                
                   <div className="serach-icons">
                   <   BsFillPeopleFill className="f-icpons" />
                   </div>
                   <Form.Control
-                     type="email"
-                     placeholder="Enter E-Mail"
-                     name="email"
-                     className="shadow-none"
-                     onChange={(e) => onChangeValues(e)}
+                    type="email"
+                    placeholder="Enter E-Mail"
+                    name="email"
+                    className="shadow-none"
+                    onChange={(e) => onChangeValues(e)}
                   />
                  
                 </InputGroup>
                  
-             </Form.Group>
-                
-                   
-              
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
 
@@ -153,13 +152,13 @@ const Login = () => {
                 
                   </div>
                   <Form.Control
-                   type="password"
-                   placeholder="Password"
-                   name="password"
-                   className="shadow-none"
-                   onChange={(e) => onChangeValues(e)}
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    className="shadow-none"
+                    onChange={(e) => onChangeValues(e)}
                   />
-                 
+                  
                 </InputGroup>
                  
                      
@@ -212,14 +211,11 @@ const Login = () => {
           <Button onClick={()=>setIds(2)} className="emp-btns" >As Employer</Button>
           </div>
         </ModalBody>
-        {/* <ModalFooter> */}
-          {/* <Button color="primary" onClick={toggle}>
-            OK
-          </Button> */}
-        {/* </ModalFooter> */}
+        
       </Modal>
     </div>
   );
 };
 
 export default Login;
+

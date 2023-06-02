@@ -15,7 +15,6 @@ import EmpJobListing from './Pages/Employers/EmpJobListing';
 import JobPostConfirmation from './Pages/Employers/JobPostConfirmation';
 import HowItWorkJobSeeker from './Pages/HowItWorkJobSeeker';
 
-
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import Login from './components/Login';
@@ -23,18 +22,22 @@ import ProtectedRoute from './utils/ProtectedRoute';
 import JobSearching from './Pages/JobSeekers/JobSearching';
 import LatestJObPost from './Pages/JobSeekers/LatestJobPost';
 import SignUp from './Pages/SignUp';
+import jwt_decode from "jwt-decode";
 
 
 
 function App() {
 
   const [spin, setSpin] = useState(false);
+  const [user, setUser] = useState({});
   useEffect(() => {
     setSpin(true)
     if (localStorage.getItem("token")) {
-
+      var decoded = jwt_decode(localStorage.getItem('token'));
+      setUser(decoded.result)
      }
      else{
+      setUser({})
      }
 
      setSpin(false)
@@ -50,10 +53,18 @@ function App() {
          
    
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/' element={
+              !user?
+            <Home />:
+             <EmpDashBoard />
+            } />
             <Route path='/empdashhboard' element={<EmpDashBoard />} />
             <Route  path='/accountsetting'  element={<EmpAccountSetting />} />
-            <Route path='/postjob'  element={<EmpPostAJob />} />
+            <Route path='/postjob'  element={
+                <ProtectedRoute>
+                    <EmpPostAJob/>
+                </ProtectedRoute>    
+            } />
             <Route  path="/searchjob"  element={<JobSearching />} />
             <Route  path="/contactus" element={ <ContactUs />} />
             <Route  path="/jobseeker" element={<LatestJObPost />} />

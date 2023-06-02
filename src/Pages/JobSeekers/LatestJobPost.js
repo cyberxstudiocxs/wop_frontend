@@ -5,7 +5,23 @@ import imagess from "../../assets/images/download.png";
 import { Link } from "react-router-dom";
 import "../../styles/jobsekeer.css";
 
+
+import {useState,useEffect} from 'react';
+import axios from 'axios'
 const LatestJObPost = () => {
+const[jobs,setJobs]=useState([])
+
+useEffect(() => {
+  axios
+  .get(`http://localhost:8080/wop-api/joblistings/latestjobs`)
+  .then((res) => {
+    setJobs(res.data.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+},[])
   return (
     <div>
       <section className="find-job-outer-box">
@@ -51,189 +67,42 @@ const LatestJObPost = () => {
             </div>
           </div>
           <div className="row">
-          <div className="col-lg-4">
+            {jobs.length!=0?
+            <>
+            {jobs.map(job=>(
+              <div className="col-lg-4">
           <div className="onlinejob-box">
                  
                   <div className="onlinejob-info">
                     <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
+                     {job.title} <span> Apply</span>{" "}
                     </h3>
                     <p>
-                     Apr 13, 2023
+                     {job.created_at}
                     </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
+                    <p> <span className="price"> Rs  </span> {job.salary}</p>
               <div className="linee"></div>
                     <p className="mt-3">
                       {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
+                      {job.description}
                     </p>
                     <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
+                    <p className="skills">{job.primary_skill_description}</p> 
+                     <p className="skills"> {job.secondary_skill1_description} </p>
+                     <p className="skills"> {job.secondary_skill2_description}  </p>
                     </div>
                    
                   </div>
                 </div>
             </div>
+            ))
+              
+            }
+            </>:""
 
-            <div className="col-lg-4">
-          <div className="onlinejob-box">
-                 
-                  <div className="onlinejob-info">
-                    <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
-                    </h3>
-                    <p>
-                     Apr 13, 2023
-                    </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
-              <div className="linee"></div>
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
-                    </p>
-                    <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
-                    </div>
-                   
-                  </div>
-                </div>
-            </div>
-
-            <div className="col-lg-4">
-          <div className="onlinejob-box">
-                 
-                  <div className="onlinejob-info">
-                    <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
-                    </h3>
-                    <p>
-                     Apr 13, 2023
-                    </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
-              <div className="linee"></div>
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
-                    </p>
-                    <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
-                    </div>
-                   
-                  </div>
-                </div>
-            </div>
-            </div>
-
-            <div className="row">
-          <div className="col-lg-4">
-          <div className="onlinejob-box">
-                 
-                  <div className="onlinejob-info">
-                    <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
-                    </h3>
-                    <p>
-                     Apr 13, 2023
-                    </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
-              <div className="linee"></div>
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
-                    </p>
-                    <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
-                    </div>
-                   
-                  </div>
-                </div>
-            </div>
-
-            <div className="col-lg-4">
-          <div className="onlinejob-box">
-                 
-                  <div className="onlinejob-info">
-                    <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
-                    </h3>
-                    <p>
-                     Apr 13, 2023
-                    </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
-              <div className="linee"></div>
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
-                    </p>
-                    <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
-                    </div>
-                   
-                  </div>
-                </div>
-            </div>
-
-            <div className="col-lg-4">
-          <div className="onlinejob-box">
-                 
-                  <div className="onlinejob-info">
-                    <h3>
-                     Graphic Desgin <span> Apply</span>{" "}
-                    </h3>
-                    <p>
-                     Apr 13, 2023
-                    </p>
-                    <p> <span className="price"> $  </span> $700 - $1200 p/m</p>
-              <div className="linee"></div>
-                    <p className="mt-3">
-                      {" "}
-                      But I must explain to you how all this mistaken idea of
-                      denouncing pleasure and praising pain was born and I will
-                      give you 
-                    </p>
-                    <div className="inline-skills">
-                    <p className="skills"> Graphics & Multimedia  </p> 
-                     <p className="skills"> Illustator </p>
-                     <p className="skills"> Web page Design   </p>
-                     <p className="skills"> Graphics Ediding  </p>
-                     <p className="skills"> Graphics & Multimedia   </p>
-                    </div>
-                   
-                  </div>
-                </div>
-            </div>
-            </div>
-
+            }
+    
+        </div>
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-
 import Container from "react-bootstrap/Container";
 import Avatar from 'react-avatar';
 import Nav from "react-bootstrap/Nav";
@@ -10,22 +9,27 @@ import logo from "../assets/images/main-logo.png";
 import "../styles/menu.css";
 
 const Menu = () => {
+  
   const navigat = useNavigate();
   const [login, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(0);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
+      setUserId(localStorage.getItem("userId"))
     } else {
       setLoggedIn(false);
     }
   }, []);
 
   const removeToken = () => {
-    console.log("jjjjjjjjjj");
+    setUserId(0)
     localStorage.removeItem("token");
-
+    localStorage.removeItem("userId");
     navigat("/login");
   };
+
   return (
     <Navbar expand="lg">
       <Container fluid>
@@ -64,28 +68,37 @@ const Menu = () => {
                 
               </div>
             </li>
-            
+            {userId!=2 &&
             <Link className="menuitem" to="/jobseeker">
               JobSeeker{" "}
             </Link>
-
+            }
             <Link className="menuitem" to="/contactus">
               Contact Us
             </Link>
-
+            {userId!=1 &&
             <Link className="postjob-btn" to="/postjob">
               Post A job
             </Link>
+             }
+            {userId!=2 &&
             <Link className="findjob-btn" to="/searchjob">
               Find jobs
             </Link>
+            }
           </Nav>
           {login ? (
             <NavDropdown
               style={{ marginRight: "120px" }}
               id="nav-dropdown-dark-example"
-              
-               title={  <Avatar  alt="AAAAA" src="/static/images/avatar/1.jpg"/>}  
+               title={ 
+                  <Avatar  
+                   alt="AAAAA" 
+                   size="50" 
+                   name="Areeb"
+                   round={true}
+                  />
+              }  
          
               menuVariant="light"
             >

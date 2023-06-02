@@ -1,7 +1,35 @@
 import "../../styles/joblisting.css"
-
+import axios from 'axios'
+import {useState,useEffect} from 'react';
+import moment from "moment/moment";
 
 const EmpJobListing = () => {
+  const [jobs,setJobs]=useState([])
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/wop-api/joblistings`)
+      .then((res) => {
+        res.data.data.map(it=>{
+          if(it.created_at)
+          {
+            let jobDate=it.created_at.split('T')
+            jobDate=jobDate[0]
+            jobDate=jobDate.split('-')
+            jobDate[1]=parseInt(jobDate[1])-1
+            console.log(jobDate)
+            var date = new Date(jobDate[0], jobDate[1].toString(), jobDate[2]);
+            it.created_at=moment(date).format('dddd MMMM D Y');
+          }
+ 
+        })
+        setJobs(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    },[])   
+
   return (
     <div>
       <section className="Accontsettig-box">
@@ -51,15 +79,20 @@ const EmpJobListing = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th >1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                  </tr>
+                  {jobs.map((job,i)=>(
+                        <tr>
+                        <th >{++i}</th>
+                        <td>{job.title}</td>
+                        <td>{job.title}</td>
+                        <td>@mdo</td>
+                        <td>Otto</td>
+                        <td>Otto</td>
+                        <td>{job.created_at}</td>
+                        </tr>
+                  ))
+
+                  }
+               
                 </tbody>
               </table>
             </div>

@@ -1,46 +1,144 @@
+
 import Form from "react-bootstrap/Form";
+import React, { useState, useEffect } from "react";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
-import { Link } from "react-router-dom";
+const EmpPostAJobs = () => {
+  const [jobtypes, setJobTypes] = useState([]);
+  const [skills, setSkills] = useState([]);
+  const [spinner, setSpinner] = useState(false);
+  const [successMsg, setSuccessMsg] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
+  const toggle = () => setModal(!modal);
+  const [errorMsg, setErrorMsg] = React.useState(false);
+  const [errormodal, setErrorModal] = React.useState(false);
+  const errortoggle = () => setErrorModal(!errormodal);
+  const navigat = useNavigate();
+  const [job, setJob] = useState({
+    title: "",
+    job_type: null,
+    description: "",
+    salary: "",
+    email: "",
+    contact_person: "",
+    primary_skill: null,
+    secondary_skill1: null,
+    secondary_skill2: null,
+  });
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/wop-api/jobtypes`)
+      .then((res) => {
+        setJobTypes(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-const EmpPostAJob = () => {
+    axios
+      .get(`http://localhost:8080/wop-api/skills`)
+      .then((res) => {
+        setSkills(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const handleChange = (e) => {
+    setJob({
+      ...job,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setSpinner(true)
+    console.log("handle subbmit")
+    let field_status=false
+    let fields='';
+   
+    Object.keys(job).map(key => {
+     
+      if(!job[key])
+      {
+        fields = fields + " " + key.split('_')
+        field_status=true;
+      }
+      
+   
+    });
+    
+    if(field_status)
+    {
+      setSpinner(false)
+      setErrorMsg(`Please Add the ${fields} fields`)
+      errortoggle()
+    }
+    else
+    {
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+
+    axios
+      .post(`http://localhost:8080/wop-api/joblistings`,job,config)
+      .then((res) => {
+        if(res.data.success===1)
+        {
+          setSpinner(false)
+          setSuccessMsg(res.data.message)
+          navigat("/succesfullypostsubmit");
+          toggle()
+        }
+        else{
+          setSpinner(false)
+          setErrorMsg(res.data.message)
+          errortoggle()
+        }
+      })
+      .catch((err) => {
+        setSpinner(false)
+        setErrorMsg(err.response.data.message)
+        errortoggle()
+        console.log(err);
+      });
+    }
+  };
+
   return (
     <div>
       <section className="postjob-main">
         <div className="container">
-          <div className="row ">
+          <div className="row py-5">
             <div className="col-lg-12">
-              <div className="postajobbox">
-                <h3 className="Talent-heading"> Post a Job</h3>
-              </div>
+              <h3 className="Talent-heading"> Post a Job</h3>
             </div>
           </div>
 
-          <div className="row ">
-            <div className="col-lg-10 m-auto">
-              <div className="approvedjob">
-                <p>
-                  {" "}
-                  Workers apply through WorkOnline.PK No contact info allowed.
-                  Jobs will be approved within 2 days.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="row ">
+          <div className="row py-5">
             <div className="col-lg-10 m-auto">
               <div className="postjob-outer-box">
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="formJobTitle">
                       <Form.Label>Job Title</Form.Label>
                       <Form.Control
                         type="text"
-                        name="jobtitle"
+                        name="title"
+                        required
                         placeholder="What do you need ?"
                         className="shadow-none"
+                        onChange={(e) => handleChange(e)}
+                        value={job.title}
                       />
                     </Form.Group>
 
@@ -50,9 +148,15 @@ const EmpPostAJob = () => {
                         aria-readonly="true"
                         defaultValue="Pakistan"
                         className="shadow-none"
+                        name="job_type"
+                        required
+                        value={job.job_type}
+                        onChange={(e) => handleChange(e)}
                       >
-                        <option>FULL</option>
-                        <option>ANY</option>
+                        <option>Select</option>
+                        {jobtypes.map((type) => (
+                          <option value={type.id}>{type.description}</option>
+                        ))}
                       </Form.Select>
                     </Form.Group>
                   </Row>
@@ -67,6 +171,10 @@ const EmpPostAJob = () => {
                         rows={3}
                         placeholder="Describe the job to be done "
                         className="shadow-none"
+                        required
+                        name="description"
+                        value={job.description}
+                        onChange={(e) => handleChange(e)}
                       />
                     </Form.Group>
                   </Row>
@@ -79,15 +187,21 @@ const EmpPostAJob = () => {
                         type="email"
                         placeholder="Enter E-Mail"
                         name="email"
+                        
                         className="shadow-none"
+                        value={job.email}
+                        onChange={(e) => handleChange(e)}
                       />
                     </Form.Group>
                     <Form.Group as={Col} controlId="formPersonname">
                       <Form.Label>Contact Person</Form.Label>
                       <Form.Control
                         type="text"
-                        name="personname"
+                        name="contact_person"
+                        required
+                        value={job.contact_person}
                         className="shadow-none"
+                        onChange={(e) => handleChange(e)}
                       />
                     </Form.Group>
                   </Row>
@@ -98,6 +212,9 @@ const EmpPostAJob = () => {
                         type="text"
                         name="salary"
                         className="shadow-none"
+                        required
+                        value={job.salary}
+                        onChange={(e) => handleChange(e)}
                       />
                     </Form.Group>
                   </Row>
@@ -109,10 +226,15 @@ const EmpPostAJob = () => {
                         aria-readonly="true"
                         defaultValue="Pakistan"
                         className="shadow-none"
+                        required
+                        name="primary_skill"
+                        value={job.primary_skill}
+                        onChange={(e) => handleChange(e)}
                       >
                         <option>Select Primary Skill</option>
-                        <option>ANY</option>
-                        <option>FULL</option>
+                        {skills.map((skill) => (
+                          <option value={skill.id}>{skill.description}</option>
+                        ))}
                       </Form.Select>
                     </Form.Group>
                   </Row>
@@ -124,10 +246,15 @@ const EmpPostAJob = () => {
                         aria-readonly="true"
                         defaultValue="Pakistan"
                         className="shadow-none"
+                        required
+                        name="secondary_skill1"
+                        value={job.secondary_skill1}
+                        onChange={(e) => handleChange(e)}
                       >
                         <option>Select Secondary Skill 1</option>
-                        <option>ANY</option>
-                        <option>FULL</option>
+                        {skills.map((skill) => (
+                          <option value={skill.id}>{skill.description}</option>
+                        ))}
                       </Form.Select>
                     </Form.Group>
                   </Row>
@@ -139,26 +266,34 @@ const EmpPostAJob = () => {
                         aria-readonly="true"
                         className="shadow-none"
                         defaultValue="Pakistan"
+                        name="secondary_skill2"
+                        required
+                        value={job.secondary_skill2}
+                        onChange={(e) => handleChange(e)}
                       >
                         <option>Select Primary Skill 2</option>
-                        <option>ANY</option>
-                        <option>FULL</option>
+                        {skills.map((skill) => (
+                          <option value={skill.id}>{skill.description}</option>
+                        ))}
                       </Form.Select>
                     </Form.Group>
                   </Row>
+                  
+              <div className="text-center">
+                <Button className="reviewss" type="submit">
+                  {spinner && (
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              role="status"
+                              aria-hidden="true"
+                            ></span>
+                          )}
+                         Submit For Review
+                </Button>
+              </div>
                 </Form>
               </div>
 
-              <div className="text-center">
-                <Link
-                  className="reviewss"
-                  type="submit"
-                  to="/succesfullypostsubmit"
-                >
-                  {" "}
-                  Submit For Review{" "}
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -178,8 +313,34 @@ const EmpPostAJob = () => {
           </div>
         </div>
       </section>
+      
+  <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Success</ModalHeader>
+        <ModalBody>
+          <>!{successMsg}</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggle}>
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={errormodal} toggle={errortoggle}>
+        <ModalHeader toggle={errortoggle}>Error</ModalHeader>
+        <ModalBody>
+          <>!{errorMsg}</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={errortoggle}>
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };
 
-export default EmpPostAJob;
+export default EmpPostAJobs;
+
+

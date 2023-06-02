@@ -1,15 +1,24 @@
 import { FaBuffer ,FaFileCsv,FaRecycle} from "react-icons/fa";
+import { useState,useEffect } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const EmpDashoBard = () => {
+  
+  const [name,setName]=useState()
+  useEffect(() => {
+  var decoded = jwt_decode(localStorage.getItem('token'));
+  
+   setName(decoded.result.full_name)
+  },[])
   // const [users, setUsers] = useState([]);
   return (
     <div>
       <div className="container">
         <div className="row">
           <div className="row">
-            <h3> Hello , Maan</h3>
+            <h3> Hello , {name}</h3>
 
             {/* {users.map((user) => (
                 

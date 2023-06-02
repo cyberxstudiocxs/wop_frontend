@@ -1,11 +1,52 @@
 import "../styles/home.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from 'react-router-dom';
+import {useState,useEffect} from 'react';
+import axios from 'axios';
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import imagess from "../assets/images/download.png";
 import Form from "react-bootstrap/Form";
+import JobSearching from "./JobSeekers/JobSearching";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [skills,setSkills]=useState([])
+  const [title,setTitle]=useState()
+  const [jobs,setJobs]=useState([])
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/wop-api/skills`)
+      .then((res) => {
+        setSkills(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    },[])   
+
+    const handleChange=(e)=>{
+      setTitle(e.target.value)
+    }
+
+    const searchJob=()=>{
+
+      axios
+      .post(`http://localhost:8080/wop-api/joblistings/title`,
+         {title:title}
+      )
+      .then((result) => {
+        setJobs(result.data.data);
+        navigate('/searchjob',{
+          state:{
+          jobs:result.data.data,
+          title:title
+        }
+        })
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
         <section className="homebanner">
@@ -48,8 +89,9 @@ const Home = () => {
                     type="text"
                     placeholder="Search Worker Profiles"
                     className="box-search shadow-none"
+                   
                   />
-                  <button type="button" className="talent-btnss">
+                  <button type="button" className="talent-btnss" >
                     Search
                   </button>
                 </InputGroup>
@@ -71,8 +113,10 @@ const Home = () => {
                   type="text"
                   placeholder="Search Jobs"
                   className="box-search shadow-none"
+                  value={title}
+                  onChange={(e)=>handleChange(e)}
                 />
-                <button type="button" className="talent-btnss">
+                <button type="button" className="talent-btnss" onClick={()=>searchJob()}>
                   Search
                 </button>
               </InputGroup>
@@ -97,28 +141,20 @@ const Home = () => {
         </div>
      
         <div className="row ">
-          <div className="col-lg-4">
+          {skills.map((skill)=>(
+            <div className="col-lg-4">
             <div className="points-lists">
               <ul>
                 <li>
-                  <a> Website Development</a>
-                </li>
-                <li>
-                  <a>Software Development</a>
-                </li>
-                <li>
-                  <a>Graphics Designing</a>
-                </li>
-                <li>
-                  <a> Mobile App Development</a>
-                </li>
-                <li>
-                  <a>Search Engine Optimization</a>
+                  <a> {skill.description}</a>
                 </li>
               </ul>
             </div>
           </div>
-          <div className="col-lg-4">
+          ))
+          }
+          
+          {/* <div className="col-lg-4">
             <div className="points-lists">
               <ul>
                 <li>
@@ -159,7 +195,7 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row ">
           <div className="col-lg-12">
