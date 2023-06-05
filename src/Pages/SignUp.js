@@ -66,7 +66,7 @@ const SignUp = () => {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
-        .post("https://api.mazglobal.co.uk/wop-api/employers", users, {})
+        .post("https://api.zalimburgers.com/wop-api/employers", users, {})
         .then((result) => {
           console.log(result.data);
           setSpinner(false);
@@ -96,7 +96,7 @@ const SignUp = () => {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
-        .post("https://api.mazglobal.co.uk/wop-api/jobseekers", users, {})
+        .post("https://api.zalimburgers.com/wop-api/jobseekers", users, {})
         .then((result) => {
           console.log(result.data);
           setSpinner(false);

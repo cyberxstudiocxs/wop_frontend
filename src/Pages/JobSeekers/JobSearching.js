@@ -18,7 +18,7 @@ const JobSearching = () => {
     //https://api.mazglobal.co.uk/wop-api/joblistings
     let data = [];
     axios
-      .get(`http://localhost:8080/wop-api/joblistings`)
+      .get(`https://api.mazglobal.co.uk/wop-api/joblistings`)
       .then((result) => {
         data = result.data.data;
         setJobsData(result.data.data);
@@ -50,7 +50,7 @@ const handleChange=(e)=>{
   const searchJob=()=>{
 
     axios
-    .post(`http://localhost:8080/wop-api/joblistings/title`,
+    .post(`https://api.zalimburgers.com/wop-api/joblistings/title`,
        {title:tValue}
     )
     .then((result) => {
@@ -66,7 +66,7 @@ const handleChange=(e)=>{
   return (
     <div>
       <section className="find-job-outer-box">
-        <div className="container p-5">
+        <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="job-search-box">
@@ -89,7 +89,7 @@ const handleChange=(e)=>{
               </div>
             </div>
           </div>
-        </div>{" "}
+        </div>
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
@@ -98,10 +98,6 @@ const handleChange=(e)=>{
                 <p> Still haven't found</p>
                 <h6> "THE PROFECT JOB " ?</h6>
                 <p> start receiving job alerts in your inbox daily !</p>
-
-                <button type="button" className="subscribenow">
-                  SUBSCRIBE NOW (IT'S FREE)
-                </button>
 
                 <p> 9331 jobs posted the past 30 days.</p>
               </div>

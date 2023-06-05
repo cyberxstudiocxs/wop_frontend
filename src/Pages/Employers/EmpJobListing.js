@@ -8,7 +8,7 @@ const EmpJobListing = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/wop-api/joblistings`)
+      .get(`https://api.zalimburgers.com/wop-api/joblistings`)
       .then((res) => {
         res.data.data.map(it=>{
           if(it.created_at)
@@ -59,9 +59,9 @@ const EmpJobListing = () => {
                   <button type="button" className="talent-btnss">
                     Add New Post
                   </button>
-                  <button type="button" className="Delete-btnss">
+                  {/* <button type="button" className="Delete-btnss">
                     Deleted Posts
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="table-responsive">  
@@ -88,6 +88,14 @@ const EmpJobListing = () => {
                         <td>Otto</td>
                         <td>Otto</td>
                         <td>{job.created_at}</td>
+                        <th>  <div className="actionss-box">
+                  <button type="button" className="talent-btnss">
+                  Edit
+                  </button>
+                   <button type="button" className="Delete-btnss">
+                    Deleted Posts
+                  </button> 
+                </div></th>
                         </tr>
                   ))
 

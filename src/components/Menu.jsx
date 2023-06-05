@@ -112,6 +112,11 @@ const Menu = () => {
                   Job Listing
                 </NavDropdown.Item>
               </Link>
+              <Link to="/manageprofile">
+                <NavDropdown.Item href="/manageprofile">
+                  Update Profile
+                </NavDropdown.Item>
+              </Link>
 
               <NavDropdown.Divider />
               <NavDropdown.Item>

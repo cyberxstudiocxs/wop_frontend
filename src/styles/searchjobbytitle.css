@@ -55,11 +55,11 @@ select#formPrimarySkill2:focus{
 }
 .jobsearchfield.mb-3.input-group {
   width: 86%;
-  border: 2px solid gray;
+  border: 2px solid #f3f3f3;
   display: flex;
   align-items: center;
   border-radius: 50px;
-  background-color: grey;
+  background-color: #f3f3f3;
   padding: 0px 12px;
   margin-right: 12px;
 }
@@ -168,4 +168,27 @@ button.subscribenow {
 }
 .job-info {
   width: 75%;
+}
+
+
+input#seaechsss {
+  width: 90%;
+  background-color: transparent;
+  border: 1px solid #f3f3f3;
+  outline: none;
+}
+
+
+p.short {
+  margin-top: 30px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  
+}
+
+p.short a.worker-btns{
+  margin-top: 30px;
 }

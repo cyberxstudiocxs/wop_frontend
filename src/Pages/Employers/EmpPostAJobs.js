@@ -32,7 +32,7 @@ const EmpPostAJobs = () => {
   });
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/wop-api/jobtypes`)
+      .get(`https://api.zalimburgers.com/wop-api/jobtypes`)
       .then((res) => {
         setJobTypes(res.data.data);
       })
@@ -41,7 +41,7 @@ const EmpPostAJobs = () => {
       });
 
     axios
-      .get(`http://localhost:8080/wop-api/skills`)
+      .get(`https://api.zalimburgers.com/wop-api/skills`)
       .then((res) => {
         setSkills(res.data.data);
       })
@@ -90,7 +90,7 @@ const EmpPostAJobs = () => {
       };
 
     axios
-      .post(`http://localhost:8080/wop-api/joblistings`,job,config)
+      .post(`https://api.zalimburgers.com/wop-api/joblistings`,job,config)
       .then((res) => {
         if(res.data.success===1)
         {

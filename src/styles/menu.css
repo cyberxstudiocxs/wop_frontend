@@ -71,7 +71,9 @@ a.login-btn.mx-3 ,a.signup-btn  {
     font-size: 14px;
     font-weight: 500;
 }
-
+.dropdown-menu.show.dropdown-menu-light a p{
+    color: #fff;
+}
 .dropdown-menu.show.dropdown-menu-light a:hover {
     color: #fff;
     background-color: #138578;

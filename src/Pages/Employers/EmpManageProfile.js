@@ -44,7 +44,7 @@ const EmpManageProfile = () => {
           console.log("decoded",decoded.result)
         axios
         .get(
-          `https://api.mazglobal.co.uk/wop-api/employers/getUserProfile/${decoded.result.id}`,confii
+          `https://api.zalimburgers.com/wop-api/employers/getUserProfile/${decoded.result.id}`,confii
         )
         .then((result) => {
             console.log(result.data,config)
@@ -64,7 +64,7 @@ const EmpManageProfile = () => {
      e.preventDefault();
      axios
      .put(
-       `https://api.mazglobal.co.uk/wop-api/employers/updateProfile/${user.id}`,
+       `https://api.zalimburgers.com/wop-api/employers/updateProfile/${user.id}`,
        updateEmp,config
      )
      .then((result) => {

@@ -14,7 +14,6 @@ import EmpPostAJob from './Pages/Employers/EmpPostAJobs';
 import EmpJobListing from './Pages/Employers/EmpJobListing';
 import JobPostConfirmation from './Pages/Employers/JobPostConfirmation';
 import HowItWorkJobSeeker from './Pages/HowItWorkJobSeeker';
-
 import Menu from './components/Menu';
 import Footer from './components/Footer';
 import Login from './components/Login';
@@ -23,6 +22,7 @@ import JobSearching from './Pages/JobSeekers/JobSearching';
 import LatestJObPost from './Pages/JobSeekers/LatestJobPost';
 import SignUp from './Pages/SignUp';
 import jwt_decode from "jwt-decode";
+import DetailJobPost from './Pages/JobSeekers/DetailJobPost';
 
 
 
@@ -37,7 +37,7 @@ function App() {
       setUser(decoded.result)
      }
      else{
-      setUser({})
+      setUser()
      }
 
      setSpin(false)
@@ -54,9 +54,9 @@ function App() {
    
           <Routes>
             <Route path='/' element={
-              !user?
-            <Home />:
-             <EmpDashBoard />
+              
+            <Home />
+            
             } />
             <Route path='/empdashhboard' element={<EmpDashBoard />} />
             <Route  path='/accountsetting'  element={<EmpAccountSetting />} />
@@ -70,7 +70,7 @@ function App() {
             <Route  path="/jobseeker" element={<LatestJObPost />} />
            
 
-          
+          <Route  path='/detailjobpost' element={<DetailJobPost />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/joblisting'  element={ <EmpJobListing />} />

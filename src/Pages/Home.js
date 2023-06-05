@@ -7,6 +7,7 @@ import { BsSearch } from "react-icons/bs";
 import imagess from "../assets/images/download.png";
 import Form from "react-bootstrap/Form";
 import JobSearching from "./JobSeekers/JobSearching";
+import Header from "../components/Header";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/wop-api/skills`)
+      .get(`https://api.zalimburgers.com/wop-api/skills`)
       .then((res) => {
         setSkills(res.data.data);
       })
@@ -32,7 +33,7 @@ const Home = () => {
     const searchJob=()=>{
 
       axios
-      .post(`http://localhost:8080/wop-api/joblistings/title`,
+      .post(`https://api.zalimburgers.com/wop-api/joblistings/title`,
          {title:title}
       )
       .then((result) => {
@@ -48,7 +49,14 @@ const Home = () => {
   };
 
   return (
+    
     <div>
+
+<Header  title="home"   description="Wop Online "> </Header>
+      
+      
+      
+      
         <section className="homebanner">
             
       <div className="container  ">

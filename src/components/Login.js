@@ -42,7 +42,7 @@ const Login = () => {
     {
       axios
       .post(
-        "https://api.mazglobal.co.uk/wop-api/jobseekers/login",
+        "https://api.zalimburgers.com/wop-api/jobseekers/login",
         users
       )
       .then((result) => {
@@ -72,7 +72,7 @@ const Login = () => {
       //https://api.mazglobal.co.uk/wop-api
       axios
       .post(
-        "http://localhost:8080/wop-api/employers/login",
+        "https://api.zalimburgers.com/wop-api/employers/login",
         users
       )
       .then((result) => {
