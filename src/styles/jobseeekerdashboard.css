@@ -1,0 +1,54 @@
+.jobseekerdashboard {
+    background-color: #000;
+   
+    padding: 50px;
+   
+}
+
+.jobseeker-heads {
+    display: flex;
+    align-items: baseline;
+  
+}
+
+p.jobseeekertitle {
+    color: #fff;
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.jobseeker-person {
+   position: relative;
+   top: 70px;
+    width: 25%;
+}
+
+.jobseeker-body {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 30px;
+}
+
+.jobseeker-jobtype {
+    width: 75%;
+}
+
+a.editprofileee {
+    text-decoration: none;
+    color: #138578;
+    border: 1px solid #138578;
+    padding: 7px 30px;
+    border-radius: 50px;
+    text-transform: capitalize;
+}
+
+p.salaryjobseeeker ,p.Educationstatic {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 700;
+}
+
+ 

@@ -68,6 +68,7 @@ input#seaechsss::placeholder {
 }
 button.talent-btnss.jobsearchs {
   width: 14%;
+  height: 45px;
 }
 
 input.jobs-search-fields.form-control {
@@ -81,11 +82,13 @@ input.jobs-search-fields.form-control {
 
 .job-search-box .serach-icons {
   margin: 0px 5px;
-  color: #fff;
+  color: #000;
   font-weight: bold;
-  font-size: unset;
+  font-size: 20px;
 }
-
+.spacejobsearch {
+  margin: 100px 0px 0px 0px;
+}
 /*  */
 
 .box-shape {
@@ -173,11 +176,14 @@ button.subscribenow {
 
 input#seaechsss {
   width: 90%;
-  background-color: transparent;
+  background-color: transparent !important;
   border: 1px solid #f3f3f3;
   outline: none;
+  height: 45px;
 }
-
+input#seaechsss::placeholder {
+  color: #000 !important;
+}
 
 p.short {
   margin-top: 30px;

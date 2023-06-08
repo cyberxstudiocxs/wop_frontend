@@ -100,6 +100,8 @@ const EmpDashoBard = () => {
               Get started on your hiring journey by creating your job post now. Your next star employee is just a click away!
 
               </p>
+
+              
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ const EmpAccountSetting = () => {
                 <div className="account-outer-box">
                   <div className="parallel-box">
                     <h5> Profile Information </h5>
-                    <Link className="account-setting-btns"> Change Email/Password</Link>
+                    <Link className="account-setting-btns"  to="/changepassword"> Change Email/Password</Link>
                   </div>
 
                   <div className="parallel-box">
@@ -107,6 +107,8 @@ const EmpAccountSetting = () => {
                 Check out our FAQs now to get answers to some common queries about our platform, and get back to focusing on what really matters – building your dream team!
 
                 </p>
+
+                <Link className="account-setting-btns"> Create a Free Job Post! </Link>
               </div>
             </div>
           </div>

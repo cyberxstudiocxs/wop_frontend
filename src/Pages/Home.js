@@ -1,7 +1,7 @@
 import "../styles/home.css";
-import {Link, useNavigate} from 'react-router-dom';
-import {useState,useEffect} from 'react';
-import axios from 'axios';
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import imagess from "../assets/images/download.png";
@@ -11,9 +11,9 @@ import Header from "../components/Header";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [skills,setSkills]=useState([])
-  const [title,setTitle]=useState()
-  const [jobs,setJobs]=useState([])
+  const [skills, setSkills] = useState([]);
+  const [title, setTitle] = useState();
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     axios
@@ -24,145 +24,134 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
-    },[])   
+  }, []);
 
-    const handleChange=(e)=>{
-      setTitle(e.target.value)
-    }
+  const handleChange = (e) => {
+    setTitle(e.target.value);
+  };
 
-    const searchJob=()=>{
-
-      axios
-      .post(`https://api.zalimburgers.com/wop-api/joblistings/title`,
-         {title:title}
-      )
+  const searchJob = () => {
+    axios
+      .post(`https://api.zalimburgers.com/wop-api/joblistings/title`, {
+        title: title,
+      })
       .then((result) => {
         setJobs(result.data.data);
-        navigate('/searchjob',{
-          state:{
-          jobs:result.data.data,
-          title:title
-        }
-        })
+        navigate("/searchjob", {
+          state: {
+            jobs: result.data.data,
+            title: title,
+          },
+        });
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    
     <div>
+      <Header title="home" description="Wop Online ">
+        {" "}
+      </Header>
 
-<Header  title="home"   description="Wop Online "> </Header>
-      
-      
-      
-      
-        <section className="homebanner">
-            
-      <div className="container  ">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="banner-box">
-              <h1>
-                Connecting Pakistani Talent to <br></br>
-                International Businesses For Online Work
-              </h1>
-              <div className="banner-space"></div>
-              <p>
-                Welcome to Work Online Pakistan, the premier resource for
-                finding remote employment and hiring top talent in Pakistan's
-                online employment market! Our platform gives companies simple
-                access to a talent pool from all around Pakistan while also
-                connecting job seekers with the greatest remote employment
-                opportunities.
-              </p>
+      <section className="homebanner">
+        <div className="container  ">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="banner-box">
+                <h1>
+                  Connecting Pakistani Talent to <br></br>
+                  International Businesses For Online Work
+                </h1>
+                <div className="banner-space"></div>
+                <p>
+                  Welcome to Work Online Pakistan, the premier resource for
+                  finding remote employment and hiring top talent in Pakistan's
+                  online employment market! Our platform gives companies simple
+                  access to a talent pool from all around Pakistan while also
+                  connecting job seekers with the greatest remote employment
+                  opportunities.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="banner-space"></div>
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="talent-left-box">
-              <p>
-              
-                Seeking Exceptional <span className="talent"> Talent ? </span>
+          <div className="banner-space"></div>
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="talent-left-box">
+                <p>
+                  Seeking Exceptional <span className="talent"> Talent ? </span>
+                </p>
+                <div className="Talent-search-box">
+                  <InputGroup className="outer-box-search mb-3">
+                    <div className="serach-icons">
+                      <BsSearch />
+                    </div>
+                    <Form.Control
+                      type="text"
+                      placeholder="Search Worker Profiles"
+                      className="box-search shadow-none"
+                    />
+                    <button type="button" className="talent-btnss">
+                      Search
+                    </button>
+                  </InputGroup>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <p className="talent">
+                Job Hunting? Let's <span className="talent"> Connect !</span>
               </p>
-              <div className="Talent-search-box">
+              <div className="work-search-box">
                 <InputGroup className="outer-box-search mb-3">
                   <div className="serach-icons">
-                  
                     <BsSearch />
                   </div>
                   <Form.Control
                     type="text"
-                    placeholder="Search Worker Profiles"
+                    placeholder="Search Jobs"
                     className="box-search shadow-none"
-                   
+                    value={title}
+                    onChange={(e) => handleChange(e)}
                   />
-                  <button type="button" className="talent-btnss" >
+                  <button
+                    type="button"
+                    className="talent-btnss"
+                    onClick={() => searchJob()}
+                  >
                     Search
                   </button>
                 </InputGroup>
               </div>
             </div>
           </div>
-          <div className="col-lg-6">
-            <p className="talent">
-             
-              Job Hunting? Let's <span className="talent"> Connect !</span>
-            </p>
-            <div className="work-search-box">
-              <InputGroup className="outer-box-search mb-3">
-                <div className="serach-icons">
-                 
-                  <BsSearch />
-                </div>
-                <Form.Control
-                  type="text"
-                  placeholder="Search Jobs"
-                  className="box-search shadow-none"
-                  value={title}
-                  onChange={(e)=>handleChange(e)}
-                />
-                <button type="button" className="talent-btnss" onClick={()=>searchJob()}>
-                  Search
-                </button>
-              </InputGroup>
-            </div>
-          </div>
         </div>
-        </div>
-        </section>
+      </section>
 
-  
-
-        <section className="homepopulartalent">
+      <section className="homepopulartalent">
         <div className="container  ">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="middleheading">
-
-           
-            <h3 className="Talent-heading"> Popular Talent Hunts</h3>
-          </div>
-          </div>
-        </div>
-     
-        <div className="row ">
-          {skills.map((skill)=>(
-            <div className="col-lg-4">
-            <div className="points-lists">
-              <ul>
-                <li>
-                  <a> {skill.description}</a>
-                </li>
-              </ul>
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="middleheading">
+                <h3 className="Talent-heading"> Popular Talent Hunts</h3>
+              </div>
             </div>
           </div>
-          ))
-          }
-          
-          {/* <div className="col-lg-4">
+
+          <div className="row ">
+            {skills.map((skill) => (
+              <div className="col-lg-4">
+                <div className="points-lists">
+                  <ul>
+                    <li>
+                      <a> {skill.description}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ))}
+
+            {/* <div className="col-lg-4">
             <div className="points-lists">
               <ul>
                 <li>
@@ -204,29 +193,20 @@ const Home = () => {
               </ul>
             </div>
           </div> */}
-        </div>
-        <div className="row ">
-          <div className="col-lg-12">
-            <div className="more-box">
-              <Link className="more-skillss"> See More Skills </Link>
+          </div>
+          <div className="row ">
+            <div className="col-lg-12">
+              <div className="more-box">
+                <Link className="more-skillss"> See More Skills </Link>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        </section>
-        
-       
-        <div className="space2"></div>
-      
+      </section>
 
-        
-      
-     
-      
+      <div className="space2"></div>
 
-     
-        <section className="homeslider">
-     
+      <section className="homeslider">
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-md-6 col-sm-12 ">
@@ -397,8 +377,8 @@ const Home = () => {
             </div>
           </div>
         </div>
-        </section>
-        <div className="space2"></div>
+      </section>
+      <div className="space2"></div>
     </div>
   );
 };

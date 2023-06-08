@@ -1,9 +1,5 @@
 section.footer-main-box {
-  background:   linear-gradient(
-      rgb(19, 133, 120),
-rgba(19, 133, 120, 0.55)
-    ),
-    url(../assets/images/footer4.jpg);
+  background-color:#138578 ;
 
   padding: 100px 0px 100px 60px;
   background-size: cover;
@@ -74,3 +70,12 @@ svg.iconsss {
 
 .common-link ul li:hover svg.iconsss {
 color:#fff;}
+
+
+
+@media screen and (min-width: 1600px) {
+  section.footer-main-box{
+    padding: 70px 100px 70px 200px;
+  }
+
+}

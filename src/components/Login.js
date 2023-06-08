@@ -115,7 +115,8 @@ const Login = () => {
     toggle()
   }, []);
   return (
-    <div className="container">
+    <section>
+<div className="container">
       <div className="row  outer-box-one">
         <div className="col-lg-6 m-auto inner-box-one">
           <div className="outer-box ">
@@ -214,6 +215,8 @@ const Login = () => {
         
       </Modal>
     </div>
+    </section>
+    
   );
 };
 

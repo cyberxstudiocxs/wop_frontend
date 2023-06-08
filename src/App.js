@@ -23,6 +23,10 @@ import LatestJObPost from './Pages/JobSeekers/LatestJobPost';
 import SignUp from './Pages/SignUp';
 import jwt_decode from "jwt-decode";
 import DetailJobPost from './Pages/JobSeekers/DetailJobPost';
+import ChangePassword from './Pages/Employers/ChangePassword';
+import JobseekerDashBoard from './Pages/JobSeekers/JobseekerDashBoard';
+import JobseekerProfile from './Pages/JobSeekers/JobseekerProfile';
+import JobseekerAccountSetting from './Pages/JobSeekers/JobseekerAccoutSetting';
 
 
 
@@ -70,12 +74,17 @@ function App() {
             <Route  path="/jobseeker" element={<LatestJObPost />} />
            
 
+           <Route  path='/jobseekerdashbaord'  element={<JobseekerDashBoard />} />
+           <Route path='/jobseekerprofile' element={<JobseekerProfile />} />
+           <Route path='/jobseekeraccountsetting'  element={<JobseekerAccountSetting />} />
+
           <Route  path='/detailjobpost' element={<DetailJobPost />} />
             <Route path='/login' element={<Login />} />
             <Route path='/signup' element={<SignUp />} />
             <Route path='/joblisting'  element={ <EmpJobListing />} />
             <Route path='/jobseekerworks' element={<HowItWorkJobSeeker />} />
             <Route path='/succesfullypostsubmit'   element={<JobPostConfirmation />} />
+            <Route path='/changepassword'  element={< ChangePassword />} />
             <Route path='/termsofuse'  element={<TermOfUse />} />
 
             <Route path='/privacypolicy'  element={ <PrivacyPolicay />} />

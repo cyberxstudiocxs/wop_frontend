@@ -66,6 +66,7 @@ const handleChange=(e)=>{
   return (
     <div>
       <section className="find-job-outer-box">
+      <div className="spacejobsearch"></div>
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -90,6 +91,7 @@ const handleChange=(e)=>{
             </div>
           </div>
         </div>
+        <div className="spacejobsearch"></div>
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
@@ -147,7 +149,7 @@ const handleChange=(e)=>{
         <div className="container p-5">
           <div className="row">
             <div className="col-lg-12 m-auto">
-              <div className="middle-box">
+              <div className="middle-box jobsearchingbg">
                 <p>
                   We’ re here to help! If you need any assistance with the
                   registration process, please don't hesitate to reach out to

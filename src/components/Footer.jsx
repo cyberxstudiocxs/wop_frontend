@@ -112,29 +112,29 @@ const Footer = () => {
 
             <div className="col-lg-3">
               <div className="socials-links">
-                <h3> SOCIALS LINKS </h3>
+                <h3> SOCIAL LINKS </h3>
                 <div className="common-link">
                   <ul>
                     <li>
                   
                       <Link className="f-links">
-                        {" "}
+                     
                         <FaEnvelope className="iconsss" /> Info@gmail.com
-                      </Link>{" "}
+                      </Link>
                     </li>
                     <li>
-                      {" "}
+              
                       <Link className="f-links">
-                        {" "}
+                     
                         <BsFacebook  className="iconsss" /> Facebook.com
-                      </Link>{" "}
+                      </Link>
                     </li>
                     <li>
-                      {" "}
+                   
                       <Link className="f-links">
-                        {" "}
+                    
                         <BsTwitter  className="iconsss" /> twitter.com
-                      </Link>{" "}
+                      </Link>
                     </li>
                   </ul>
                 </div>

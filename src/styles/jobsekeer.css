@@ -85,3 +85,72 @@
 p.mt-3 {
     display: none;
 }
+
+
+section.single-job-post-jobseeker {
+    background-color: #000;
+    color: #fff;
+    padding: 100px;
+}
+.aboceeee {
+    margin-top: -50px;
+}
+.sameee-boxx {
+    margin-top: -50px;
+    display: flex;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.types-box {
+    display: flex;
+}
+
+a.editjobs {
+    text-decoration: none;
+    color: #138578;
+    font-size: 14px;
+}
+
+a.Deletejobs {
+      text-decoration: none;
+      color: #000;
+      font-size: 14px;
+      margin-left:10px;
+}
+
+/* jobseeeker profile css start here */
+
+section.jobseeker-profile {
+    background-color: #000;
+    padding: 50px 0px 0px 0px;
+    text-align: center;
+}
+
+.profile-person {
+    /* margin-top: 50px; */
+    position: relative;
+    top: 30px;
+}
+
+.jobseeker-profilejobtype {
+    text-align: center;
+    padding: 100px 0px;
+}
+
+section.graybg {
+    background-color: #f1f1f1;
+    padding: 50px;
+}
+
+.profile-left-outer-box ,.right-profile  {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+}
+

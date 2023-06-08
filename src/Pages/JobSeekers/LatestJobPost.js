@@ -154,12 +154,14 @@ const LatestJObPost = () => {
           </div>
         </div>
       </section>
-      <div className="container p-5">
+      <div className="space2"></div>
+      <section className="latestjob-cta">
+      <div className="container">
         <div className="row">
           <div className="col-lg-12 m-auto">
-            <div className="middle-box">
+            <div className="middle-box saved-job-cta">
               <p>
-                {" "}
+             
                 We’ re here to help! If you need any assistance with the
                 registration process, please don't hesitate to reach out to us.
                 Our team is able to provide guidance and support to ensure a
@@ -172,6 +174,8 @@ const LatestJObPost = () => {
           </div>
         </div>
       </div>
+      </section>
+      <div className="space2"></div>
     </div>
   );
 };

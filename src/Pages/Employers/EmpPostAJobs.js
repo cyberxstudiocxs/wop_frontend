@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 const EmpPostAJobs = () => {
   const [jobtypes, setJobTypes] = useState([]);
@@ -118,13 +119,20 @@ const EmpPostAJobs = () => {
     <div>
       <section className="postjob-main">
         <div className="container">
-          <div className="row py-5">
+          <div className="row ">
             <div className="col-lg-12">
               <h3 className="Talent-heading"> Post a Job</h3>
             </div>
           </div>
 
-          <div className="row py-5">
+          <div className="row ">
+            <div className="col-lg-12">
+              <h5> Create a Free Job Post Now!</h5>
+              <p> With our free account, you can easily manage and view job applications, giving you the opportunity to gauge if the applicants are suitable for your needs. Take advantage of this amazing opportunity and post your job now to get the right worker for your project. </p>
+            </div>
+          </div>
+
+          <div className="row ">
             <div className="col-lg-10 m-auto">
               <div className="postjob-outer-box">
                 <Form onSubmit={handleSubmit}>
@@ -135,7 +143,7 @@ const EmpPostAJobs = () => {
                         type="text"
                         name="title"
                         required
-                        placeholder="What do you need ?"
+                        placeholder="Enter the job title you are hiring for."
                         className="shadow-none"
                         onChange={(e) => handleChange(e)}
                         value={job.title}
@@ -169,7 +177,7 @@ const EmpPostAJobs = () => {
                       <Form.Control
                         as="textarea"
                         rows={3}
-                        placeholder="Describe the job to be done "
+                        placeholder="Provide a detailed description of the job responsibilities, requirements, and any other relevant information "
                         className="shadow-none"
                         required
                         name="description"
@@ -207,7 +215,7 @@ const EmpPostAJobs = () => {
                   </Row>
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="formSalary">
-                      <Form.Label>Salary</Form.Label>
+                      <Form.Label>Wage/Salary</Form.Label>
                       <Form.Control
                         type="text"
                         name="salary"
@@ -218,7 +226,7 @@ const EmpPostAJobs = () => {
                       />
                     </Form.Group>
                   </Row>
-                  <h3> Job Skills</h3>
+                  <h3> Job Skills  Information</h3>
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="formPrimarySkill">
                       <Form.Label>Primary Skill</Form.Label>
@@ -302,12 +310,15 @@ const EmpPostAJobs = () => {
           <div className="row">
             <div className="col-lg-12 m-auto">
               <div className="middle-box">
+                <h3>  Find Solutions to Your Hiring Challenges!
+</h3>
                 <p>
-                  We {"’"} re here to help! If you need any assistance with the
-                  registration process, please don't hesitate to reach out to
-                  us. Our team is able to provide guidance and support to ensure
-                  a smooth and hassle-free experience.
+                Team Work Online Pakistan is here to assist you with your queries and concerns. Connect with our staff to get the support you need to simplify your hiring with WOP!
                 </p>
+
+                <Link className="gologin" to="/contactus">
+                Contact Support Now!
+                        </Link>
               </div>
             </div>
           </div>

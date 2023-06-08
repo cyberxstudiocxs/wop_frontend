@@ -75,6 +75,16 @@ a.worker-btns:hover{
     padding: 80px 30px;
     margin: 30px;
 }
+.middle-box.saved-job-cta{
+    background-image: url("../assets/images/Recent-Job-Openings-CTA.jpg");
+    
+}
+
+.middle-box.jobsearchingbg{
+    background-image: url("../assets/images/Advanced-Search-CTA.jpg");
+    height: 300px;
+}
+
 .middle-box  p{
     max-width: 500px;
 }
