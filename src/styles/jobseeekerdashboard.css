@@ -51,4 +51,49 @@ p.salaryjobseeeker ,p.Educationstatic {
     font-weight: 700;
 }
 
- 
+/* create profile page css */
+section.jobseeekr-steps{
+    padding: 80px 0px 50px 0px;
+    background-color: #c6c6c6;
+}
+.leftsdiebar-jobseeekr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+a.sidebar-btns {
+    text-decoration: none;
+    color: #138578;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor:pointer;
+
+}
+
+a.sidebar-btns:hover{
+    text-decoration: none;
+    color: #138578;
+}
+.right-sidebar-jobseeker {
+    padding-left: 60px;
+}
+
+a.step-btns {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    
+    border-radius: 20px;
+    padding: 10px 50px;
+    background-color: #138578;
+    color: #fff !important;
+    margin: 5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}

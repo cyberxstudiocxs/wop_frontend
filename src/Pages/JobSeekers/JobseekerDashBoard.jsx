@@ -7,11 +7,11 @@ const JobseekerDashBoard = () => {
       <section  class="contact-us-main"> 
         <div className="container">
           <div className="row">
-            {/* toggle testing  */}
+           
             <div className="col-lg-6">
               
             </div>
-            {/* toggle testing end here */}
+           
             <div className="col-lg-6">
               
             </div>

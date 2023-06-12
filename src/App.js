@@ -27,6 +27,8 @@ import ChangePassword from './Pages/Employers/ChangePassword';
 import JobseekerDashBoard from './Pages/JobSeekers/JobseekerDashBoard';
 import JobseekerProfile from './Pages/JobSeekers/JobseekerProfile';
 import JobseekerAccountSetting from './Pages/JobSeekers/JobseekerAccoutSetting';
+import CreateProfileJobseeker from './components/CreateProfileJobseeeker';
+import RateYourSkils from './components/RateYourSkills';
 
 
 
@@ -77,6 +79,9 @@ function App() {
            <Route  path='/jobseekerdashbaord'  element={<JobseekerDashBoard />} />
            <Route path='/jobseekerprofile' element={<JobseekerProfile />} />
            <Route path='/jobseekeraccountsetting'  element={<JobseekerAccountSetting />} />
+           <Route path='createprofile'  element={<CreateProfileJobseeker />} />
+
+           <Route path='/rateskill'  element={<RateYourSkils />} />
 
           <Route  path='/detailjobpost' element={<DetailJobPost />} />
             <Route path='/login' element={<Login />} />

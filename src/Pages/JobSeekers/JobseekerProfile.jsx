@@ -56,16 +56,23 @@ const JobseekerProfile = () => {
                       <FaSuitcase />
                     </div>
                     <div className="works-info">
-                      <h5> Types of works</h5>
-                      <p> Part Time </p>
+                      <h5> Degree</h5>
+                      <p> Associates degree </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="profile-description">
+               
+              </div>
+              <div className="m-3"></div>
+              <div
+                className="
+                profile-left-outer-box"
+              >
+              <div className="profile-description">
                   <h3> Profile Description </h3>
                 </div>
-              </div>
+                </div>
             </div>
             <div className="col-lg-4">
               <div className="right-profile">
@@ -78,6 +85,9 @@ const JobseekerProfile = () => {
                 <p className="typess"> Male </p>
 
                 <p className="salaryjobseeeker"> Website </p>
+                <p className="typess"> Not Specified </p>
+
+                <p className="salaryjobseeeker"> Address </p>
                 <p className="typess"> Not Specified </p>
               </div>
             </div>
