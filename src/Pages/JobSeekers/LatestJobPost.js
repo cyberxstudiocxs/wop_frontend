@@ -12,7 +12,7 @@ const LatestJObPost = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api.zalimburgers.com/wop-api/joblistings/latestjobs`)
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings/latestjobs`)
       .then((res) => {
         setJobs(res.data.data);
       })

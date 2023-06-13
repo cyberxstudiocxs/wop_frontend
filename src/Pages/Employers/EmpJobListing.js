@@ -8,7 +8,7 @@ const EmpJobListing = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api.zalimburgers.com/wop-api/joblistings`)
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings`)
       .then((res) => {
         res.data.data.map((it) => {
           if (it.created_at) {

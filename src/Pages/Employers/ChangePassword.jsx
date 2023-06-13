@@ -1,23 +1,71 @@
 import Form from "react-bootstrap/Form";
+import axios from 'axios'
 import InputGroup from "react-bootstrap/InputGroup";
 import { FaSearchPlus } from "react-icons/fa";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { BiSupport } from "react-icons/bi";
 import { AiOutlineSetting } from "react-icons/ai";
 import { AiOutlineCopy } from "react-icons/ai";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
+
 const ChangePassword = () => {
-  const [users, setUser] = useState({
-    email: "",
-    password: "",
-  });
+
+  const [users, setUser] = useState();
+  const [msg, setMsg] = useState();
+  const [changedCred, setChangedCred] = useState();
+  const [msgmodal, setMsgModal] = React.useState(false);
+  const msgtoggle = () => setMsgModal(!msgmodal);
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      var decoded = jwt_decode(localStorage.getItem('token'));
+      console.log(decoded.result)
+      setUser(decoded.result)
+      setChangedCred({
+        ...changedCred,
+        ['email']:decoded.result.email,
+        ['id']:decoded.result.id
+      })
+    }
+  },[])
+
   const onChangeValues = (e) => {
-    setUser({ ...users, [e.target.name]: e.target.value });
-    console.log(users);
+    setChangedCred({ ...changedCred, [e.target.name]: e.target.value });
+    
   };
 
-  const ProcedLogin = (e) => {};
+  const proceedLogin = (e) => {
+    e.preventDefault()
+    if(changedCred.newpassword!==changedCred.confirmpassword){
+      setMsg('New Password and Confirm Password did not match')
+      msgtoggle()
+      e.preventDefault()
+    }
+    else{
+      
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+
+      axios.post(`https://next.mazglobal.co.uk/wop-api/employers/updateLoginInfo`,changedCred,config)
+      .then(res=>{
+        console.log('res',res.data)
+          setMsg(res.data.message)
+          msgtoggle()
+      }).catch(err=>{
+          setMsg(err.response.data.message)
+          msgtoggle()
+          console.log(err)
+      })
+    
+    }
+  };
+
   return (
     <div>
       <section>
@@ -29,7 +77,7 @@ const ChangePassword = () => {
                 <div className="inner-box ">
                   <h3 className="emp-heading">Login Information </h3>
 
-                  <Form>
+                  <Form >
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Email address</Form.Label>
                       <InputGroup className="outer-inputss mb-3">
@@ -37,6 +85,8 @@ const ChangePassword = () => {
                           type="email"
                           placeholder="Enter E-Mail"
                           name="email"
+                          required
+                          value={changedCred?changedCred.email:''}
                           className="shadow-none"
                           onChange={(e) => onChangeValues(e)}
                         />
@@ -50,6 +100,7 @@ const ChangePassword = () => {
                         <Form.Control
                           type="password"
                           name="password"
+                          required
                           className="shadow-none"
                           onChange={(e) => onChangeValues(e)}
                         />
@@ -63,6 +114,7 @@ const ChangePassword = () => {
                         <Form.Control
                           type="password"
                           name="newpassword"
+                          required
                           className="shadow-none"
                           onChange={(e) => onChangeValues(e)}
                         />
@@ -76,19 +128,21 @@ const ChangePassword = () => {
                         <Form.Control
                           type="password"
                           name="confirmpassword"
+                          required
                           className="shadow-none"
                           onChange={(e) => onChangeValues(e)}
                         />
                       </InputGroup>
                     </Form.Group>
+
                     <div className="text-center my-3">
                       <Button
                         variant="primary"
                         type="submit"
                         className="loginbtn"
-                        onClick={ProcedLogin}
+                         onClick={(e)=>proceedLogin(e)}
                       >
-                        Save LogIn Information
+                        Save Log In Information
                       </Button>
                     </div>
                   </Form>
@@ -106,7 +160,7 @@ const ChangePassword = () => {
                 <AiOutlineCopy className="acoount-icons" />
 
                 <h3> Quick search for talented resumes</h3>
-                <Link className="account-setting-btns">Post A Job</Link>
+                <Link className="account-setting-btns" to="/postjob">Post A Job</Link>
               </div>
             </div>
 
@@ -140,6 +194,19 @@ const ChangePassword = () => {
 
         <div className="space2"></div>
       </section>
+     
+      <Modal isOpen={msgmodal} toggle={msgtoggle}>
+        <ModalHeader toggle={msgtoggle}>Alert</ModalHeader>
+        <ModalBody>
+          <>!{msg}</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={msgtoggle}>
+            OK
+          </Button>
+        </ModalFooter>
+      </Modal>
+
     </div>
   );
 };

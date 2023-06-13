@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../styles/searchjobbytitle.css";
 
-
 const JobSearching = () => {
   const [jobs, setJobs] = useState([]);
   const [jobs_data, setJobsData] = useState([]);
@@ -15,16 +14,18 @@ const JobSearching = () => {
   const location = useLocation();
 
   useEffect(() => {
-    //https://api.mazglobal.co.uk/wop-api/joblistings
+    //https://next.mazglobal.co.uk/wop-api/joblistings
     let data = [];
     axios
-      .get(`https://api.mazglobal.co.uk/wop-api/joblistings`)
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings`)
       .then((result) => {
+        
         data = result.data.data;
+        console.log('api call',data)
         setJobsData(result.data.data);
       })
       .catch((err) => console.log(err));
-
+   setTimeout(()=>{
     if (location.state) {
       console.log('location',location)
       if (location.state.jobs.length != 0) {
@@ -35,8 +36,11 @@ const JobSearching = () => {
         setJobs([]);
       }
     } else {
+      console.log('data',data)
       setJobs(data);
     }
+   },2000)
+  
   }, []);
 
 const handleChange=(e)=>{
@@ -50,7 +54,7 @@ const handleChange=(e)=>{
   const searchJob=()=>{
 
     axios
-    .post(`https://api.zalimburgers.com/wop-api/joblistings/title`,
+    .post(`https://next.mazglobal.co.uk/wop-api/joblistings/title`,
        {title:tValue}
     )
     .then((result) => {
@@ -61,7 +65,6 @@ const handleChange=(e)=>{
     .catch((err) => console.log(err));
 };
    
-
 
   return (
     <div>

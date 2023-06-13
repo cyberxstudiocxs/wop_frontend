@@ -60,8 +60,10 @@ function App() {
    
           <Routes>
             <Route path='/' element={
+                             user?
+                             <EmpDashBoard />
+                            :<Home />
               
-            <Home />
             
             } />
             <Route path='/empdashhboard' element={<EmpDashBoard />} />

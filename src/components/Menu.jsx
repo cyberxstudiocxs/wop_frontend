@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import React, { useState, useEffect } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import logo from "../assets/images/main-logo.png";
 import "../styles/menu.css";
 
@@ -13,10 +14,15 @@ const Menu = () => {
   const navigat = useNavigate();
   const [login, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(0);
+  const [user, setUser] = useState();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setLoggedIn(true);
+    
+      var decoded = jwt_decode(localStorage.getItem('token'));
+       setUser(decoded.result)
+ 
       setUserId(localStorage.getItem("userId"))
     } else {
       setLoggedIn(false);
@@ -95,7 +101,7 @@ const Menu = () => {
                   <Avatar  
                    alt="AAAAA" 
                    size="50" 
-                   name="Areeb"
+                   name={user?user.full_name:'WOP'}
                    round={true}
                   />
               }  

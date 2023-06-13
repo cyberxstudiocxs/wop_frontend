@@ -66,7 +66,7 @@ const EmpAccountSetting = () => {
               <   AiOutlineCopy   className="acoount-icons"  />
      
                 <h3> Quick search for talented resumes</h3>
-                <Link className="account-setting-btns">Post A Job</Link>
+                <Link className="account-setting-btns" to="/postjob">Post A Job</Link>
               </div>
             </div>
 

@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(`https://api.zalimburgers.com/wop-api/skills`)
+      .get(`https://next.mazglobal.co.uk/wop-api/skills`)
       .then((res) => {
         setSkills(res.data.data);
       })
@@ -32,7 +32,7 @@ const Home = () => {
 
   const searchJob = () => {
     axios
-      .post(`https://api.zalimburgers.com/wop-api/joblistings/title`, {
+      .post(`https://next.mazglobal.co.uk/wop-api/joblistings/title`, {
         title: title,
       })
       .then((result) => {

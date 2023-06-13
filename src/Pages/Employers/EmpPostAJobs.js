@@ -5,12 +5,18 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
+import {useLocation} from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const EmpPostAJobs = () => {
+
+  const location = useLocation();
   const [jobtypes, setJobTypes] = useState([]);
+  const [user, setUser] = useState();
+  const [isEditJob, setIsEditJob] = useState(false);
   const [skills, setSkills] = useState([]);
   const [spinner, setSpinner] = useState(false);
   const [successMsg, setSuccessMsg] = React.useState(false);
@@ -20,20 +26,39 @@ const EmpPostAJobs = () => {
   const [errormodal, setErrorModal] = React.useState(false);
   const errortoggle = () => setErrorModal(!errormodal);
   const navigat = useNavigate();
+  const [editjob, setEditJob] = useState()
   const [job, setJob] = useState({
     title: "",
     job_type: null,
     description: "",
     salary: "",
     email: "",
+    location:"Islamabad",
     contact_person: "",
     primary_skill: null,
     secondary_skill1: null,
     secondary_skill2: null,
+    employer_id:null
   });
+
   useEffect(() => {
+
+    if (localStorage.getItem("token")) {
+      var decoded = jwt_decode(localStorage.getItem('token'));
+      console.log(decoded.result)
+      setUser(decoded.result)
+     }
+     else{
+      setUser()
+     }
+    
+    setJob({
+      ...job,
+      employer_id:decoded.result.id
+    })
+
     axios
-      .get(`https://api.zalimburgers.com/wop-api/jobtypes`)
+      .get(`https://next.mazglobal.co.uk/wop-api/jobtypes`)
       .then((res) => {
         setJobTypes(res.data.data);
       })
@@ -42,13 +67,31 @@ const EmpPostAJobs = () => {
       });
 
     axios
-      .get(`https://api.zalimburgers.com/wop-api/skills`)
+      .get(`https://next.mazglobal.co.uk/wop-api/skills`)
       .then((res) => {
         setSkills(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
+    
+      if(location.state){
+        setIsEditJob(true)
+        //https://next.mazglobal.co.uk
+        axios
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`)
+      .then((res) => {
+        res.data.data['job_type']=res.data.data.job_type_id
+        res.data.data['primary_skill']=res.data.data.primary_skill_id
+        res.data.data['secondary_skill1']=res.data.data.secondary_skill1_id
+        res.data.data['secondary_skill2']=res.data.data.secondary_skill2_id
+        setJob(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      }
+
   }, []);
 
   const handleChange = (e) => {
@@ -56,6 +99,13 @@ const EmpPostAJobs = () => {
       ...job,
       [e.target.name]: e.target.value,
     });
+
+    if(isEditJob){
+      setEditJob({
+        ...editjob,
+        [e.target.name]:e.target.value
+      })
+    }
   };
 
   const handleSubmit = (e) => {
@@ -90,8 +140,11 @@ const EmpPostAJobs = () => {
         },
       };
 
+      //https://next.mazglobal.co.uk
+    if(!isEditJob)
+    {
     axios
-      .post(`https://api.zalimburgers.com/wop-api/joblistings`,job,config)
+      .post(`https://next.mazglobal.co.uk/wop-api/joblistings`,job,config)
       .then((res) => {
         if(res.data.success===1)
         {
@@ -112,8 +165,45 @@ const EmpPostAJobs = () => {
         errortoggle()
         console.log(err);
       });
+    }else{
+      handleEdit()
+    }
     }
   };
+
+  const handleEdit=()=>{
+  
+      const config = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      };
+
+      //https://next.mazglobal.co.uk
+    axios
+      .put(`https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`,editjob,config)
+      .then((res) => {
+        if(res.data.success===1)
+        {
+          setSpinner(false)
+          setSuccessMsg(res.data.message)
+          navigat("/succesfullypostsubmit");
+          toggle()
+        }
+        else{
+          setSpinner(false)
+          setErrorMsg(res.data.message)
+          errortoggle()
+        }
+      })
+      .catch((err) => {
+        setSpinner(false)
+        setErrorMsg(err.response.data.message)
+        errortoggle()
+        console.log(err);
+      });
+
+    } 
 
   return (
     <div>
@@ -353,5 +443,3 @@ const EmpPostAJobs = () => {
 };
 
 export default EmpPostAJobs;
-
-
