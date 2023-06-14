@@ -48,11 +48,11 @@ const EmpDashoBard = () => {
                 <AiOutlineCopy className="acoount-icons" />
 
                 <h3>
-                  {" "}
+              
                   Create and publish job openings to attract skilled
                   professionals.
                 </h3>
-                <Link className="account-setting-btns">Post A Job</Link>
+                <Link className="account-setting-btns"  to="/postjob">Post A Job</Link>
               </div>
             </div>
 
@@ -68,7 +68,7 @@ const EmpDashoBard = () => {
               <div className="quick-box1">
                 <FaSearchPlus className="acoount-icons" />
                 <h3>
-                  {" "}
+               
                   Explore a diverse pool of talented individuals to best support
                   your project goals.
                 </h3>
@@ -83,7 +83,7 @@ const EmpDashoBard = () => {
                   Get quick and reliable assistance from our support team.
                 </h3>
                 <Link className="account-setting-btns">
-                  Contact For Support{" "}
+                  Contact For Support
                 </Link>
               </div>
             </div>

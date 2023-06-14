@@ -1,17 +1,32 @@
 import "../../styles/joblisting.css";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React ,{ useState, useEffect } from "react";
+import { Modal, ModalBody, ModalFooter, ModalHeader ,Button} from 'reactstrap';
 import moment from "moment/moment";
-import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import { Link, useNavigate } from "react-router-dom";
+
 const EmpJobListing = () => {
+
+  const [confirmmodal, setConfirmModal] = React.useState(false);
+  const confirmtoggle = () => setConfirmModal(!confirmmodal);
+  const [errormodal, setErrorModal] = React.useState(false);
+  const errortoggle = () => setErrorModal(!errormodal);
+  const [user, setUser] = useState();
   const [jobs, setJobs] = useState([]);
+  const [postId, setPostId] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    var decoded = jwt_decode(localStorage.getItem('token'));
+    setUser(decoded.result)
+    //https://next.mazglobal.co.uk
     axios
-      .get(`https://next.mazglobal.co.uk/wop-api/joblistings`)
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings/employer/${decoded.result.id}`)
       .then((res) => {
+        let list=[]
         res.data.data.map((it) => {
-          if (it.created_at) {
+          if (it.created_at && it.status===1 ) {
             let jobDate = it.created_at.split("T");
             jobDate = jobDate[0];
             jobDate = jobDate.split("-");
@@ -19,14 +34,58 @@ const EmpJobListing = () => {
             console.log(jobDate);
             var date = new Date(jobDate[0], jobDate[1].toString(), jobDate[2]);
             it.created_at = moment(date).format("dddd MMMM D Y");
+            list.push(it)
           }
         });
-        setJobs(res.data.data);
+        setJobs(list);
+        console.log(res.data.data)
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  const editJob=(jobId)=>{
+   
+    navigate("/postjob", {
+      state: {
+         id: jobId,
+      },
+    })
+  }
+
+  const confirmDialogue=(id)=>{
+    setPostId(id)
+    confirmtoggle()
+  }
+
+  const inActivePost=()=>{
+   
+    axios.put(`https://next.mazglobal.co.uk/wop-api/joblistings/changeStatus/${postId}`,{status:0})
+    .then(res=>{
+      console.log(res.data)
+      let list=[]
+      if(res.data.success==1)
+      {
+        jobs.map(jb=>{
+          if(jb.job_id==postId)
+          {
+  
+          }else{
+            list.push(jb)
+          }
+        })
+         setJobs(list)
+         confirmtoggle()
+      }
+     
+    }).catch(err=>{
+      errortoggle()
+      console.log(err)
+    })
+  }
+ 
+
 
   return (
     <div>
@@ -79,20 +138,22 @@ const EmpJobListing = () => {
                           <th>{++i}</th>
                           <td>{job.title}</td>
                           <td>{job.title}</td>
-                          <td>@mdo</td>
+                          <td>0</td>
                           
-                          <td>Otto</td>
+                          <td>Active</td>
                           <td>{job.created_at}</td>
                           <th>
                             {" "}
                             <div className="actionss-box">
-                              <Link className="editjobs" to="">
-                                Edit
-                              </Link>
+                              <span style={{cursor:'pointer',padding:'14px'}}
+                               className="editjobs" onClick={()=>editJob(job.job_id)}>
+                               Edit
+                              </span>
 
-                              <Link className="Deletejobs" to="">
-                                Deleted
-                              </Link>
+                              <span style={{cursor:'pointer'}}
+                                className="Deletejobs" onClick={()=>confirmDialogue(job.job_id)}>
+                                Delete
+                              </span>
                             </div>
                           </th>
                         </tr>
@@ -105,6 +166,33 @@ const EmpJobListing = () => {
           </div>
         </div>
       </section>
+      <Modal isOpen={confirmmodal} toggle={confirmtoggle}>
+        <ModalHeader toggle={confirmtoggle}>Alert</ModalHeader>
+        <ModalBody>
+          <>Are You Sure You Want To In Active this Job Post?</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={()=>inActivePost()}>
+            Yes
+          </Button>
+          <Button color="primary" onClick={confirmtoggle}>
+            No
+          </Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={errormodal} toggle={errortoggle}>
+        <ModalHeader toggle={errortoggle}>Alert</ModalHeader>
+        <ModalBody>
+          <>!Error Deleting The Job</>
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={errortoggle}>
+            Ok
+          </Button>
+        
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };

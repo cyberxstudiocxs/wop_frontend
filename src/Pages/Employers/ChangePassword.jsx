@@ -39,6 +39,11 @@ const ChangePassword = () => {
 
   const proceedLogin = (e) => {
     e.preventDefault()
+    if(!changedCred.newpassword || !changedCred.confirmpassword || !changedCred.password || !changedCred.email){
+      setMsg('Please Add All the Fields')
+      msgtoggle()
+      e.preventDefault()
+    }
     if(changedCred.newpassword!==changedCred.confirmpassword){
       setMsg('New Password and Confirm Password did not match')
       msgtoggle()
@@ -77,7 +82,7 @@ const ChangePassword = () => {
                 <div className="inner-box ">
                   <h3 className="emp-heading">Login Information </h3>
 
-                  <Form >
+                  <Form onSubmit={proceedLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                       <Form.Label>Email address</Form.Label>
                       <InputGroup className="outer-inputss mb-3">
@@ -140,7 +145,7 @@ const ChangePassword = () => {
                         variant="primary"
                         type="submit"
                         className="loginbtn"
-                         onClick={(e)=>proceedLogin(e)}
+                         //onClick={(e)=>proceedLogin(e)}
                       >
                         Save Log In Information
                       </Button>
