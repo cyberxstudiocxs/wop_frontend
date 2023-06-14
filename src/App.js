@@ -1,8 +1,7 @@
 
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { useState,useEffect } from 'react';
-
+import { useState,useEffect } from 'react'; 
 import Home from './Pages/Home';
 import ContactUs from './Pages/ContactUs';
 import TermOfUse from './Pages/TermsOfUse';
@@ -27,8 +26,9 @@ import ChangePassword from './Pages/Employers/ChangePassword';
 import JobseekerDashBoard from './Pages/JobSeekers/JobseekerDashBoard';
 import JobseekerProfile from './Pages/JobSeekers/JobseekerProfile';
 import JobseekerAccountSetting from './Pages/JobSeekers/JobseekerAccoutSetting';
-import CreateProfileJobseeker from './components/CreateProfileJobseeeker';
+
 import RateYourSkils from './components/RateYourSkills';
+import JobSeekerCreateProfile from './Pages/JobSeekers/JobSeekerCreateProfile';
 
 
 
@@ -60,9 +60,9 @@ function App() {
    
           <Routes>
             <Route path='/' element={
-                             user?
-                             <EmpDashBoard />
-                            :<Home />
+                             
+                            
+                            <Home />
               
             
             } />
@@ -81,7 +81,8 @@ function App() {
            <Route  path='/jobseekerdashbaord'  element={<JobseekerDashBoard />} />
            <Route path='/jobseekerprofile' element={<JobseekerProfile />} />
            <Route path='/jobseekeraccountsetting'  element={<JobseekerAccountSetting />} />
-           <Route path='createprofile'  element={<CreateProfileJobseeker />} />
+           <Route path='/jobseekercreateprofile'  element={<JobSeekerCreateProfile />} />
+          
 
            <Route path='/rateskill'  element={<RateYourSkils />} />
 

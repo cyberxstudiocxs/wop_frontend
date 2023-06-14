@@ -73,18 +73,26 @@ a.worker-btns:hover{
     background-position: right;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     padding: 80px 30px;
-    margin: 30px;
+   
+}
+
+.middle-box.emp-dashboard {
+    background-image: url("../assets/images/Welcome-to-Your-Dashboard.jpg");
+    height: 300px;  
 }
 .middle-box.saved-job-cta{
     background-image: url("../assets/images/Recent-Job-Openings-CTA.jpg");
-    
+    height: 300px;
 }
 
 .middle-box.jobsearchingbg{
     background-image: url("../assets/images/Advanced-Search-CTA.jpg");
     height: 300px;
 }
-
+.middle-box.postajob{
+    background-image: url("../assets/images/Post-a-Job-CTA.jpg");
+    height: 300px;
+}
 .middle-box  p{
     max-width: 500px;
 }

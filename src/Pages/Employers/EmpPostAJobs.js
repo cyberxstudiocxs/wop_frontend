@@ -1,18 +1,16 @@
-
 import Form from "react-bootstrap/Form";
 import React, { useState, useEffect } from "react";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import axios from "axios";
-import {useLocation} from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
 const EmpPostAJobs = () => {
-
   const location = useLocation();
   const [jobtypes, setJobTypes] = useState([]);
   const [user, setUser] = useState();
@@ -26,36 +24,34 @@ const EmpPostAJobs = () => {
   const [errormodal, setErrorModal] = React.useState(false);
   const errortoggle = () => setErrorModal(!errormodal);
   const navigat = useNavigate();
-  const [editjob, setEditJob] = useState()
+  const [editjob, setEditJob] = useState();
   const [job, setJob] = useState({
     title: "",
     job_type: null,
     description: "",
     salary: "",
     email: "",
-    location:"Islamabad",
+    location: "Islamabad",
     contact_person: "",
     primary_skill: null,
     secondary_skill1: null,
     secondary_skill2: null,
-    employer_id:null
+    employer_id: null,
   });
 
   useEffect(() => {
-
     if (localStorage.getItem("token")) {
-      var decoded = jwt_decode(localStorage.getItem('token'));
-      console.log(decoded.result)
-      setUser(decoded.result)
-     }
-     else{
-      setUser()
-     }
-    
+      var decoded = jwt_decode(localStorage.getItem("token"));
+      console.log(decoded.result);
+      setUser(decoded.result);
+    } else {
+      setUser();
+    }
+
     setJob({
       ...job,
-      employer_id:decoded.result.id
-    })
+      employer_id: decoded.result.id,
+    });
 
     axios
       .get(`https://next.mazglobal.co.uk/wop-api/jobtypes`)
@@ -74,24 +70,25 @@ const EmpPostAJobs = () => {
       .catch((err) => {
         console.log(err);
       });
-    
-      if(location.state){
-        setIsEditJob(true)
-        //https://next.mazglobal.co.uk
-        axios
-      .get(`https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`)
-      .then((res) => {
-        res.data.data['job_type']=res.data.data.job_type_id
-        res.data.data['primary_skill']=res.data.data.primary_skill_id
-        res.data.data['secondary_skill1']=res.data.data.secondary_skill1_id
-        res.data.data['secondary_skill2']=res.data.data.secondary_skill2_id
-        setJob(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-      }
 
+    if (location.state) {
+      setIsEditJob(true);
+      //https://next.mazglobal.co.uk
+      axios
+        .get(
+          `https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`
+        )
+        .then((res) => {
+          res.data.data["job_type"] = res.data.data.job_type_id;
+          res.data.data["primary_skill"] = res.data.data.primary_skill_id;
+          res.data.data["secondary_skill1"] = res.data.data.secondary_skill1_id;
+          res.data.data["secondary_skill2"] = res.data.data.secondary_skill2_id;
+          setJob(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   const handleChange = (e) => {
@@ -100,110 +97,100 @@ const EmpPostAJobs = () => {
       [e.target.name]: e.target.value,
     });
 
-    if(isEditJob){
+    if (isEditJob) {
       setEditJob({
         ...editjob,
-        [e.target.name]:e.target.value
-      })
+        [e.target.name]: e.target.value,
+      });
     }
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setSpinner(true)
-    console.log("handle subbmit")
-    let field_status=false
-    let fields='';
-   
-    Object.keys(job).map(key => {
-     
-      if(!job[key])
-      {
-        fields = fields + " " + key.split('_')
-        field_status=true;
+    e.preventDefault();
+    setSpinner(true);
+    console.log("handle subbmit");
+    let field_status = false;
+    let fields = "";
+
+    Object.keys(job).map((key) => {
+      if (!job[key]) {
+        fields = fields + " " + key.split("_");
+        field_status = true;
       }
-      
-   
     });
-    
-    if(field_status)
-    {
-      setSpinner(false)
-      setErrorMsg(`Please Add the ${fields} fields`)
-      errortoggle()
-    }
-    else
-    {
+
+    if (field_status) {
+      setSpinner(false);
+      setErrorMsg(`Please Add the ${fields} fields`);
+      errortoggle();
+    } else {
       const config = {
         headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
+          Authorization: "Bearer " + localStorage.getItem("token"),
         },
       };
 
       //https://next.mazglobal.co.uk
-    if(!isEditJob)
-    {
-    axios
-      .post(`https://next.mazglobal.co.uk/wop-api/joblistings`,job,config)
-      .then((res) => {
-        if(res.data.success===1)
-        {
-          setSpinner(false)
-          setSuccessMsg(res.data.message)
-          navigat("/succesfullypostsubmit");
-          toggle()
-        }
-        else{
-          setSpinner(false)
-          setErrorMsg(res.data.message)
-          errortoggle()
-        }
-      })
-      .catch((err) => {
-        setSpinner(false)
-        setErrorMsg(err.response.data.message)
-        errortoggle()
-        console.log(err);
-      });
-    }else{
-      handleEdit()
-    }
+      if (!isEditJob) {
+        axios
+          .post(`https://next.mazglobal.co.uk/wop-api/joblistings`, job, config)
+          .then((res) => {
+            if (res.data.success === 1) {
+              setSpinner(false);
+              setSuccessMsg(res.data.message);
+              navigat("/succesfullypostsubmit");
+              toggle();
+            } else {
+              setSpinner(false);
+              setErrorMsg(res.data.message);
+              errortoggle();
+            }
+          })
+          .catch((err) => {
+            setSpinner(false);
+            setErrorMsg(err.response.data.message);
+            errortoggle();
+            console.log(err);
+          });
+      } else {
+        handleEdit();
+      }
     }
   };
 
-  const handleEdit=()=>{
-  
-      const config = {
-        headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
-        },
-      };
+  const handleEdit = () => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
 
-      //https://next.mazglobal.co.uk
+    //https://next.mazglobal.co.uk
     axios
-      .put(`https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`,editjob,config)
+      .put(
+        `https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`,
+        editjob,
+        config
+      )
       .then((res) => {
-        if(res.data.success===1)
-        {
-          setSpinner(false)
-          setSuccessMsg(res.data.message)
+        if (res.data.success === 1) {
+          setSpinner(false);
+          setSuccessMsg(res.data.message);
           navigat("/succesfullypostsubmit");
-          toggle()
-        }
-        else{
-          setSpinner(false)
-          setErrorMsg(res.data.message)
-          errortoggle()
+          toggle();
+        } else {
+          setSpinner(false);
+          setErrorMsg(res.data.message);
+          errortoggle();
         }
       })
       .catch((err) => {
-        setSpinner(false)
-        setErrorMsg(err.response.data.message)
-        errortoggle()
+        setSpinner(false);
+        setErrorMsg(err.response.data.message);
+        errortoggle();
         console.log(err);
       });
-
-    } 
+  };
 
   return (
     <div>
@@ -214,14 +201,20 @@ const EmpPostAJobs = () => {
               <h3 className="Talent-heading"> Post a Job</h3>
             </div>
           </div>
-
+          <div className="space2"></div>
           <div className="row ">
-            <div className="col-lg-12">
+            <div className="col-lg-10 m-auto">
               <h5> Create a Free Job Post Now!</h5>
-              <p> With our free account, you can easily manage and view job applications, giving you the opportunity to gauge if the applicants are suitable for your needs. Take advantage of this amazing opportunity and post your job now to get the right worker for your project. </p>
+              <p>
+                With our free account, you can easily manage and view job
+                applications, giving you the opportunity to gauge if the
+                applicants are suitable for your needs. Take advantage of this
+                amazing opportunity and post your job now to get the right
+                worker for your project.
+              </p>
             </div>
           </div>
-
+          <div className="space2"></div>
           <div className="row ">
             <div className="col-lg-10 m-auto">
               <div className="postjob-outer-box">
@@ -285,7 +278,6 @@ const EmpPostAJobs = () => {
                         type="email"
                         placeholder="Enter E-Mail"
                         name="email"
-                        
                         className="shadow-none"
                         value={job.email}
                         onChange={(e) => handleChange(e)}
@@ -316,7 +308,7 @@ const EmpPostAJobs = () => {
                       />
                     </Form.Group>
                   </Row>
-                  <h3> Job Skills  Information</h3>
+                  <h3> Job Skills Information</h3>
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="formPrimarySkill">
                       <Form.Label>Primary Skill</Form.Label>
@@ -376,22 +368,21 @@ const EmpPostAJobs = () => {
                       </Form.Select>
                     </Form.Group>
                   </Row>
-                  
-              <div className="text-center">
-                <Button className="reviewss" type="submit">
-                  {spinner && (
-                            <span
-                              class="spinner-border spinner-border-sm"
-                              role="status"
-                              aria-hidden="true"
-                            ></span>
-                          )}
-                         Submit For Review
-                </Button>
-              </div>
+
+                  <div className="text-center">
+                    <Button className="reviewss" type="submit">
+                      {spinner && (
+                        <span
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      )}
+                      Submit For Review
+                    </Button>
+                  </div>
                 </Form>
               </div>
-
             </div>
           </div>
         </div>
@@ -399,23 +390,24 @@ const EmpPostAJobs = () => {
         <div className="container pb-5">
           <div className="row">
             <div className="col-lg-12 m-auto">
-              <div className="middle-box">
-                <h3>  Find Solutions to Your Hiring Challenges!
-</h3>
+              <div className="middle-box postajob">
+                <h3> Find Solutions to Your Hiring Challenges!</h3>
                 <p>
-                Team Work Online Pakistan is here to assist you with your queries and concerns. Connect with our staff to get the support you need to simplify your hiring with WOP!
+                  Team Work Online Pakistan is here to assist you with your
+                  queries and concerns. Connect with our staff to get the
+                  support you need to simplify your hiring with WOP!
                 </p>
 
-                <Link className="gologin" to="/contactus">
-                Contact Support Now!
-                        </Link>
+                <Link className="account-setting-btns" to="/contactus">
+                  Contact Support Now!
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
-      
-  <Modal isOpen={modal} toggle={toggle}>
+
+      <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Success</ModalHeader>
         <ModalBody>
           <>!{successMsg}</>

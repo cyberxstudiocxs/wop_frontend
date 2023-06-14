@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
-import Button from "react-bootstrap/Button";
+
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 const CreateProfileJobseeker = () => {
+
+  
   return (
     <div>
       <section className="jobseeekr-steps">
@@ -140,7 +142,7 @@ const CreateProfileJobseeker = () => {
 
                     <div className="text-center">
 
-                    <Link className="step-btns"  to="/rateskill">
+                    <Link className="step-btns"  to="/rateskill" >
                     Next
                 </Link>
                     
