@@ -87,7 +87,12 @@ const Login = () => {
           localStorage.setItem("userId", 2);
           setTimeout(()=>{
             setSpinner(false);
-            navigat("/empdashhboard");
+            navigat("/empdashhboard",{
+                state: {
+                  id: 2,
+                },
+              })
+          
           },2000)
         
         }

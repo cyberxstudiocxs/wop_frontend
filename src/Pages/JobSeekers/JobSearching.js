@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import {useLocation} from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import logo from "../../assets/images/main-logo.png";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import moment from "moment/moment";
 import "../../styles/searchjobbytitle.css";
+import "../../styles/jobsekeer.css";
 
 const JobSearching = () => {
   const [jobs, setJobs] = useState([]);
+  const navigate = useNavigate();
   const [jobs_data, setJobsData] = useState([]);
   const [tValue, setTValue] = useState();
   const location = useLocation();
@@ -19,9 +22,19 @@ const JobSearching = () => {
     axios
       .get(`https://next.mazglobal.co.uk/wop-api/joblistings`)
       .then((result) => {
-        
+         result.data.data.map(it=>{
+          if(it.created_at)
+          {
+            let jobDate = it.created_at.split("T");
+            jobDate = jobDate[0];
+            jobDate = jobDate.split("-");
+            jobDate[1] = parseInt(jobDate[1]) - 1;
+            var date = new Date(jobDate[0], jobDate[1].toString(), jobDate[2]);
+            it.created_at = moment(date).format("dddd MMMM D Y");
+          }
+      
+        })
         data = result.data.data;
-        console.log('api call',data)
         setJobsData(result.data.data);
       })
       .catch((err) => console.log(err));
@@ -64,6 +77,16 @@ const handleChange=(e)=>{
     })
     .catch((err) => console.log(err));
 };
+
+const goToDetailPage=(jobId)=>{
+   
+  navigate("/detailjobpost", {
+    state: {
+      id: jobId,
+    },
+  });
+  
+}
    
 
   return (
@@ -136,7 +159,10 @@ const handleChange=(e)=>{
                       </p>
                       <p> {job.salary}</p>
 
-                      <p className="mt-3"> {job.description} </p>
+                      <p className="short"> {job.description} </p>
+                      <span className="worker-btns" onClick={()=>goToDetailPage(job.job_id)} > 
+                        Read More
+                        </span>
                     </div>
                     </div>
                   ))}

@@ -17,7 +17,13 @@ const SignUp = () => {
     });
     setShow(false);
   };
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setError(false)
+    setErrorMsg('')
+    setPakError(false)
+    setPakErrorMsg('')
+    setShow(true);
+  }
 
   const [jobshow, jobsetShow] = useState(false);
   const jobhandleClose = () => {
@@ -28,7 +34,14 @@ const SignUp = () => {
     });
     jobsetShow(false);
   };
-  const jobhandleShow = () => jobsetShow(true);
+  const jobhandleShow = () => {
+    setError(false)
+    setErrorMsg('')
+    setPakError(false)
+    setPakErrorMsg('')
+    jobsetShow(true);
+  }
+  
 
   const [spinner, setSpinner] = useState(false);
 
@@ -41,9 +54,10 @@ const SignUp = () => {
   const [errorsmeaasage, setErrormessage] = useState({});
 
   const [checks, setChecks] = useState(false);
-  const [error, setError] = useState("");
-
-  const [pakerror, setPakError] = useState("");
+  const [error, setError] = useState(false);
+  const [pakerror, setPakError] = useState(false);
+  const [errormsg, setErrorMsg] = useState("");
+  const [pakerrormsg, setPakErrorMsg] = useState("");
 
   const onChangeValues = (e) => {
     setUser({ ...users, [e.target.name]: e.target.value });
@@ -56,11 +70,16 @@ const SignUp = () => {
     setSpinner(true);
     setErrormessage(Validation(users));
    
-    if (checks === false) {
-     
-      setPakError(" Please Select The Pakistani Check box");
-      setError(" Please Select The Check box");
-    
+    if (!pakerror && !error) {
+      setPakErrorMsg(" Please Select The Pakistani Check box");
+      setErrorMsg(" Please Select The Check box");
+      setSpinner(false);
+    }
+    else if (!pakerror) {
+      setPakErrorMsg(" Please Select The Pakistani Check box");
+      setSpinner(false);
+    } else if(!error){
+      setErrorMsg(" Please Select The Check box");
       setSpinner(false);
     } else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
@@ -70,7 +89,11 @@ const SignUp = () => {
         .then((result) => {
           console.log(result.data);
           setSpinner(false);
-          alert(result.data.message);
+          setTimeout(()=>{
+            alert(result.data.message);
+            handleClose()
+          },1000)
+        
 
           
         })
@@ -78,21 +101,42 @@ const SignUp = () => {
           console.log(err);
           console.log(err.response.data.message);
           setSpinner(false);
-          alert(err.response.data.message);
+          setTimeout(()=>{
+            alert(err.response.data.message);
+            handleClose()
+          },1000)
+          
         });
     }
   };
 
+  const setErrorChk=(choice)=>{
+    if(choice==1){
+      setPakError(!pakerror)
+    
+    }
+    else{
+      setError(!error)
+    }
+  }
   const JobSeekerRegistration = (e) => {
     e.preventDefault();
     setSpinner(true);
     setErrormessage(Validation(users));
    
-    if (checks === false) {
-      setError(" Please Select The Check box");
-      setPakError(" Please Select The Pakistani Check box");
+    if (!pakerror && !error) {
+      setPakErrorMsg(" Please Select The Pakistani Check box");
+      setErrorMsg(" Please Select The Check box");
       setSpinner(false);
-    } else {
+    }
+    else if (!pakerror) {
+      setPakErrorMsg(" Please Select The Pakistani Check box");
+      setSpinner(false);
+    } else if(!error){
+      setErrorMsg(" Please Select The Check box");
+      setSpinner(false);
+    }
+    else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
       console.log(users);
       axios
@@ -100,14 +144,20 @@ const SignUp = () => {
         .then((result) => {
           console.log(result.data);
           setSpinner(false);
-          alert(result.data.message);
+          
+          setTimeout(()=>{
+            alert(result.data.message);
+            jobhandleClose()
+          },1000)
         
         })
         .catch((err) => {
-          console.log(err);
-          console.log(err.response.data.message);
+        
           setSpinner(false);
-          alert(err.response.data.message);
+          setTimeout(()=>{
+            alert(err.response.data.message);
+            jobhandleClose()
+          },1000)
         });
     }
   };
@@ -200,24 +250,24 @@ const SignUp = () => {
                       >
                         <Form.Check    
                           type="checkbox"
-                          onChange={() => setPakError(true)}
+                          onChange={() => setErrorChk(1)}
                           label="Subscribe me to your complimentary outsourcing education emails."
                         />
                       </Form.Group>
                       <div className="text-center my-3">
-                        {pakerror && <p style={{ color: "red" }}>{pakerror} </p>}  </div>
+                        {!pakerror && <p style={{ color: "red" }}>{pakerrormsg} </p>}  </div>
                       <Form.Group
                         className="mb-3"
                         controlId="formBasicCheckbox"
                       >
                         <Form.Check
                           type="checkbox"
-                          onChange={() => setChecks(true)}
+                          onChange={() => setErrorChk(2)}
                           label="I consent to the Terms of Service and Privacy Policy."
                         />
                       </Form.Group>
                       <div className="text-center my-3">
-                        {error && <p style={{ color: "red" }}>{error} </p>}
+                        {!error && <p style={{ color: "red" }}>{errormsg} </p>}
                         <Button
                           variant="primary"
                           type="submit"
@@ -331,12 +381,13 @@ const SignUp = () => {
                       >
                         <Form.Check    
                           type="checkbox"
-                          onChange={() => setPakError(true)}
+                          checked={pakerror}
+                          onChange={() => setErrorChk(1)}
                           label="As a Pakistani, I'm aware that WOP is exclusively for Pakistani workers."
                         />
                       </Form.Group>
                       <div className="text-center my-3">
-                        {pakerror && <p style={{ color: "red" }}>{pakerror} </p>}  </div>
+                        {!pakerror && <p style={{ color: "red" }}>{pakerrormsg} </p>}  </div>
 
                         <Form.Group
                         className="mb-3"
@@ -344,13 +395,14 @@ const SignUp = () => {
                       >
                         <Form.Check
                           type="checkbox"
-                          onChange={() => setChecks(true)}
+                          checked={error}
+                          onChange={() => setErrorChk(2)}
                           label="I agree to the Terms of Service and Privacy Policy"
                         />
                       </Form.Group>
 
                       <div className="text-center my-3">
-                        {error && <p style={{ color: "red" }}>{error} </p>}  
+                        {!error && <p style={{ color: "red" }}>{errormsg} </p>}  
                         <Button
                           variant="primary"
                           type="submit"

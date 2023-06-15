@@ -1,25 +1,47 @@
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
 import imagess from "../../assets/images/download.png";
-import { Link } from "react-router-dom";
 import "../../styles/jobsekeer.css";
-
+import moment from "moment/moment";
 import { useState, useEffect } from "react";
 import axios from "axios";
 const LatestJObPost = () => {
+
+  const navigate = useNavigate();
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     axios
       .get(`https://next.mazglobal.co.uk/wop-api/joblistings/latestjobs`)
       .then((res) => {
+        res.data.data.map(it=>{
+          let jobDate = it.created_at.split("T");
+          jobDate = jobDate[0];
+          jobDate = jobDate.split("-");
+          jobDate[1] = parseInt(jobDate[1]) - 1;
+          var date = new Date(jobDate[0], jobDate[1].toString(), jobDate[2]);
+          it.created_at = moment(date).format("dddd MMMM D Y");
+        })
         setJobs(res.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+  
+  const goToDetailPage=(jobId)=>{
+   
+    navigate("/detailjobpost", {
+      state: {
+        id: jobId,
+      },
+    });
+    
+  }
+
+
   return (
     <div>
       <section className="find-job-outer-box">
@@ -86,7 +108,9 @@ const LatestJObPost = () => {
                         <div className="job-desc">
                         <p className="short"> {job.description}</p>
 
-                        <Link className="worker-btns" to="/detailjobpost"> Read More</Link>
+                        <span className="worker-btns" onClick={()=>goToDetailPage(job.job_id)} > 
+                        Read More
+                        </span>
                         </div>
                       
                         <div className="inline-skills">

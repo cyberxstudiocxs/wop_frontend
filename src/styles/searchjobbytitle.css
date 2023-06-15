@@ -197,4 +197,5 @@ p.short {
 
 p.short a.worker-btns{
   margin-top: 30px;
+  cursor: pointer;
 }

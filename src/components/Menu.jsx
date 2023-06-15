@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import React, { useState, useEffect } from "react";
 import { NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import {useLocation} from 'react-router-dom';
 import jwt_decode from "jwt-decode";
 import logo from "../assets/images/main-logo.png";
 import "../styles/menu.css";
@@ -12,12 +13,14 @@ import "../styles/menu.css";
 const Menu = () => {
   
   const navigat = useNavigate();
+  const location = useLocation();
   const [login, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(0);
   const [user, setUser] = useState();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("token") || location.state) {
+      
       setLoggedIn(true);
     
       var decoded = jwt_decode(localStorage.getItem('token'));
@@ -33,7 +36,10 @@ const Menu = () => {
     setUserId(0)
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
+    setUser('')
+    setLoggedIn(false)
     navigat("/login");
+    
   };
 
   return (

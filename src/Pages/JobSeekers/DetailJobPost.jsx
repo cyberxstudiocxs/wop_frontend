@@ -1,15 +1,41 @@
 import "../../styles/jobsekeer.css";
+import { useEffect,useState } from "react";
 import { FaSuitcase } from "react-icons/fa";
+import {useLocation} from 'react-router-dom';
+import axios from "axios";
+import moment from "moment/moment";
 
 const DetailJobPost = () => {
+  const location = useLocation();
+  const [job, setJob] = useState();
+ 
+  useEffect(() => {
+    if(location.state){
+      console.log("in details ",location.state.id)
+      axios
+      .get(`https://next.mazglobal.co.uk/wop-api/joblistings/${location.state.id}`)
+      .then(res=>{
+        let jobDate = res.data.data.created_at.split("T");
+        jobDate = jobDate[0];
+        jobDate = jobDate.split("-");
+        jobDate[1] = parseInt(jobDate[1]) - 1;
+        var date = new Date(jobDate[0], jobDate[1].toString(), jobDate[2]);
+        res.data.data.created_at = moment(date).format("dddd MMMM D Y");
+        setJob(res.data.data)
+      }).catch(err=>console.log(err))
+    }
+  },[])
+
   return (
+    <>
+    {job &&
     <div>
       <section className="single-job-post-jobseeker">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <div className="jobseeker-post-banner">
-                <h3> Virtual Assistant Property Manager </h3>
+                <h3> {job.title} </h3>
               </div>
             </div>
           </div>
@@ -25,7 +51,7 @@ const DetailJobPost = () => {
                 </div>
                 <div className="works-info">
                   <h5> Types of works</h5>
-                  <p> Part Time </p>
+                  <p> {job.job_type_description} </p>
                 </div>
               </div>
             </div>
@@ -36,7 +62,7 @@ const DetailJobPost = () => {
                 </div>
                 <div className="works-info">
                   <h5> salary</h5>
-                  <p> $3.5</p>
+                  <p> {job.salary} Rs</p>
                 </div>
               </div>
             </div>
@@ -50,7 +76,7 @@ const DetailJobPost = () => {
                 </div>
                 <div className="works-info">
                   <h5> Date Post </h5>
-                  <p> jun 07, 2023</p>
+                  <p> {job.created_at}</p>
                 </div>
               </div>
             </div>
@@ -64,17 +90,7 @@ const DetailJobPost = () => {
                 <h3>Job Overview</h3>
                 <p>
                   {" "}
-                  To assist and handle with duties associated with the rental
-                  properties What the job entails; -Has experience handling
-                  rental properties -Has experience in handling tenant's
-                  concerns. - Estimating "After Repair Value" on a property
-                  -Identifying / Averaging "Comps" for a target property -Using
-                  Propstream -Using Zoom -Onboarding new tenants into a property
-                  -Interacting with "Section 8" departments -Scheduling
-                  contractors -Obtaining contractor estimates for repair /
-                  maintenance work on properties -Working with AirB&Bs -Using
-                  Zillow -Using Redfin -Using Craigslist -Using Loopnet -Using
-                  Cold calling to generate sales
+                  {job.description}
                 </p>
               </div>
             </div>
@@ -82,6 +98,8 @@ const DetailJobPost = () => {
         </div>
       </div>
     </div>
+}
+</>
   );
 };
 

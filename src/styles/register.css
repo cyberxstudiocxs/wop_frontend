@@ -33,6 +33,7 @@ a.worker-btns:hover{
 }
 .worker-btns {
     color: #fff;
+    cursor: pointer;
     text-decoration: none;
     background-color: #138677 !important;
     border-color:#138677 !important; 
