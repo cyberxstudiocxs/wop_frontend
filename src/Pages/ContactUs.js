@@ -142,7 +142,7 @@ const ContactUs = () => {
 
                   <div className="text-center my-3">
                     <Button
-                      variant="primary"
+                      
                       type="submit"
                       className="loginbtn"
                     >

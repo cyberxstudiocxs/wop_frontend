@@ -56,7 +56,8 @@ function App() {
 
           <Routes>
             <Route path="/" element={
-            isUser?<EmpDashBoard />:<Home/>
+            // isUser?<EmpDashBoard />:    
+            <Home/>
             } />
             <Route path="/empdashhboard" element={<EmpDashBoard />} />
             <Route path="/accountsetting" element={<EmpAccountSetting />} />

@@ -76,9 +76,12 @@ a.worker-btns:hover{
     padding: 80px 30px;
    
 }
-
-.middle-box.emp-dashboard {
+.middle-box.em-dashboard-cta-two{
     background-image: url("../assets/images/Welcome-to-Your-Dashboard.jpg");
+    height: 300px;  
+}
+.middle-box.emp-dashboard {
+    background-image: url("../assets/images/Welcome-to-employer-Dashboard-.jpg");
     height: 300px;  
 }
 .middle-box.saved-job-cta{
@@ -92,6 +95,11 @@ a.worker-btns:hover{
 }
 .middle-box.postajob{
     background-image: url("../assets/images/Post-a-Job-CTA.jpg");
+    height: 300px;
+}
+
+.middle-box.updateaccountsetting {
+    background-image: url("../assets/images/Update-Account-Settings.jpg");
     height: 300px;
 }
 .middle-box  p{

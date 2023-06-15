@@ -105,3 +105,22 @@ label.form-label{
     font-weight: 400;
     padding-left: 14px;
 }
+
+button.loginbtn{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+border: 1px solid #138578;
+    border-radius: 20px;
+    padding: 5px 25px;
+    background-color: #138578;
+    color: #fff !important;
+    margin: 5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+button.loginbtn:hover{
+    background-color: #138578; 
+}

@@ -7,6 +7,11 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
+import { Link } from "react-router-dom";
+import {FaSearchPlus} from "react-icons/fa";
+import { BiSupport } from "react-icons/bi";
+import { AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineCopy} from "react-icons/ai";
 
 const EmpManageProfile = () => {
   const [empprfile, setState] = useState({
@@ -26,8 +31,7 @@ const EmpManageProfile = () => {
   const [user, setUser] = useState();
   const [config, setConfig] = useState();
 
-//   const { business_name, fullname, city, address, country, phone, website } =
-//     empprfile;
+
 
     useEffect(() => {
        if (localStorage.getItem("token")) {
@@ -74,7 +78,7 @@ const EmpManageProfile = () => {
         console.log(err)
      })
   }
-  // const [fileName, setFileName] = useState("");
+  
   return (
     <div>
       {user ?
@@ -162,7 +166,7 @@ const EmpManageProfile = () => {
                     </Form.Group>
                   </Row>
 
-                  <Button variant="primary" type="submit">
+                  <Button className="loginbtn" type="submit">
                     Save Profile Infomation
                   </Button>
                 </Form>
@@ -170,8 +174,55 @@ const EmpManageProfile = () => {
             </div>
           </div>
         </div>
+
+       
       </section>:"Loading"
+
 }
+
+
+<div className="space2"></div>
+        <div className="container-fluid">
+          <div className="row ">
+            <div className="col-lg-3 quick-box">
+              <div className="quick-box1">
+
+              <   AiOutlineCopy   className="acoount-icons"  />
+     
+                <h3>     Create and publish job openings to attract skilled
+                  professionals.</h3>
+                <Link className="account-setting-btns" to="/postjob">Post A Job</Link>
+              </div>
+            </div>
+
+            <div className="col-lg-3 quick-box">
+              <div className="quick-box1">
+              <AiOutlineSetting  className="acoount-icons" />
+                <h3> Find the perfect fit by refining your search criteria.</h3>
+                <Link className="account-setting-btns">Advanced Search</Link>
+              </div>
+            </div>
+
+            <div className="col-lg-3 quick-box">
+              <div className="quick-box1">
+                <FaSearchPlus  className="acoount-icons" />
+                <h3>   Explore a diverse pool of talented individuals to best support
+                  your project goals.</h3>
+                <Link className="account-setting-btns">Browse Profile</Link>
+              </div>
+            </div>
+
+            <div className="col-lg-3 quick-box">
+              <div className="quick-box1">
+              < BiSupport className="acoount-icons" />
+                <h3> Get quick and reliable assistance from our support team.</h3>
+                <Link className="account-setting-btns">Contact For Support </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="space2"></div>
     </div>
   );
 };

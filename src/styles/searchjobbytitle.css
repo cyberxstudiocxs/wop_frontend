@@ -48,6 +48,15 @@ select#formPrimarySkill2:focus{
   text-decoration: none;
 }
 
+.middle-jobpostt{
+text-align: center;
+padding: 30px 50px;
+}
+.middle-jobpostt h5{
+  font-size: 25px;
+  font-weight: 600;
+  
+}
 /* post job css ending */
 .job-search-box {
   display: flex;
@@ -92,7 +101,7 @@ input.jobs-search-fields.form-control {
 /*  */
 
 .box-shape {
-  border: 13px solid #138578;
+  border: 30px solid #138578;
   border-top-left-radius: 10px;
   margin-bottom: 40px;
   border-top-right-radius: 10px;
@@ -143,6 +152,8 @@ button.subscribenow {
 
 .job-info h3 {
   text-transform: capitalize;
+  display: flex;
+  margin-bottom: 14px;
 }
 .job-info h3 span {
   background-color: #13857826;
