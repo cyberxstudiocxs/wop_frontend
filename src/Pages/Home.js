@@ -151,48 +151,7 @@ const Home = () => {
               </div>
             ))}
 
-            {/* <div className="col-lg-4">
-            <div className="points-lists">
-              <ul>
-                <li>
-                  <a> React Native/ Angular JS/ WordPress</a>
-                </li>
-                <li>
-                  <a> Digital Marketing/Social Media Marketing</a>
-                </li>
-                <li>
-                  <a>Animations/Video Creation</a>
-                </li>
-                <li>
-                  <a>Creative Writer</a>
-                </li>
-                <li>
-                  <a> Data Entry/Virtual Assistant</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="points-lists">
-              <ul>
-                <li>
-                  <a> Virtual Assistant </a>
-                </li>
-                <li>
-                  <a> Accounting & Bookkeeping</a>
-                </li>
-                <li>
-                  <a>Project Management </a>
-                </li>
-                <li>
-                  <a> Shopify Store Development</a>
-                </li>
-                <li>
-                  <a> Customer Service</a>
-                </li>
-              </ul>
-            </div>
-          </div> */}
+         
           </div>
           <div className="row ">
             <div className="col-lg-12">

@@ -53,3 +53,11 @@ section.main-outer-profile- {
     padding: 40px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
+
+.profile-box h3{
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+
+}

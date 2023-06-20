@@ -12,13 +12,18 @@
 }
 
 
-
-.onlinejob-info h3 {
-    font-size:18px;
-    font-weight:600;
-    margin-bottom: 20px;
+.jobss-infoo {
+    text-align: center;
+    padding: 30px 72px;
 }
-
+.jobss-infoo h2{
+font-weight: 600;
+font-size: 30px;
+}
+.middle-box-bnts {
+    margin: 30px 0px 70px 0px;
+    text-align: center;
+}
 .onlinejob-info h3 span {
      background-color:#13857826;
     padding:7px;
@@ -83,23 +88,31 @@
       
 
 
-
+/* single details job pages  */
 
 section.single-job-post-jobseeker {
     background-color: #000;
     color: #fff;
     padding: 100px;
 }
-.aboceeee {
-    margin-top: -50px;
+
+.jobseeker-post-banner{
+    text-align: center;
+    padding: 30px;
+}
+.jobseeker-post-banner h3{
+    font-size: 30px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 .sameee-boxx {
-    margin-top: -50px;
+    margin-top: -50px !important ;
+    margin-bottom: 50px;
     display: flex;
     background-color: #fff;
     border: 2px solid #fff;
     border-radius: 12px;
-    padding: 12px 20px;
+    padding: 30px 20px 10px 40px !important;
     justify-content: center;
     align-items: center;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -108,7 +121,22 @@ section.single-job-post-jobseeker {
 .types-box {
     display: flex;
 }
+svg.singlee-icons {
+    font-size: 40px;
+    color: #138578;
+}
 
+.works-info {
+    margin-left: 20px;
+}
+
+.works-info  h5 {
+    font-size:18px;
+    font-weight:600;
+    text-transform:uppercase;
+    margin-bottom: 0px;
+    
+}
 a.editjobs {
     text-decoration: none;
     color: #138578;
@@ -121,7 +149,13 @@ a.Deletejobs {
       font-size: 14px;
       margin-left:10px;
 }
+.onlinejob-info h3 {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
 
+    margin-bottom: 20px !important;
+}
 /* jobseeeker profile css start here */
 
 section.jobseeker-profile {

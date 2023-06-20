@@ -4,7 +4,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { FaSearchPlus } from "react-icons/fa";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { BiSupport } from "react-icons/bi";
-import { AiOutlineSetting } from "react-icons/ai";
+import { AiFillProfile } from "react-icons/ai";
 import { AiOutlineCopy } from "react-icons/ai";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -171,7 +171,7 @@ const ChangePassword = () => {
 
             <div className="col-lg-3 quick-box">
               <div className="quick-box1">
-                <AiOutlineSetting className="acoount-icons" />
+              <FaSearchPlus className="acoount-icons" />
                 <h3> Find the right worker through skill you need.</h3>
                 <Link className="account-setting-btns">Advanced Search</Link>
               </div>
@@ -179,7 +179,8 @@ const ChangePassword = () => {
 
             <div className="col-lg-3 quick-box">
               <div className="quick-box1">
-                <FaSearchPlus className="acoount-icons" />
+              <AiFillProfile  className="acoount-icons" />
+               
                 <h3> Read case studies from our valued customers</h3>
                 <Link className="account-setting-btns">Browse Profile</Link>
               </div>

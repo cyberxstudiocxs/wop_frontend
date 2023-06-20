@@ -1,6 +1,7 @@
 import "../../styles/jobsekeer.css";
 import { useEffect,useState } from "react";
-import { FaSuitcase } from "react-icons/fa";
+import { FaSuitcase  ,FaRegCalendarAlt} from "react-icons/fa"; 
+import { BiDollarCircle } from "react-icons/bi"; 
 import {useLocation} from 'react-router-dom';
 import axios from "axios";
 import moment from "moment/moment";
@@ -42,12 +43,12 @@ const DetailJobPost = () => {
         </div>
       </section>
       <div className="container">
-        <div className="row  aboceeee">
+        <div className="row  ">
           <div className="sameee-boxx">
             <div className="col-lg-4">
               <div className="types-box">
                 <div className="work-icons">
-                  <FaSuitcase />
+                  <FaSuitcase  className="singlee-icons "/>
                 </div>
                 <div className="works-info">
                   <h5> Types of works</h5>
@@ -58,7 +59,7 @@ const DetailJobPost = () => {
             <div className="col-lg-4">
               <div className="types-box">
                 <div className="work-icons">
-                  <FaSuitcase />
+                  <BiDollarCircle  className="singlee-icons" />
                 </div>
                 <div className="works-info">
                   <h5> salary</h5>
@@ -72,7 +73,7 @@ const DetailJobPost = () => {
             <div className="col-lg-4">
               <div className="types-box">
                 <div className="work-icons">
-                  <FaSuitcase />
+                  <FaRegCalendarAlt  className="singlee-icons" />
                 </div>
                 <div className="works-info">
                   <h5> Date Post </h5>

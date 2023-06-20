@@ -12,15 +12,15 @@ const ContactUs = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="contactus">
-                <h2> Contact Us for Dedicated Support and Assistance</h2>
+                <h2> Contact Us </h2>
                 <p>
-                
-                  At Work Online Pakistan, we value your experience and are
-                  committed to providing exceptional support. Whether you have
-                  some questions or concerns or need assistance with our
-                  platform, our dedicated support team is here to help. Fill out
-                  the contact support form below, so team WOP can provide you
-                  with the assistance you are looking for.
+                  At WOP, our customer support team is readily available to
+                  provide you with the best possible assistance.Please contact
+                  us. We are here to assist you! Whether you are looking for a
+                  job or a company with job openings, we are devoted to provide
+                  you with top-notch customer service and support. You can reach
+                  out to us by phone, email, or by submitting the contact form
+                  below, and we'll get back to you at our earliest.
                 </p>
               </div>
             </div>
@@ -141,11 +141,7 @@ const ContactUs = () => {
                   </Form.Group>
 
                   <div className="text-center my-3">
-                    <Button
-                      
-                      type="submit"
-                      className="loginbtn"
-                    >
+                    <Button type="submit" className="loginbtn">
                       Send Message
                     </Button>
                   </div>

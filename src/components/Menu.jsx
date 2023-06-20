@@ -68,7 +68,7 @@ const Menu = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                How Its Work
+                How It Works
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <Link className="dropdown-item menuitem" href="#">
@@ -81,7 +81,7 @@ const Menu = () => {
               </div>
             </li>
             {userId!=2 &&
-            <Link className="menuitem" to="/jobseeker">
+            <Link className="menuitem" to="/jobs">
               JobSeeker{" "}
             </Link>
             }
@@ -94,7 +94,7 @@ const Menu = () => {
             </Link>
              }
             {userId!=2 &&
-            <Link className="findjob-btn" to="/searchjob">
+            <Link className="findjob-btn" to="/jobseekersearchjob">
               Find jobs
             </Link>
             }

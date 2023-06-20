@@ -124,7 +124,7 @@ const goToDetailPage=(jobId)=>{
               <div className="sidebar-box">
                 <div className="box-shape"></div>
                 <p> Still haven't found</p>
-                <h6> "THE PROFECT JOB " ?</h6>
+                <h6> "THE PERFECT JOB " ?</h6>
                 <p> start receiving job alerts in your inbox daily !</p>
 
                 <p> 9331 jobs posted the past 30 days.</p>

@@ -50,15 +50,16 @@ function App() {
     <div>
       {spin === false ? (
         <>
-      
-        <Menu />
-          
+          <Menu />
 
           <Routes>
-            <Route path="/" element={
-            // isUser?<EmpDashBoard />:    
-            <Home/>
-            } />
+            <Route
+              path="/"
+              element={
+                // isUser?<EmpDashBoard />:
+                <Home />
+              }
+            />
             <Route path="/empdashhboard" element={<EmpDashBoard />} />
             <Route path="/accountsetting" element={<EmpAccountSetting />} />
             <Route
@@ -69,9 +70,9 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="/searchjob" element={<JobSearching />} />
+
             <Route path="/contactus" element={<ContactUs />} />
-            <Route path="/jobseeker" element={<LatestJObPost />} />
+            <Route path="/jobs" element={<LatestJObPost />} />
 
             <Route
               path="/jobseekerdashbaord"
@@ -86,7 +87,7 @@ function App() {
               path="/jobseekercreateprofile"
               element={<JobSeekerCreateProfile />}
             />
-
+            <Route path="/jobseekersearchjob" element={<JobSearching />} />
             <Route path="/rateskill" element={<RateYourSkils />} />
 
             <Route path="/detailjobpost" element={<DetailJobPost />} />

@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaSearchPlus } from "react-icons/fa";
 import { BiSupport } from "react-icons/bi";
-import { AiOutlineCopy, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineCopy } from "react-icons/ai";
+import { AiFillProfile } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
@@ -20,7 +21,7 @@ const EmpDashoBard = () => {
           <div className="row">
             <div className="col-lg-12 m-auto">
               <div className="emp-namess">
-                <h3> Hello , {name}</h3>
+                <h3> WellCome, {name}</h3>
               </div>
             </div>
           </div>
@@ -58,15 +59,15 @@ const EmpDashoBard = () => {
 
             <div className="col-lg-3 quick-box">
               <div className="quick-box1">
-                <AiOutlineSetting className="acoount-icons" />
-                <h3>Find the perfect fit by refining your search criteria.</h3>
+              <FaSearchPlus className="acoount-icons" />
+                <h3>Find the perfect fit for your project by refining your search criteria.</h3>
                 <Link className="account-setting-btns">Advanced Search</Link>
               </div>
             </div>
 
             <div className="col-lg-3 quick-box">
               <div className="quick-box1">
-                <FaSearchPlus className="acoount-icons" />
+              <AiFillProfile  className="acoount-icons" />
                 <h3>
                
                   Explore a diverse pool of talented individuals to best support
