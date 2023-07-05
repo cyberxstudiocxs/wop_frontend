@@ -1,12 +1,58 @@
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-
-
+import { useState,useEffect} from "react";
+import { Button } from "reactstrap";
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
+import axios from 'axios';
 
 const CreateProfileJobseeker = () => {
-
+  const navigat = useNavigate();
+  const [user,setUser]=useState()
+  const [state,setState]=useState({
+    title:'',
+    education:null,
+    job_type:null,
+    gender:"",
+    salary:"600000",
+    work_hours:"8 hours",
+    date_of_birth:"",
+    profile_desc:""
+  })
   
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      var decoded = jwt_decode(localStorage.getItem('token'));
+       setUser(decoded.result)
+     
+    }
+  }, []);
+
+  const handleChange=(e)=>{
+    let val;
+    val=e.target.value
+    // if(e.target.name==='date_of_birth'){
+    //   let date =new Date(e.target.value)
+    //   val=date
+    // }
+    setState({
+      ...state,
+      [e.target.name]:val
+    })
+  }
+
+  const saveProfile=(e)=>{
+     e.preventDefault()
+     
+     axios.put(`https://next.mazglobal.co.uk/wop-api/jobseekers/updateProfile/${user.id}`,state)
+     .then(res=>{
+      navigat("/rateskill"); 
+     }).catch(err=>console.log(err))
+      
+  
+  }
+
   return (
     <div>
       <section className="jobseeekr-steps">
@@ -38,7 +84,7 @@ const CreateProfileJobseeker = () => {
                 </p>
 
                 <div className="right-formsss">
-                  <Form>
+                  <Form onSubmit={saveProfile}>
                     <Row className="mb-3">
                       <Form.Group controlId="formJobTitle">
                         <Form.Label>Job Title</Form.Label>
@@ -46,6 +92,7 @@ const CreateProfileJobseeker = () => {
                           type="text"
                           name="title"
                           required
+                          onChange={e=>handleChange(e)}
                           placeholder="E.G Digital Marketing Specialist."
                           className="shadow-none"
                         />
@@ -55,16 +102,17 @@ const CreateProfileJobseeker = () => {
                     <Row className="mb-3">
                       <Form.Group
                         className="mb-3"
-                        controlId="exampleForm.ControlTextarea1"
+                        controlId="profileDesc"
                       >
                         <Form.Label>Profile Description</Form.Label>
                         <Form.Control
                           as="textarea"
                           rows={3}
+                          onChange={e=>handleChange(e)}
                           placeholder="Tell us summary about your skills and how you want to be known as a worker."
                           className="shadow-none"
                           required
-                          name="description"
+                          name="profile_desc"
                         />
                       </Form.Group>
                     </Row>
@@ -76,13 +124,14 @@ const CreateProfileJobseeker = () => {
                           aria-readonly="true"
                           defaultValue="Select Degree"
                           className="shadow-none"
-                          name="job_type"
+                          name="education"
+                          onChange={e=>handleChange(e)}
                           required
                         >
                           <option>Select Degree</option>
-                          <option>High School Diploma</option>
-                          <option>Bachelor Degree</option>
-                          <option>Associate Degree</option>
+                          <option value="1">High School Diploma</option>
+                          <option value="2">Bachelor Degree</option>
+                          <option value="3">Associate Degree</option>
                         </Form.Select>
                       </Form.Group>
                     </Row>
@@ -94,12 +143,13 @@ const CreateProfileJobseeker = () => {
                           aria-readonly="true"
                           defaultValue="Full Time"
                           className="shadow-none"
-                          name="job-types"
+                          name="job_type"
+                          onChange={e=>handleChange(e)}
                           required
                         >
-                          <option>Full Time</option>
-                          <option>Part Time</option>
-                          <option>Gig </option>
+                          <option value="1">Full Time</option>
+                          <option value="2">Part Time</option>
+                          <option value="3">Gig </option>
                         </Form.Select>
                       </Form.Group>
                     </Row>
@@ -109,42 +159,45 @@ const CreateProfileJobseeker = () => {
                         <Form.Label>Enter BirthDate</Form.Label>
                         <Form.Control
                           type="text"
-                          name="jobseeker_BirthDate"
+                          name="date_of_birth"
                           required
+                          onChange={e=>handleChange(e)}
                           className="shadow-none"
                         />
                       </Form.Group>
                     </Row>
                     <Row className="mb-3">
-                      <Form.Group controlId="kindOfStand">
+                      <Form.Group controlId="kindOfStand"   onChange={e=>handleChange(e)}>
                       <Form.Label>Gender</Form.Label>
                         <Form.Check
-                          value="male"
+                          value="Male"
+                          name="gender"
                           type="radio"
                           aria-label="radio 1"
                           label="Male"
                         />
                         <Form.Check
-                          value="female"
+                          value="Female"
+                          name="gender"
                           type="radio"
                           aria-label="radio 2"
                           label="Female"
                         />
                       </Form.Group>
                     </Row>
-
+{/* 
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                       <Form.Check
                         type="checkbox"
                         label="Yes I’m willing to use"
                       />
-                    </Form.Group>
+                    </Form.Group> */}
 
                     <div className="text-center">
 
-                    <Link className="step-btns"  to="/rateskill" >
+                <Button className="step-btns" >
                     Next
-                </Link>
+                </Button>
                     
                     </div>
                   </Form>

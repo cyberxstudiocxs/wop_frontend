@@ -6,6 +6,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import React,{ useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import Validation from "./Validations";
 import "../styles/login.css";
 import {  BsFillPeopleFill} from "react-icons/bs";
@@ -18,7 +19,7 @@ const Login = () => {
 
   const [modal, setModal] = React.useState(false);
   const toggle = () => setModal(!modal);
-
+  const [userToken, setUserToken] = useState()
   const [users, setUser] = useState({
     email: "",
     password: "",
@@ -40,6 +41,7 @@ const Login = () => {
     
     if(uId==1)
     {
+      //https://next.mazglobal.co.uk
       axios
       .post(
         "https://next.mazglobal.co.uk/wop-api/jobseekers/login",
@@ -54,9 +56,18 @@ const Login = () => {
         else{
           localStorage.setItem("token", result.data.token);
           localStorage.setItem("userId", 1);
-          setTimeout(()=>{
-            navigat("/jobseeker");
-          },2000)
+          var decoded = jwt_decode(result.data.token);
+          setUserToken(decoded.result)
+          if(decoded.result.login==0)
+          {
+            setTimeout(()=>{
+              navigat("/jobseekercreateprofile"); 
+            },2000)
+          }else{
+            setTimeout(()=>{
+              navigat("/jobseekerdashbaord"); 
+            },2000)
+          }
           setSpinner(false);
         
         }

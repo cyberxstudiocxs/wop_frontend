@@ -1,34 +1,95 @@
-import { Link } from "react-router-dom";
-
+import { Link, Router } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InputGroup from "react-bootstrap/InputGroup";
 import { BsSearch } from "react-icons/bs";
 import Select from "react-select";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import ReactStars from "react-rating-stars-component";
+import jwt_decode from "jwt-decode";
+import axios from 'axios'
 
 const RateYourSkils = () => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-    { value: "Mangoo", label: "Mangoo" },
-    { value: "Apple", label: "Apple" },
-  ];
+  const [skills,setSkills]=useState([])
+  const [user,setUser]=useState()
+  const [msg,setMsg]=useState('')
+  const [newSkill,setNewSkill]=useState({
+    jobseeker_id:null,
+    skill_id:null,
+    skill_period:"Less than 6 month",
+    proficiency:"",
+    experience:""
+  })
+  const [options,setOptions] =useState([]);
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-  const handleChange = () => {
+  const handleChange = (choice) => {
+
+    setNewSkill({
+      ...newSkill,
+      ['skill_id']:choice.value
+    })
     toggle();
   };
+
+  useEffect(() => {
+
+    if (localStorage.getItem("token")) {
+      var decoded = jwt_decode(localStorage.getItem('token'));
+       setUser(decoded.result)
+       console.log("dec",decoded.result)
+       setNewSkill({
+        ...newSkill,
+        ['jobseeker_id']:decoded.result.id
+       })
+    }
+
+     axios.get(`https://next.mazglobal.co.uk/wop-api/skills`)
+     .then(res=>{
+      setSkills(res.data.data)
+      let list=[];
+      res.data.data.map(it=>{
+        list.push({value:it.id,label:it.description})
+      })
+      setOptions(list)
+     }).catch(err=>console.log(err))
+  }, []);
 
   // rating stars
   const ratingChanged = (newRating) => {
     console.log(newRating);
+    setMsg('')
+    setNewSkill({
+      ...newSkill,
+      ['proficiency']: newRating +" "+ "star",
+      ['jobseeker_id']:user.id
+    })
   };
 
+  const handleSkillChange=(e)=>{
+    setNewSkill({
+      ...newSkill,
+      [e.target.name]:e.target.value
+    })
+  }
+
+  const addSkill=(e)=>{
+
+    if(!newSkill.proficiency){
+      setMsg('Please rate your skill')
+      e.preventDefault()
+    }
+    else{
+      axios.post(`https://next.mazglobal.co.uk/wop-api/jobseekers/addSkill`,newSkill)
+      .then(res=>{
+        toggle()
+      })
+      .catch(err=>console.log(err))
+      
+    }
+  }
   //
   return (
     <div>
@@ -70,7 +131,7 @@ const RateYourSkils = () => {
                     <Select
                       options={options}
                       placeholder="Search Skill"
-                      onChange={() => handleChange()}
+                      onChange={(choice) => handleChange(choice)}
                     />
                   </InputGroup>
                 </div>
@@ -88,18 +149,19 @@ const RateYourSkils = () => {
         <ModalHeader toggle={toggle} className="emp-box"></ModalHeader>
         <h3 className="emp-heading"> 3D Animation</h3>
         <ModalBody>
-          <Form>
+          <Form >
             <Row className="mb-3">
               <Form.Group controlId="formSkillTypes">
                 <Form.Label>EXPERIENCE LEVEL FOR THIS SKILL </Form.Label>
                 <Form.Select
                   aria-readonly="true"
-                  defaultValue="Select Degree"
+                  defaultValue="Select Time Period"
                   className="shadow-none"
-                  name="job_type"
+                  name="skill_period"
                   required
+                  onChange={(e)=>handleSkillChange(e)}
                 >
-                  <option selected>Less than 6 month </option>
+                  <option value="Less than 6 month"selected>Less than 6 month </option>
                   <option value="One Year">One Year</option>
                   <option value="Two Year">Two Year</option>
                   <option value="Three Year">Three Year</option>
@@ -114,6 +176,9 @@ const RateYourSkils = () => {
                 size={24}
                 activeColor="#ffd700"
               />
+              {msg &&
+                <p style={{color:'red'}}>{msg}</p>
+              }
             </div>
 
             <Row className="mb-3">
@@ -127,14 +192,14 @@ const RateYourSkils = () => {
                   rows={3}
                   placeholder="Tell us summary about your skills and how you want to be known as a worker."
                   className="shadow-none"
-                  required
-                  name="descriptionskill"
+                  onChange={(e)=>handleSkillChange(e)}
+                  name="experience"
                 />
               </Form.Group>
             </Row>
 
             <div className="text-center">
-              <Link className="step-btns">Save</Link>
+              <Button className="step-btns" onClick={addSkill}>Save</Button>
             </div>
           </Form>
         </ModalBody>
