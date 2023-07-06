@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { useState,useEffect} from "react";
-import { Button } from "reactstrap";
+
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import axios from 'axios';
 
 const CreateProfileJobseeker = () => {
@@ -99,23 +100,7 @@ const CreateProfileJobseeker = () => {
                       </Form.Group>
                     </Row>
 
-                    <Row className="mb-3">
-                      <Form.Group
-                        className="mb-3"
-                        controlId="profileDesc"
-                      >
-                        <Form.Label>Profile Description</Form.Label>
-                        <Form.Control
-                          as="textarea"
-                          rows={3}
-                          onChange={e=>handleChange(e)}
-                          placeholder="Tell us summary about your skills and how you want to be known as a worker."
-                          className="shadow-none"
-                          required
-                          name="profile_desc"
-                        />
-                      </Form.Group>
-                    </Row>
+                 
 
                     <Row className="mb-3">
                       <Form.Group controlId="formEmpTypess">
@@ -155,14 +140,68 @@ const CreateProfileJobseeker = () => {
                     </Row>
 
                     <Row className="mb-3">
-                      <Form.Group controlId="formPersonname">
-                        <Form.Label>Enter BirthDate</Form.Label>
+                      <Form.Group  as={Col} controlId="formPersonname">
+                        <Form.Label>Enter Date Of Birth</Form.Label>
                         <Form.Control
                           type="text"
                           name="date_of_birth"
                           required
                           onChange={e=>handleChange(e)}
                           className="shadow-none"
+                        />
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formPersonname">
+                        <Form.Label>Enter Your Age</Form.Label>
+                        <Form.Control
+                          type="number"
+                          name="age"
+                          required
+                          onChange={e=>handleChange(e)}
+                          className="shadow-none"
+                        />
+                      </Form.Group>
+                    </Row>
+
+
+                    <Row className="mb-3">
+                      <Form.Group  as={Col} controlId="formPersonname">
+                        <Form.Label>Current Salary</Form.Label>
+                        <Form.Control
+                          type="number"
+                          name="salary"
+                          required
+                          onChange={e=>handleChange(e)}
+                          className="shadow-none"
+                        />
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formPersonname">
+                        <Form.Label>Enter Work Hours</Form.Label>
+                        <Form.Control
+                          type="number"
+                          name=" work_hours"
+                          required
+                          onChange={e=>handleChange(e)}
+                          className="shadow-none"
+                        />
+                      </Form.Group>
+                    </Row>
+
+                    <Row className="mb-3">
+                      <Form.Group
+                        className="mb-3"
+                        controlId="profileDesc"
+                      >
+                        <Form.Label>Profile Description</Form.Label>
+                        <Form.Control
+                          as="textarea"
+                          rows={3}
+                          onChange={e=>handleChange(e)}
+                          placeholder="Tell us summary about your skills and how you want to be known as a worker."
+                          className="shadow-none"
+                          required
+                          name="profile_desc"
                         />
                       </Form.Group>
                     </Row>
@@ -185,6 +224,8 @@ const CreateProfileJobseeker = () => {
                         />
                       </Form.Group>
                     </Row>
+
+                  
 {/* 
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                       <Form.Check
@@ -194,10 +235,10 @@ const CreateProfileJobseeker = () => {
                     </Form.Group> */}
 
                     <div className="text-center">
-
-                <Button className="step-btns" >
-                    Next
-                </Button>
+                    <Link className="step-btns" >
+                  Next
+                </Link>
+                  
                     
                     </div>
                   </Form>

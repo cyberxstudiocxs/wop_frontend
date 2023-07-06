@@ -80,7 +80,9 @@ a.sidebar-btns:hover{
     color: #138578;
 }
 .right-sidebar-jobseeker {
-    padding-left: 60px;
+   background-color: #fff;
+   padding: 40px;
+   border-radius: 12px;
 }
 
 a.step-btns {
@@ -117,3 +119,15 @@ a.step-btns {
 }
 
 
+.SkilssShow-box {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    margin: 30px 0px;
+    box-shadow: 5px 12px 14px -5px gray;
+    
+}
+
+.SkilssShow-box p {
+    margin-bottom: 0px;
+}

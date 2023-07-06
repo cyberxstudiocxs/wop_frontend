@@ -2,7 +2,7 @@ import { Link, Router } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import InputGroup from "react-bootstrap/InputGroup";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch , BsFillArrowRightCircleFill } from "react-icons/bs";
 import Select from "react-select";
 import { useState ,useEffect} from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
@@ -136,6 +136,11 @@ const RateYourSkils = () => {
                   </InputGroup>
                 </div>
 
+
+<div className="SkilssShow-box">
+<BsFillArrowRightCircleFill />
+  <p>  3d Animation</p>
+</div>
                 <Link className="step-btns" to="/">
                   Next
                 </Link>

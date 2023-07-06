@@ -84,11 +84,11 @@ const JobseekerProfile = () => {
                 <p className="salaryjobseeeker"> Gender </p>
                 <p className="typess"> Male </p>
 
-                <p className="salaryjobseeeker"> Website </p>
-                <p className="typess"> Not Specified </p>
+                <p className="salaryjobseeeker"> Salary </p>
+                <p className="typess">51472 </p>
 
-                <p className="salaryjobseeeker"> Address </p>
-                <p className="typess"> Not Specified </p>
+                <p className="salaryjobseeeker"> Education </p>
+                <p className="typess"> Bscs </p>
               </div>
             </div>
           </div>
