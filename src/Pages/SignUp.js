@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import "../styles/register.css";
 import Validation from "../components/Validations"
+import MyAlert from '../components/MyAlert'
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
@@ -146,6 +147,7 @@ const SignUp = () => {
           setSpinner(false);
           
           setTimeout(()=>{
+           // <MyAlert msg={result.data.message}/>
             alert(result.data.message);
             jobhandleClose()
           },1000)
@@ -155,6 +157,7 @@ const SignUp = () => {
         
           setSpinner(false);
           setTimeout(()=>{
+            //<MyAlert msg={err.response.data.message}/>
             alert(err.response.data.message);
             jobhandleClose()
           },1000)

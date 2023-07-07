@@ -16,8 +16,8 @@ const CreateProfileJobseeker = () => {
     education:null,
     job_type:null,
     gender:"",
-    salary:"600000",
-    work_hours:"8 hours",
+    salary:"",
+    work_hours:"",
     date_of_birth:"",
     profile_desc:""
   })
@@ -46,6 +46,8 @@ const CreateProfileJobseeker = () => {
   const saveProfile=(e)=>{
      e.preventDefault()
      
+     state.work_hours= state.work_hours.toString()
+     state.salary=state.salary.toString()
      axios.put(`https://next.mazglobal.co.uk/wop-api/jobseekers/updateProfile/${user.id}`,state)
      .then(res=>{
       navigat("/rateskill"); 
@@ -151,7 +153,7 @@ const CreateProfileJobseeker = () => {
                         />
                       </Form.Group>
 
-                      <Form.Group as={Col} controlId="formPersonname">
+                      {/* <Form.Group as={Col} controlId="formPersonname">
                         <Form.Label>Enter Your Age</Form.Label>
                         <Form.Control
                           type="number"
@@ -160,7 +162,7 @@ const CreateProfileJobseeker = () => {
                           onChange={e=>handleChange(e)}
                           className="shadow-none"
                         />
-                      </Form.Group>
+                      </Form.Group> */}
                     </Row>
 
 
@@ -180,7 +182,7 @@ const CreateProfileJobseeker = () => {
                         <Form.Label>Enter Work Hours</Form.Label>
                         <Form.Control
                           type="number"
-                          name=" work_hours"
+                          name="work_hours"
                           required
                           onChange={e=>handleChange(e)}
                           className="shadow-none"
@@ -235,10 +237,10 @@ const CreateProfileJobseeker = () => {
                     </Form.Group> */}
 
                     <div className="text-center">
-                    <Link className="step-btns" >
-                  Next
-                </Link>
-                  
+                    <button type="submit" className="step-btns" >
+                          Next
+                    
+                    </button>
                     
                     </div>
                   </Form>

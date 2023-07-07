@@ -114,7 +114,31 @@ const Menu = () => {
          
               menuVariant="light"
             >
-              
+            
+            {userId==1 &&
+              <>
+              <Link to="/jobseekerprofile">
+                <NavDropdown.Item href="/jobseekerprofile">
+                  Profile
+                </NavDropdown.Item>
+              </Link>
+              <Link to="/jobseekerdashbaord">
+                <NavDropdown.Item href="/jobseekerdashbaord">
+                  JobSeeker
+                </NavDropdown.Item>
+              </Link>
+              {/* <Link to="/manageprofile">
+                <NavDropdown.Item href="/manageprofile">
+                  Update Profile
+                </NavDropdown.Item>
+              </Link> */}
+              </>
+             }
+
+
+
+              {userId==2 &&
+              <>
               <Link to="/accountsetting">
                 <NavDropdown.Item href="/userProfile/profile">
                   Account Setting
@@ -130,6 +154,8 @@ const Menu = () => {
                   Update Profile
                 </NavDropdown.Item>
               </Link>
+              </>
+             }
 
               <NavDropdown.Divider />
               <NavDropdown.Item>
