@@ -9,6 +9,7 @@ import jwt_decode from "jwt-decode";
 const EmpDashoBard = () => {
   const [name, setName] = useState();
   useEffect(() => {
+ 
     var decoded = jwt_decode(localStorage.getItem("token"));
 
     setName(decoded.result.full_name);

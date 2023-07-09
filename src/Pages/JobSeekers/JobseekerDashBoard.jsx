@@ -12,6 +12,7 @@ const JobseekerDashBoard = () => {
   const [profile,setProfile]=useState()
 
   useEffect(() => {
+   
     if (localStorage.getItem("token")) {
       var decoded = jwt_decode(localStorage.getItem('token'));
        setUser(decoded.result)
@@ -52,7 +53,7 @@ const JobseekerDashBoard = () => {
               <div className=" obseekerdashboard">
                 <div className="jobseeker-body">
                   <div className="jobseeker-person">
-                    <Link  className="editprofileee"> edit profile </Link>
+                    <Link to="/jobseekerprofile"  className="editprofileee"> edit profile </Link>
                   </div>
                   <div className="jobseeker-jobtype">
                     <p className="salaryjobseeeker"> salary  {profile?profile.salary:""} </p>

@@ -23,6 +23,7 @@ const CreateProfileJobseeker = () => {
   })
   
   useEffect(() => {
+
     if (localStorage.getItem("token")) {
       var decoded = jwt_decode(localStorage.getItem('token'));
        setUser(decoded.result)

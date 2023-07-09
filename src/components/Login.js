@@ -62,10 +62,12 @@ const Login = () => {
           {
             setTimeout(()=>{
               navigat("/jobseekercreateprofile"); 
+              window.location.reload()
             },2000)
           }else{
             setTimeout(()=>{
               navigat("/jobseekerdashbaord"); 
+              window.location.reload()
             },2000)
           }
           setSpinner(false);

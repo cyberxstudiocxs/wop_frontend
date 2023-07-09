@@ -1,15 +1,24 @@
-import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+
+import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import "../styles/register.css";
 import Validation from "../components/Validations"
-import MyAlert from '../components/MyAlert'
+
 
 const SignUp = () => {
   const [show, setShow] = useState(false);
+  const [alertMsg, setAlertMsg] = useState('');
+  const [isAlert, setIsAlert] = useState(false);
+  const alertToggle = () => setIsAlert(!isAlert);
+  const [jobseekerModal, setJobSeekerModal] = React.useState(false);
+  const jobseekerToggle = () => setJobSeekerModal(!jobseekerModal);
+  const [employerModal, setEmployerModal] = React.useState(false);
+  const employerToggle = () => setEmployerModal(!employerModal);
+
   const handleClose = () => {
     setUser({
       fullname: "",
@@ -91,8 +100,10 @@ const SignUp = () => {
           console.log(result.data);
           setSpinner(false);
           setTimeout(()=>{
-            alert(result.data.message);
-            handleClose()
+            
+            setAlertMsg(result.data.message)
+            alertToggle()
+            employerToggle()
           },1000)
         
 
@@ -103,8 +114,9 @@ const SignUp = () => {
           console.log(err.response.data.message);
           setSpinner(false);
           setTimeout(()=>{
-            alert(err.response.data.message);
-            handleClose()
+            setAlertMsg(err.response.data.message)
+            alertToggle()
+            employerToggle()
           },1000)
           
         });
@@ -148,8 +160,13 @@ const SignUp = () => {
           
           setTimeout(()=>{
            // <MyAlert msg={result.data.message}/>
-            alert(result.data.message);
-            jobhandleClose()
+            
+            setAlertMsg(result.data.message)
+            alertToggle()
+           
+            //alert(result.data.message);
+            jobseekerToggle()
+            //jobhandleClose()
           },1000)
         
         })
@@ -158,8 +175,13 @@ const SignUp = () => {
           setSpinner(false);
           setTimeout(()=>{
             //<MyAlert msg={err.response.data.message}/>
-            alert(err.response.data.message);
-            jobhandleClose()
+            setAlertMsg(err.response.data.message)
+            alertToggle()
+          
+           
+           // alert(err.response.data.message);
+           jobseekerToggle()
+           // jobhandleClose()
           },1000)
         });
     }
@@ -175,19 +197,16 @@ const SignUp = () => {
                 <h3>I’m an Employer</h3>
 
                 <p>Seeking Exceptional Hires </p>
-                <Link className="emp-btns" onClick={handleShow}>
+                <Link className="emp-btns" onClick={employerToggle}>
                   Start Recruitment Now!
                 </Link>
                 <Modal
-                  show={show}
-                  onHide={handleClose}
-                  backdrop="static"
-                  keyboard={false}
+                  isOpen={employerModal} toggle={employerToggle}
                   className="emp-box-outer"
                 >
-                  <Modal.Header closeButton className="emp-box"></Modal.Header>
+                  <ModalHeader closeButton className="emp-box"></ModalHeader>
                   <h3 className="emp-heading">Register as an Employer </h3>
-                  <Modal.Body>
+                  <ModalBody>
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Full Name</Form.Label>
@@ -295,7 +314,7 @@ const SignUp = () => {
                         </Link>
                       </div>
                     </Form>
-                  </Modal.Body>
+                  </ModalBody>
                 </Modal>
               </div>
             </div>
@@ -304,20 +323,17 @@ const SignUp = () => {
                 <h3>I’m a Job Seeker</h3>
                 <p>Seeking Best Employment Opportunities</p>
 
-                <Link className="worker-btns" onClick={jobhandleShow}>
+                <Link className="worker-btns" onClick={jobseekerToggle}>
                   Create Account
                 </Link>
 
                 <Modal
-                  show={jobshow}
-                  onHide={jobhandleClose}
-                  backdrop="static"
-                  keyboard={false}
+                  isOpen={jobseekerModal} toggle={jobseekerToggle}
                   className="emp-box-outer"
                 >
-                  <Modal.Header closeButton className="emp-box"></Modal.Header>
+                  <ModalHeader toggle={jobseekerToggle} closeButton className="emp-box"></ModalHeader>
                   <h3 className="emp-heading">Sign Up for a Job Seeker Account for Free </h3>
-                  <Modal.Body>
+                  <ModalBody>
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicName">
                         <Form.Label>Full Name</Form.Label>
@@ -430,7 +446,7 @@ const SignUp = () => {
                         </Link>
                       </div>
                     </Form>
-                  </Modal.Body>
+                  </ModalBody>
                 </Modal>
               </div>
             </div>
@@ -454,7 +470,19 @@ const SignUp = () => {
         </div>
       </div>
 </section>
-     
+   <Modal isOpen={isAlert} toggle={alertToggle}>
+        <ModalHeader toggle={alertToggle} className="emp-box"></ModalHeader>
+        <h3 className="emp-heading">Notification!</h3>
+        <ModalBody>
+          <p>
+            {alertMsg}
+          </p>
+    
+        </ModalBody>
+        <ModalFooter>
+        <Button  className="worker-btns" toggle={alertToggle} >Ok</Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };
