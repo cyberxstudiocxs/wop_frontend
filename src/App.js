@@ -28,6 +28,7 @@ import JobseekerAccountSetting from "./Pages/JobSeekers/JobseekerAccoutSetting";
 
 import RateYourSkils from "./components/RateYourSkills";
 import JobSeekerCreateProfile from "./Pages/JobSeekers/JobSeekerCreateProfile";
+import SkillSearch from "./Pages/skillsearch";
 
 function App() {
   const [spin, setSpin] = useState(false);
@@ -103,7 +104,7 @@ function App() {
             <Route path="/termsofuse" element={<TermOfUse />} />
 
             <Route path="/privacypolicy" element={<PrivacyPolicay />} />
-
+ <Route  path="/searchskill"  element={<SkillSearch />} />
             <Route
               path="/manageprofile"
               element={
