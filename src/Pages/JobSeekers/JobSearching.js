@@ -17,7 +17,7 @@ const JobSearching = () => {
   const location = useLocation();
 
   useEffect(() => {
-    //https://next.mazglobal.co.uk/wop-api/joblistings
+ 
     let data = [];
     axios
       .get(`https://next.mazglobal.co.uk/wop-api/joblistings`)

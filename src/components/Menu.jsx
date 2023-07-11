@@ -81,8 +81,8 @@ const Menu = () => {
               </div>
             </li>
             {userId!=2 &&
-            <Link className="menuitem" to="/jobs">
-              JobSeeker{" "}
+            <Link className="postjob-btn" to="/jobs">
+              JobBoard{" "}
             </Link>
             }
             <Link className="menuitem" to="/contactus">
