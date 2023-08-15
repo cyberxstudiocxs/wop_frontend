@@ -127,7 +127,7 @@ const EmpJobListing = () => {
                         <th>Job Descripition </th>
                         <th>Applicants </th>
                       
-                        <th> Status</th>
+                        <th> New Applicants</th>
                         <th>Date Posted </th>
                         <th>Actions </th>
                       </tr>
@@ -153,6 +153,11 @@ const EmpJobListing = () => {
                               <span style={{cursor:'pointer'}}
                                 className="Deletejobs" onClick={()=>confirmDialogue(job.job_id)}>
                                 Delete
+                              </span>
+
+                              <span style={{cursor:'pointer'}}
+                                className="postjob-btn">
+                                View Cv
                               </span>
                             </div>
                           </th>
