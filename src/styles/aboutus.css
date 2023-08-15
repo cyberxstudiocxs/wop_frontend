@@ -1,0 +1,55 @@
+section.about-us {
+    padding: 100px 0px;
+}
+
+.about-inner     {
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.about-inner h3{
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+}
+.about-inner p{
+font-size: 18px;
+    color: #555;
+}
+
+
+.accordion .card-header{
+
+  color: #fff;
+  display: block;
+  text-align: left;
+  background-color: #138578;
+  color: #222;
+  padding: 20px;
+  margin-bottom: 20px !important;
+}
+.accordion .card-header a.card-title{
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+.card-header.collapsed{
+  background: #000;
+}
+
+.accordion .card-header:after {
+  font-family: 'FontAwesome';  
+  content: "\f068";
+  float: right; 
+  color: #fff;
+}
+.card-body.collapse.show{
+  background-color: #f3f3f3;
+}
+.accordion .card-header.collapsed:after {
+  /* symbol for "collapsed" panels */
+  content: "\f067"; 
+  color: #fff;
+}
+  

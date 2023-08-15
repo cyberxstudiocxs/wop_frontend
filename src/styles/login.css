@@ -1,0 +1,38 @@
+.outer-box {
+  
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-box {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   
+    width: 100%;
+    border: 2px solid 
+white;
+ padding:40px 20px;
+ 
+}
+.outer-inputss.mb-3.input-group {
+    background-color: #e8f0fe;
+}
+
+.serach-icons {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 0px 12px;
+}
+
+button.loginbtn.btn.btn-secondary {
+    border: 2px solid #138578;
+
+    background-color: #138578 ;
+    color: #fff;
+    padding: 5px 30px;
+    outline: none;
+   
+}

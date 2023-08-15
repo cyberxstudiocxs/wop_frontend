@@ -1,0 +1,241 @@
+
+.main-register-box{
+    background-image: url("../assets/images/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.emp-btns {
+    background-color: #fff !important;
+    color: #138677 !important;
+    padding: 10px 30px;
+    border: 2px solid #138677 !important ;
+   
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+a.worker-btns:hover{
+    text-decoration: none;
+}
+.emp-outer-box {
+    text-align: center;
+    padding-top: 272px;
+}
+
+.worker-outer-box {
+    text-align: center;
+    padding-top: 272px;
+}
+.worker-btns {
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #138677 !important;
+    border-color:#138677 !important; 
+    padding: 10px 25px;
+    
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 600;
+}
+.worker-btns:hover {
+    background-color: #fff !important;
+    border-color:#138677 !important;
+    color:#138677 !important; 
+    border: 1px solid;
+}
+.emp-outer-box h3 {
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+   
+    font-family: 'Raleway', sans-serif;
+}
+.emp-outer-box  p {
+    color: #fff;
+    font-size: 18px;
+}
+.worker-outer-box h3{
+    color: #138677;
+    font-size: 35px;
+    font-weight: 700;
+ 
+    font-family: 'Raleway', sans-serif;
+}
+.middle-box {
+    background-image: url("../assets/images/CTA-(1).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    padding: 80px 30px;
+   
+}
+.middle-box.em-dashboard-cta-two{
+    background-image: url("../assets/images/Welcome-to-Your-Dashboard.jpg");
+    height: 300px;  
+}
+.middle-box.emp-dashboard {
+    background-image: url("../assets/images/Welcome-to-employer-Dashboard-.jpg");
+    height: 300px;  
+}
+.middle-box.saved-job-cta{
+    background-image: url("../assets/images/Recent-Job-Openings-CTA.jpg");
+    height: 300px;
+}
+
+.middle-box.jobsearchingbg{
+    background-image: url("../assets/images/Advanced-Search-CTA.jpg");
+    height: 300px;
+}
+.middle-box.postajob{
+    background-image: url("../assets/images/Post-a-Job-CTA.jpg");
+    height: 300px;
+}
+
+.middle-box.updateaccountsetting {
+    background-image: url("../assets/images/Update-Account-Settings.jpg");
+    height: 300px;
+}
+.middle-box  p{
+    max-width: 500px;
+}
+
+
+/*employe register pop up style start here   */
+.emp-box.modal-header {
+    border-bottom: none;
+}
+
+.modal-content {
+    padding: 40px 10px;
+}
+h3.emp-heading {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+input#formBasicName {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+
+input#formBasicEmail {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+
+input#formBasicPassword {
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+input#formBasicPhone{
+    background-color: #F7F7F7;
+   border: none;
+   padding: 12px 20px;
+   outline: none;
+}
+input#formBasicName:focus ,input#formBasicEmail:focus ,input#formBasicPassword:focus  , input#formBasicPhone:focus{
+    border: 3px solid #138677;
+
+}
+button.loginbtns.btn.btn-primary {
+    
+    background-color: #138677;
+    border: 1px solid #138677;
+    color: #fff;
+    padding: 5px 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-size: 16px;
+    width: 60%;
+    margin: 0 auto;
+    outline: none;
+}
+
+.cta-banner{
+    padding: 50px 0px;
+}
+a.gologin {
+    text-decoration: none;
+    color: #138677;
+    font-size: 25px;
+}
+
+/* employer dashboard css start here */
+.space2{
+margin: 40px 0px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+
+.pricing-box-plan{
+width: 30% ! important;
+}
+}
+@media screen and (max-width: 600px) {
+    .emp-outer-box  ,.worker-outer-box {
+    padding-top: 100px;
+    }
+    .emp-outer-box h3 ,.emp-outer-box p , .worker-outer-box h3 , .worker-outer-box p {
+        color: #000;
+    }
+    .cta-banner{
+        padding: 20px 0px;
+    }
+    .middle-box{
+        padding: 20px 20px;
+        background-color: #fff;
+    }
+    .middle-box p{
+        width: 100%;
+    }
+    .emp-namess h3, .pricng-box h3{
+        font-size: 28px;
+    }
+    .middle-box.emp-dashboard ,.middle-box.em-dashboard-cta-two ,.middle-box.postajob ,.middle-box.updateaccountsetting ,.jobseeker-cta-bg.profilecta  , .jobseeker-cta-bg {
+      
+        background-position: left;
+        padding: 50px;
+    }
+
+    .middle-box.jobsearchingbg{
+        background-position: left;
+        padding: 30px;
+    }
+    .spacejobsearch{
+        margin: 50px 0px 0px 0px;
+    }
+  
+    .pricing-box-plan{
+        width: 90% !important;
+        margin: 20px 20px;
+    }
+/* manage profile */
+    section.main-outer-profile- {
+        padding: 50px 15px;
+        background-color: #7e7e7e2b;
+    }
+    .successfully-box {
+        text-align: center;
+        padding: 0px 20px;
+    }
+    }

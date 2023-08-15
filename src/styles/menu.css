@@ -1,0 +1,96 @@
+
+/***************    Menu css start here  *****************/
+a.menuitem {
+    padding: 10px 15px;
+    color: #000!important;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+
+a.postjob-btn {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 25px;
+    background-color: #138578;
+    color: #fff !important;
+    margin:5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+a.findjob-btn {
+     text-decoration: none;
+     font-size: 16px;
+     font-weight: 600;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    padding: 0px 25px;
+    background-color: #000;
+    color: #fff;
+    margin:5px;
+    word-spacing: 2px;
+}
+a.findjob-btn:hover{
+    color: #fff;
+}
+a.login-btn.mx-3 ,a.signup-btn  {
+    text-decoration: none;
+    background-color: transparent;
+    color: #000!important;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    
+}
+
+.nav-item.dropdown {
+    display: flex;
+}
+.dropdown-menu.show.dropdown-menu-light {
+    background-color: #000;
+}
+.dropdown-menu.show.dropdown-menu-light a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.dropdown-menu.show.dropdown-menu-light a p{
+    color: #fff;
+}
+.dropdown-menu.show.dropdown-menu-light a:hover {
+    color: #fff;
+    background-color: #138578;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+
+    a.menuitem{
+        font-size: 14px;
+        padding: 10px;
+    }
+    a.postjob-btn  ,a.findjob-btn {
+font-size: 13px;
+padding: 5px 14px;
+margin: 1px;
+    }
+}
+
+

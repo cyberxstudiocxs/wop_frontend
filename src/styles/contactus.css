@@ -1,0 +1,126 @@
+section.contact-us-main {
+    padding: 100px 0px;
+    background-color: #949d9c26;
+}
+.contactus {
+    text-align: center;
+    padding: 0px 150px;
+}
+.contactus  h2{
+    font-size:40px;
+    font-weight: 700;
+    color: #138578;
+    margin-bottom: 20px;
+}
+.contactus  p{
+    color: #555;
+
+}
+
+.space-line{
+    padding: 25px 0px;
+}
+
+.forms-box {
+    background-color: #fff;
+    padding: 40px ;
+    border-radius: 12px;
+}
+
+.loc-box {
+   text-align: center;
+}
+.infoo-contactus {
+
+ 
+    box-shadow: 0px 12px 14px -5px gray;
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+   
+}
+
+.infoo-contactus:hover{
+    transform: translateY(-20px);
+    transition: 0.6s;
+    background-color: #138578;
+}
+
+.infoo-contactus:hover svg.icono , .infoo-contactus:hover .icons-info h5 , .infoo-contactus:hover .icons-info p ,.infoo-contactus:hover .icons-info a  {
+    color: #fff;
+}
+.icons {
+   margin: 14px;
+}
+
+svg {}
+
+svg.icono {
+    font-size: 30px;
+    color: #138578;
+}
+.infoo-contactus .icons-info h5{
+    font-size: 20px;
+    font-weight:600;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 10px;
+}
+.icons-info a{
+    text-decoration: none;
+    color:#555;
+}
+
+.icons-info a:hover{
+    text-decoration: none;
+    color:#555;
+}
+ .loc-box h6{
+    font-size: 25px;
+    font-weight:600;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-family: 'Raleway', sans-serif;
+}
+.s-ions ul {
+    display: flex;
+    padding-left: 0px;
+}
+.s-ions ul li{
+    list-style-type: none;
+}
+.s-ions ul li a{
+    color: #138578;
+    margin: 0px 20px;
+    font-size: 25px;
+}
+.s-ions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label.form-label{
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    padding-left: 14px;
+}
+
+button.loginbtn{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+border: 1px solid #138578;
+    border-radius: 20px;
+    padding: 5px 25px;
+    background-color: #138578;
+    color: #fff !important;
+    margin: 5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+button.loginbtn:hover{
+    background-color: #138578; 
+}

@@ -1,0 +1,254 @@
+section.postjob-main {
+  background-color: #eff0f0;
+  padding: 70px 0px;
+}
+.postajobbox {
+  margin: 50px 0px;
+}
+.approvedjob {
+  background-color: #e7e7e7;
+  padding: 30px;
+  text-align: center;
+  margin-bottom: 72px;
+  margin-top: 50px;
+}
+.postjob-outer-box {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 72px 0px;
+  margin-bottom: 40px;
+  padding: 40px 30px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+input#formJobTitle,
+select#formEmpTypess,
+textarea#exampleForm\.ControlTextarea1,
+input#formPersonEmail,
+input#formPersonname,
+input#formSalary,
+select#formPrimarySkill,
+select#formPrimarySkill,
+select#formPrimarySkill2 {
+  background-color: #eff0f0;
+  border: 2px solid #eff0f0 ;
+}
+input#formJobTitle:focus ,select#formEmpTypess:focus ,textarea#exampleForm\.ControlTextarea1:focus ,input#formPersonEmail:focus , input#formPersonname:focus ,input#formSalary:focus  ,select#formPrimarySkill:focus,
+select#formPrimarySkill:focus,
+select#formPrimarySkill2:focus{
+    border: 2px solid #138578 ;
+}
+.reviewss{
+  background-color: #138578;
+  color: #fff;
+  padding: 7px 30px;
+  border-radius: 50px;
+  border: 1px solid #138578;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.middle-jobpostt{
+text-align: center;
+padding: 30px 50px;
+}
+.middle-jobpostt h5{
+  font-size: 25px;
+  font-weight: 600;
+  
+}
+/* post job css ending */
+.job-search-box {
+  display: flex;
+  align-items: flex-start;
+}
+.jobsearchfield.mb-3.input-group {
+  width: 86%;
+  border: 2px solid #f3f3f3;
+  display: flex;
+  align-items: center;
+  border-radius: 50px;
+  background-color: #f3f3f3;
+  padding: 0px 12px;
+  margin-right: 12px;
+}
+input#seaechsss::placeholder {
+  color: #fff;
+}
+button.talent-btnss.jobsearchs {
+  width: 14%;
+  height: 45px;
+}
+
+input.jobs-search-fields.form-control {
+  background-color: gray;
+  border: none;
+  border-radius: 50px;
+  margin-left: 5px;
+
+  padding-left: 12px;
+}
+
+.job-search-box .serach-icons {
+  margin: 0px 5px;
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+}
+.spacejobsearch {
+  margin: 100px 0px 0px 0px;
+}
+/*  */
+
+.box-shape {
+  border: 30px solid #138578;
+  border-top-left-radius: 10px;
+  margin-bottom: 40px;
+  border-top-right-radius: 10px;
+}
+.sidebar-box {
+  border: 1px solid #7c7c7c7c;
+  border-radius: 12px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+
+.sidebar-box p {
+  margin-bottom: 0px;
+  color: #555;
+
+  font-size: 16px;
+}
+
+.sidebar-box h6 {
+  font-size: 25px;
+  font-weight: 600;
+
+  margin-bottom: 20px;
+}
+
+button.subscribenow {
+  background-color: #fff;
+  border: 1px solid #7c7c7c7c;
+  border-radius: 50px;
+  padding: 10px 30px;
+  margin: 10px 0px 20px;
+  color: #138578;
+}
+
+.jobright-box {
+  border: 1px solid #7c7c7c7c;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.jobs-box {
+  display: flex;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 40px;
+  padding: 40px 30px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.job-info h3 {
+  text-transform: capitalize;
+  display: flex;
+  margin-bottom: 14px;
+}
+.job-info h3 span {
+  background-color: #13857826;
+  padding: 7px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #138578;
+  font-weight: 600;
+  border: 1px solid #138578;
+  margin-left: 20px;
+}
+.job-info span.anyy {
+  background-color: #949d9c26;
+  padding: 7px;
+  font-size: 12px;
+  border-radius: 5px;
+  color: #000;
+  border: 1px solid #adadad;
+}
+.job-info p {
+  margin-bottom: 0px;
+}
+
+.image-box {
+  width: 25%;
+}
+.job-info {
+  width: 75%;
+}
+
+
+input#seaechsss {
+  width: 90%;
+  background-color: transparent !important;
+  border: 1px solid #f3f3f3;
+  outline: none;
+  height: 45px;
+}
+input#seaechsss::placeholder {
+  color: #000 !important;
+}
+
+p.short {
+  margin-top: 30px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  
+}
+
+p.short a.worker-btns{
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+
+.middle-jobpostt{
+  padding: 30px 30px;
+}
+
+.image-box ,.job-info {
+  width: 100% ;
+}
+.jobright-box{
+  padding: 14px;
+}
+.jobs-box{
+  padding: 40px 20px;
+ 
+  flex-direction: column;
+}
+
+.job-info h3{
+  flex-direction: column;
+}
+
+.job-info h3 span {
+  
+  margin-left: 0px;
+  width: 25%;
+  text-align: center;
+  margin-top: 12px;
+}
+.sameee-boxx{
+  justify-content: start !important;
+  align-items: start !important;
+  flex-direction: column;
+}
+.jobapplylinksss {
+  overflow-x: scroll;
+  width: 100%;
+  margin: 5px 10px;
+}
+}
