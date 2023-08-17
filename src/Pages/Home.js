@@ -10,6 +10,12 @@ import Form from "react-bootstrap/Form";
 import JobSearching from "./JobSeekers/JobSearching";
 import Header from "../components/Header";
 
+
+
+
+
+
+
 const Home = () => {
   const navigate = useNavigate();
   const [skills, setSkills] = useState([]);
@@ -274,6 +280,7 @@ const Home = () => {
 
   return (
     <div>
+     
       <Header title="home" description="Wop Online ">
      
       </Header>
@@ -283,10 +290,13 @@ const Home = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="banner-box">
+    
                 <h1>
                   Connecting Pakistani Talent to <br></br>
                   International Businesses For Online Work
                 </h1>
+
+      
                 <div className="banner-space"></div>
               
               </div>

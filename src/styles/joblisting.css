@@ -41,7 +41,11 @@ button.Delete-btnss {
     font-size: 20px;
     font-weight: 600;
 }
-
+.actionss-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 @media screen and (max-width: 600px) {
 .jobss-infoo h2{

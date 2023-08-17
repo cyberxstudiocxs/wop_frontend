@@ -5,6 +5,8 @@ import { Modal, ModalBody, ModalFooter, ModalHeader ,Button} from 'reactstrap';
 import moment from "moment/moment";
 import jwt_decode from "jwt-decode";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete ,AiOutlineFolderView } from "react-icons/ai";  
 
 const EmpJobListing = () => {
 
@@ -147,17 +149,17 @@ const EmpJobListing = () => {
                             <div className="actionss-box">
                               <span style={{cursor:'pointer',padding:'14px'}}
                                className="editjobs" onClick={()=>editJob(job.job_id)}>
-                               Edit
+                              <FaEdit   size={30}/>
                               </span>
 
                               <span style={{cursor:'pointer'}}
                                 className="Deletejobs" onClick={()=>confirmDialogue(job.job_id)}>
-                                Delete
+                               <AiFillDelete   size={30} />
                               </span>
 
                               <span style={{cursor:'pointer'}}
-                                className="postjob-btn">
-                                View Cv
+                             className="viewjobs"   >
+                             <AiOutlineFolderView  size={30} />
                               </span>
                             </div>
                           </th>

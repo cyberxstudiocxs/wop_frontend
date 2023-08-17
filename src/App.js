@@ -30,6 +30,12 @@ import RateYourSkils from "./components/RateYourSkills";
 import JobSeekerCreateProfile from "./Pages/JobSeekers/JobSeekerCreateProfile";
 import SkillSearch from "./Pages/skillsearch";
 import UpdatedProfile from "./Pages/JobSeekers/UpdateProfile";
+import ApplicantView from "./Pages/Employers/ApplicantView";
+
+
+
+
+
 
 
 function App() {
@@ -106,6 +112,7 @@ function App() {
               </ProtectedRoute>
               }
             />
+             <Route  path="/viewapplicant" element={<ApplicantView />} />
             
             <Route path="/jobseekersearchjob" element={<JobSearching />} />
             <Route path="/rateskill" element={<RateYourSkils />} />
@@ -118,6 +125,8 @@ function App() {
                   <EmpJobListing />
                  </ProtectedRoute> 
             } />
+
+            
             <Route path="/jobseekerworks" element={<HowItWorkJobSeeker />} />
             <Route
               path="/succesfullypostsubmit"
@@ -146,7 +155,10 @@ function App() {
                 </ProtectedRoute>
               }
             />
+             
           </Routes>
+
+       
 
           <Footer />
         </>
