@@ -122,7 +122,7 @@ const EmpPostAJobs = () => {
     let fields = "";
     job.location = "Islamabad";
     Object.keys(job).map((key) => {
-      if (!job[key]) {
+      if (!job[key] && key!="job_link") {
         fields = fields + " " + key.split("_");
         field_status = true;
       }
@@ -291,7 +291,7 @@ const EmpPostAJobs = () => {
                         type="text"
                         name="job_link"
                         className="shadow-none"
-                        required
+                        
                         value={job.job_link}
                         onChange={(e) => handleChange(e)}
                       />

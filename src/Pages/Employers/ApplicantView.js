@@ -1,7 +1,45 @@
 import "../../styles/joblisting.css";
 import "../../styles/menu.css";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React ,{ useState, useEffect } from "react";
+import { Modal, ModalBody, ModalFooter, ModalHeader ,Button} from 'reactstrap';
+import moment from "moment/moment";
+import jwt_decode from "jwt-decode";
+import { Link, useNavigate,useLocation } from "react-router-dom";
+import PDFViewer from 'pdf-viewer-reactjs'
+
 const ApplicantView = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [applicants,setApplicants]=useState([])
+  useEffect(() => {
+    //var decoded = jwt_decode(localStorage.getItem('token'));
+    //setUser(decoded.result)
+    //https://api.zalimburgers.com
+    if (location.state) {
+    axios
+      .get(`https://api.zalimburgers.com/wop-api/joblistings/viewApplicants/${location.state.id}`)
+      .then((res) => {
+        res.data.data.map(it=>{
+          it.attachment="https://api.zalimburgers.com/"+it.attachment
+        })
+         setApplicants(res.data.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    }
+  }, []);
+
+  const routeToJobseeker=(j_id)=>{
+    navigate("/jobseekerprofile", {
+      state: {
+        id: j_id,
+     },
+    });
+  }
+
+
   return (
     <div>
       <section className="Accontsettig-box">
@@ -12,37 +50,46 @@ const ApplicantView = () => {
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">#</th>
+                      <th scope="col">Sr</th>
                       <th scope="col">Applicant Name</th>
                       <th scope="col">Applicant E-Mail</th>
                       <th scope="col">Applicant</th>
+                      <th scope="col">Attachment</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>
-                        
-                        <div className="actionss-box">
-                         <Link className="postjob-btn" >  View Profile </Link>
+                    {applicants &&
+                    <>
+                    {applicants.map((app,i)=>(
+                      <tr>
+                      <th scope="row">{i+1}</th>
+                      <td>{app.fullname}</td>
+                      <td>{app.fullname}</td>
+                      <td >
+                         <p style={{"cursor":'pointer'}}className="postjob-btn" onClick={()=>routeToJobseeker(app.jobseeker_id)}>
+                            View Profile </p>
 
                      
-                        </div>
-                      </td>
-                    </tr>
+                        </td>
+                        {app.attachment &&
+                        <td >
+                         
+                         <a href={app.attachment} target="_blank">
+                          <p>
+                           {app.attachment.substring(56,)}
+                          </p>
+                          </a>
+                           </td>
+                        }
+                      </tr>
+                      
+                    ))
 
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>   <Link className="findjob-btn" >
-                      View Resume
-            </Link></td>
-                    
-                     
-                    </tr>
+                    }
+                    </>
+
+                    }
+                   
                   </tbody>
                 </table>
               </div>

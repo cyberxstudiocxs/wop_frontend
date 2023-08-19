@@ -6,19 +6,29 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ReactStars from "react-rating-stars-component";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 const JobseekerProfile = () => {
+  const location = useLocation();
   const [user, setUser] = useState();
   const [profile, setProfile] = useState();
 
   useEffect(() => {
     let data = {};
+    
+    let j_id=null;
     if (localStorage.getItem("token")) {
       var decoded = jwt_decode(localStorage.getItem("token"));
       setUser(decoded.result);
+      if(location.state){
+      
+        j_id=location.state.id
+      }
+      else{
+        j_id=decoded.result.id
+      }
       axios
         .get(
-          `https://api.zalimburgers.com/wop-api/jobseekers/${decoded.result.id}`
+          `https://api.zalimburgers.com/wop-api/jobseekers/${j_id}`
         )
         .then((res) => {
           let dob = res.data.data.date_of_birth.split("T");
@@ -29,7 +39,7 @@ const JobseekerProfile = () => {
 
       axios
         .get(
-          `https://api.zalimburgers.com/wop-api/jobseekers/skills/${decoded.result.id}`
+          `https://api.zalimburgers.com/wop-api/jobseekers/skills/${j_id}`
         )
         .then((resp) => {
           data["skills"] = resp.data.data;

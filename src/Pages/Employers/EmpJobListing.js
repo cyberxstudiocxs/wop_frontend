@@ -87,6 +87,13 @@ const EmpJobListing = () => {
     })
   }
  
+const routeToPage=(job_id)=>{
+  navigate("/viewapplicant", {
+    state: {
+      id: job_id,
+   },
+  });
+}
 
 
   return (
@@ -140,9 +147,9 @@ const EmpJobListing = () => {
                           <th>{++i}</th>
                           <td>{job.title}</td>
                           <td>{job.description.split(/\s+/).slice(0, 7).join(" ")}.....</td>
-                          <td>0</td>
+                          <td>{job.applicants}</td>
                           
-                          <td>Active</td>
+                          <td>{job.new_applicants}</td>
                           <td>{job.created_at}</td>
                           <th>
                             {" "}
@@ -158,7 +165,7 @@ const EmpJobListing = () => {
                               </span>
 
                               <span style={{cursor:'pointer'}}
-                             className="viewjobs"   >
+                             className="viewjobs" onClick={()=>routeToPage(job.job_id)}  >
                              <AiOutlineFolderView  size={30} />
                               </span>
                             </div>

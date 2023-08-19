@@ -7,11 +7,12 @@ import ReactStars from "react-rating-stars-component";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 import moment from "moment/moment";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 const DetailJobPost = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [job, setJob] = useState();
   const [profile, setProfile] = useState();
@@ -119,19 +120,25 @@ const DetailJobPost = () => {
     formData.append('education',applicant.education);
     formData.append('summary',applicant.summary);
     formData.append('jobseeker_id',applicant.jobseeker_id);
+    formData.append('applicants',job.applicants);
+    formData.append('new_applicants',job.new_applicants);
+    formData.append('jobseeker_name',user.full_name);
+    formData.append('jobseeker_email',user.email);
 
     //https://api.zalimburgers.com/wop-api
     console.log('in sunnn')
+
     axios
         .post(
-          `http://localhost:8080/wop-api/joblistings/addApplicant`,formData,{}
+          `https://api.zalimburgers.com/wop-api/joblistings/addApplicant`,formData,{}
         )
         .then((res) => {
+          console.log("res",res.data)
            setMsg(res.data.message)
            msgToggle()
-        }).catch(err=>{
+        }).catch((err)=>{
           console.log(err)
-          setMsg(err.response.data.data.message)
+          setMsg(err.response.data.message)
           msgToggle()
         })
   };
@@ -151,6 +158,13 @@ const DetailJobPost = () => {
         [e.target.name]: e.target.value,
       });
     }
+  }
+
+  const reload=()=>{
+    console.log('kkkkkkkkkkkk')
+    navigate("/jobs", {
+
+    });
   }
 
   return (
@@ -238,6 +252,7 @@ const DetailJobPost = () => {
                 </div>
               </div>
 
+             {!job.job_link &&
               <div className="row">
                 <div className="col-lg-12">
                   <div className="popupppp">
@@ -251,6 +266,7 @@ const DetailJobPost = () => {
                   </div>
                 </div>
               </div>
+            }
             </div>{" "}
           </section>
 
@@ -517,7 +533,7 @@ const DetailJobPost = () => {
           </p>
         </ModalBody>
         <ModalFooter>
-        <Button  className="worker-btns" toggle={msgToggle} >Ok</Button>
+        <Button  className="worker-btns" toggle={reload()} >Ok</Button>
         </ModalFooter>
       </Modal>
         </div>
