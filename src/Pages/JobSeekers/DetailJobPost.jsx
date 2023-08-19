@@ -533,7 +533,7 @@ const DetailJobPost = () => {
           </p>
         </ModalBody>
         <ModalFooter>
-        <Button  className="worker-btns" toggle={reload()} >Ok</Button>
+        <Button  className="worker-btns" toggle={()=>reload()} >Ok</Button>
         </ModalFooter>
       </Modal>
         </div>
