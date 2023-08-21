@@ -31,10 +31,10 @@ section.contact-us-main {
    text-align: center;
 }
 .infoo-contactus {
-
- 
+width: 31% !important;
+ margin: 0px 10px;
     box-shadow: 0px 12px 14px -5px gray;
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     background-color: #fff;
    
@@ -87,11 +87,37 @@ svg.icono {
 }
 .s-ions ul li{
     list-style-type: none;
+    transition: 0.8s ease all;
+    margin: 12px 14px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 .s-ions ul li a{
     color: #138578;
     margin: 0px 20px;
     font-size: 25px;
+}
+
+.s-ions ul li a i {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.s-ions ul li:hover {
+    background-color: #000;
+    transform: scale(1.3);
+    /* transform: translateY(10px); */
+}
+
+.s-ions ul li:hover i {
+    color: #fff;
 }
 .s-ions {
     display: flex;
@@ -100,10 +126,10 @@ svg.icono {
 }
 
 label.form-label{
-    font-size: 14px;
+    /* font-size: 14px;
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
-    padding-left: 14px;
+    padding-left: 14px; */
 }
 
 button.loginbtn{

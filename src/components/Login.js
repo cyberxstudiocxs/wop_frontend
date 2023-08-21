@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import Validation from "./Validations";
+import imagess from "../assets/images/login-wop.png";
 import "../styles/login.css";
 import {  BsFillPeopleFill} from "react-icons/bs";
 const Login = () => {
@@ -137,10 +138,19 @@ const Login = () => {
     <section>
 <div className="container">
       <div className="row  outer-box-one">
-        <div className="col-lg-6 m-auto inner-box-one">
+        <div className="col-lg-10  inner-box-one">
+        <h3 className="emp-heading">Access Exclusive Online Job Opportunities - </h3>
           <div className="outer-box ">
+      
+            <div className="logo-images-box">
+            <img
+                          
+                              alt="100%x280"
+                              src={imagess}
+                            />
+            </div>
             <div className="inner-box ">
-            <h3 className="emp-heading">Access Exclusive Online Job Opportunities - </h3>
+           
             <h3 className="emp-heading">Login to WOP!</h3>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -202,7 +212,7 @@ const Login = () => {
                 </div>
                 <div className="text-center">
                   <p> Not Yet Register</p>
-                  <a href="/resetpass">Create Free Account Now !</a>
+                  <a href="/resetpass" className="accountcreate">Create Free Account Now !</a>
                 </div>
               </Form>
             </div>

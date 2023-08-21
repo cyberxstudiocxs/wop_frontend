@@ -53,7 +53,7 @@ a.worker-btns:hover{
     color: #fff;
     font-size: 35px;
     font-weight: 700;
-   
+   text-transform: capitalize;
     font-family: 'Raleway', sans-serif;
 }
 .emp-outer-box  p {
@@ -64,6 +64,7 @@ a.worker-btns:hover{
     color: #138677;
     font-size: 35px;
     font-weight: 700;
+    text-transform: capitalize;
  
     font-family: 'Raleway', sans-serif;
 }
@@ -202,8 +203,9 @@ width: 30% ! important;
         padding: 20px 0px;
     }
     .middle-box{
-        padding: 20px 20px;
+        padding: 20px 20px 30px 20px;
         background-color: #fff;
+        background-image: none;
     }
     .middle-box p{
         width: 100%;
@@ -237,5 +239,16 @@ width: 30% ! important;
     .successfully-box {
         text-align: center;
         padding: 0px 20px;
+    }
+    .wrapper i:first-child {
+        left: -10px;
+        
+        z-index: 999;
+    }
+    .wrapper i:last-child{
+        right: 7px;
+    }
+    .carousel .card{
+        padding: 20px 45px;
     }
     }

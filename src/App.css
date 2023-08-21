@@ -14,19 +14,52 @@ p{
     color:#555;
     font-weight: 400;
 }
-a,link{
+link{
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
 }
+
 a:hover{
     text-decoration: none;
 }
-
+label.form-label{
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    padding-left: 14px;
+    text-transform: capitalize;
+}
 /* common css */
 
+.popupppp {
+    margin-top: 40px;
+}
+button.btn.postjob-btn {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px 25px;
+    background-color: #138578;
+    color: #fff !important;
+    margin:5px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+a.accountcreate {
+    color: #000;
+    text-decoration: none;
+}
 
 
-
+a.accountcreate p{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
 
 
 

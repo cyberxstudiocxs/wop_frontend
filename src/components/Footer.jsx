@@ -29,7 +29,7 @@ const Footer = () => {
                         class="fa fa-angle-double-right"
                         aria-hidden="true"
                       ></i>
-                      <Link className="f-links">Register </Link>{" "}
+                      <Link className="f-links"  to="/signup">Register </Link>{" "}
                     </li>
                     <li>
                       <i

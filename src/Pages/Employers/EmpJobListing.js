@@ -145,7 +145,7 @@ const routeToPage=(job_id)=>{
                       {jobs.map((job, i) => (
                         <tr>
                           <th>{++i}</th>
-                          <td>{job.title}</td>
+                          <td  className="text-capitalize">{job.title}</td>
                           <td>{job.description.split(/\s+/).slice(0, 7).join(" ")}.....</td>
                           <td>{job.applicants}</td>
                           
@@ -154,17 +154,17 @@ const routeToPage=(job_id)=>{
                           <th>
                             {" "}
                             <div className="actionss-box">
-                              <span style={{cursor:'pointer',padding:'14px'}}
+                              <span style={{cursor:'pointer',padding:'10px'}}
                                className="editjobs" onClick={()=>editJob(job.job_id)}>
                               <FaEdit   size={30}/>
                               </span>
 
-                              <span style={{cursor:'pointer'}}
+                              <span style={{cursor:'pointer' }}
                                 className="Deletejobs" onClick={()=>confirmDialogue(job.job_id)}>
                                <AiFillDelete   size={30} />
                               </span>
 
-                              <span style={{cursor:'pointer'}}
+                              <span style={{cursor:'pointer', padding:'10px'}}
                              className="viewjobs" onClick={()=>routeToPage(job.job_id)}  >
                              <AiOutlineFolderView  size={30} />
                               </span>

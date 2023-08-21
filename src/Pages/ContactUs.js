@@ -51,7 +51,7 @@ const ContactUs = () => {
       <section className="contact-us-main">
         <div className="container ">
           <div className="row">
-            <div className="col-lg-12">
+            <div className="col-lg-12  ">
               <div className="contactus">
                 <h2> Contact Us </h2>
                 <p>
@@ -69,8 +69,8 @@ const ContactUs = () => {
           <div className="space-line"></div>
 
           <div className="row">
-            <div className="col-lg-4">
-              <div className="infoo-contactus">
+            <div className="col-lg-4 infoo-contactus">
+              <div className="contactusmain">
                 <div className="icons">
                   <FaEnvelope className="icono" />
                 </div>
@@ -80,8 +80,8 @@ const ContactUs = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="infoo-contactus">
+            <div className="col-lg-4 infoo-contactus">
+              <div className="contactusmain">
                 <div className="icons">
                   <FaRocketchat className="icono" />
                 </div>
@@ -94,8 +94,8 @@ const ContactUs = () => {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4">
-              <div className="infoo-contactus">
+            <div className="col-lg-4 infoo-contactus">
+              <div className=" contactusmain ">
                 <div className="icons">
                   <FaPhoneAlt className="icono" />
                 </div>

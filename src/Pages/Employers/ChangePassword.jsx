@@ -81,9 +81,9 @@ const ChangePassword = () => {
         <div className="space2"></div>
         <div className="container">
           <div className="row  outer-box-one">
-            <div className="col-lg-10 m-auto inner-box-one">
-              <div className="outer-box ">
-                <div className="inner-box ">
+            <div className="col-lg-8 m-auto inner-box-one">
+              
+                <div className="inner-box-update ">
                   <h3 className="emp-heading">Login Information </h3>
 
                   <Form onSubmit={proceedLogin}>
@@ -155,7 +155,7 @@ const ChangePassword = () => {
                       </Button>
                     </div>
                   </Form>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ const ChangePassword = () => {
               <div className="quick-box1">
               <FaSearchPlus className="acoount-icons" />
                 <h3> Find the right worker through skill you need.</h3>
-                <Link className="account-setting-btns">Advanced Search</Link>
+                <Link className="account-setting-btns"   to="/searchskill">Advanced Search</Link>
               </div>
             </div>
 
@@ -194,7 +194,7 @@ const ChangePassword = () => {
               <div className="quick-box1">
                 <BiSupport className="acoount-icons" />
                 <h3> A quick Video on how to get started with onlinejobs.pk</h3>
-                <Link className="account-setting-btns">
+                <Link className="account-setting-btns" to="/contactus">
                   Contact For Support{" "}
                 </Link>
               </div>

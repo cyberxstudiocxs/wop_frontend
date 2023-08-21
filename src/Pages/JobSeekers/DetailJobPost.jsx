@@ -248,26 +248,30 @@ const DetailJobPost = () => {
                         </>
                       )}
                     </div>
+
+                    {!job.job_link &&
+             
+             <div className="popupppp">
+               <button
+                 type="button"
+                 class="btn postjob-btn"
+                 onClick={() => addDetails()}
+               >
+                 Apply Job
+               </button>
+             </div>
+          
+       }
                   </div>
+
+               
+
+
                 </div>
               </div>
 
-             {!job.job_link &&
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="popupppp">
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      onClick={() => addDetails()}
-                    >
-                      Apply Job
-                    </button>
-                  </div>
-                </div>
-              </div>
-            }
-            </div>{" "}
+           
+            </div>
           </section>
 
           <Modal

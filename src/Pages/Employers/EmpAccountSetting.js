@@ -76,7 +76,7 @@ const EmpAccountSetting = () => {
               <FaSearchPlus  className="acoount-icons" />
           
               <h3>Find the perfect fit for your project by refining your search criteria.</h3>
-                <Link className="account-setting-btns">Advanced Search</Link>
+                <Link className="account-setting-btns"  to="/searchskill">Advanced Search</Link>
               </div>
             </div>
 

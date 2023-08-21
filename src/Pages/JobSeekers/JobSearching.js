@@ -152,12 +152,12 @@ const goToDetailPage=(jobId)=>{
                         {job.title}
                         <span> {job.job_type_description}</span>{" "}
                       </h3>
-                      <p>
+                      <p className="font-weight-bold text-capitalize">
                         {" "}
                         {job.contact_person} .{" "}
                         <span> posted on {job.created_at}</span>
                       </p>
-                      <p> {job.salary}</p>
+                      <p className="font-weight-bold text-capitalize"> {job.salary}</p>
 
                       <p className="short"> {job.description} </p>
                       <span className="worker-btns" onClick={()=>goToDetailPage(job.job_id)} > 

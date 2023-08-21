@@ -63,7 +63,7 @@ const ApplicantView = () => {
                     {applicants.map((app,i)=>(
                       <tr>
                       <th scope="row">{i+1}</th>
-                      <td>{app.fullname}</td>
+                      <td className="text-capitalize">{app.fullname}</td>
                       <td>{app.fullname}</td>
                       <td >
                          <p style={{"cursor":'pointer'}}className="postjob-btn" onClick={()=>routeToJobseeker(app.jobseeker_id)}>
@@ -74,7 +74,7 @@ const ApplicantView = () => {
                         {app.attachment &&
                         <td >
                          
-                         <a href={app.attachment} target="_blank">
+                         <a className="accountcreate" href={app.attachment} target="_blank">
                           <p>
                            {app.attachment.substring(56,)}
                           </p>

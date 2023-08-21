@@ -223,7 +223,7 @@ const EmpManageProfile = () => {
                 Find the perfect fit for your project by refining your search
                 criteria.
               </h3>
-              <Link className="account-setting-btns">Advanced Search</Link>
+              <Link className="account-setting-btns"   to="/searchskill">Advanced Search</Link>
             </div>
           </div>
 
@@ -243,7 +243,7 @@ const EmpManageProfile = () => {
             <div className="quick-box1">
               <BiSupport className="acoount-icons" />
               <h3> Get quick and reliable assistance from our support team.</h3>
-              <Link className="account-setting-btns">Contact For Support </Link>
+              <Link className="account-setting-btns"  to="/contactus">Contact For Support </Link>
             </div>
           </div>
         </div>
