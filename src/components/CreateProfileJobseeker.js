@@ -11,10 +11,13 @@ import axios from 'axios';
 const CreateProfileJobseeker = () => {
   const navigat = useNavigate();
   const [user,setUser]=useState()
+  const [whMsg,setWHMsg]=useState('')
+  const [salaryMsg,setSalaryMsg]=useState('')
+  const [redirectStatus,setRedirectStatus]=useState(false)
   const [state,setState]=useState({
     title:'',
     education:null,
-    job_type:null,
+    job_type:1,
     gender:"",
     salary:"",
     work_hours:"",
@@ -34,19 +37,76 @@ const CreateProfileJobseeker = () => {
   const handleChange=(e)=>{
     let val;
     val=e.target.value
-    // if(e.target.name==='date_of_birth'){
-    //   let date =new Date(e.target.value)
-    //   val=date
-    // }
+    let profileValues=state
+    profileValues[e.target.name]=val
+
     setState({
       ...state,
       [e.target.name]:val
     })
+    
+    
+    if(state.work_hours==0){
+      setWHMsg('Work Hours must be greater than 0')
+      
+    }else{
+      setWHMsg('')
+    }
+
+    if(state.salary==0){
+      setSalaryMsg('Salary Range must be greater than 0')
+     
+    }else{
+      setSalaryMsg('')
+    }
+
+    let status=ValidateKeys(profileValues)
+    if(status){
+      console.log('status',true)
+      setRedirectStatus(true)
+    }else{
+      console.log('status',false)
+      setRedirectStatus(false)
+    }
+    
+  }
+
+  const ValidateKeys=(profileValues)=>{
+    console.log('vall',profileValues)
+    let flag=true
+    Object.values(profileValues)
+    .forEach(val => 
+        {
+         
+         if(!val || val==null){
+          
+          flag=false
+           return false;
+         }
+         return false;
+        }
+        
+      );
+      if(flag){
+      
+       // navigat("/rateskill");
+        return true;
+      }
+
+      //return true;
   }
 
   const saveProfile=(e)=>{
      e.preventDefault()
-     
+     if(state.work_hours==0){
+      return;
+    }
+
+    if(state.salary==0){
+     return;
+    }
+ 
+
      state.work_hours= state.work_hours.toString()
      state.salary=state.salary.toString()
      axios.put(`https://api.zalimburgers.com/wop-api/jobseekers/updateProfile/${user.id}`,state)
@@ -67,11 +127,13 @@ const CreateProfileJobseeker = () => {
                 <Link className="sidebar-btns" to="/jobseekercreateprofile">
                   Create Profile
                 </Link>
-
-                <Link className="sidebar-btns" to="/rateskill">
+                 
+                <Link className="sidebar-btns" to="">
+               
                   Rate Your Skills
+        
                 </Link>
-
+                
                 <Link className="sidebar-btns" to="">
                   View Avilable Jobs
                 </Link>
@@ -135,7 +197,7 @@ const CreateProfileJobseeker = () => {
                           onChange={e=>handleChange(e)}
                           required
                         >
-                          <option value="1">Full Time</option>
+                          <option defaultValue value="1">Full Time</option>
                           <option value="2">Part Time</option>
                           <option value="3">Gig </option>
                         </Form.Select>
@@ -173,10 +235,12 @@ const CreateProfileJobseeker = () => {
                         <Form.Control
                           type="number"
                           name="salary"
+                          min={0}
                           required
                           onChange={e=>handleChange(e)}
                           className="shadow-none"
                         />
+                        <p style={{color:'red'}}>{salaryMsg}</p>
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formPersonname">
@@ -184,10 +248,12 @@ const CreateProfileJobseeker = () => {
                         <Form.Control
                           type="number"
                           name="work_hours"
+                          min={0}
                           required
                           onChange={e=>handleChange(e)}
                           className="shadow-none"
                         />
+                        <p style={{color:'red'}}>{whMsg}</p>
                       </Form.Group>
                     </Row>
 

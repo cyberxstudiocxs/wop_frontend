@@ -89,6 +89,7 @@ const EmpPostAJobs = () => {
         )
         .then((res) => {
           res.data.data["job_type"] = res.data.data.job_type_id;
+          res.data.data["salary"] = res.data.data.salary.toString();
           res.data.data["primary_skill"] = res.data.data.primary_skill_id;
           res.data.data["secondary_skill1"] = res.data.data.secondary_skill1_id;
           res.data.data["secondary_skill2"] = res.data.data.secondary_skill2_id;
@@ -134,13 +135,18 @@ const EmpPostAJobs = () => {
       setSpinner(false);
       setErrorMsg(`Please Add the ${fields} fields`);
       errortoggle();
+    }else if(job.salary==0){
+      setSpinner(false);
+      setErrorMsg(`Salary Should be greater than 0`);
+      errortoggle();
     } else {
       const config = {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       };
-
+      
+      job.salary=job.salary.toString()
       //https://api.zalimburgers.com
       if (!isEditJob) {
         axios
@@ -327,10 +333,11 @@ const EmpPostAJobs = () => {
                     <Form.Group as={Col} controlId="formSalary">
                       <Form.Label>Wage/Salary</Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         name="salary"
                         className="shadow-none"
                         required
+                        min={0}
                         value={job.salary}
                         onChange={(e) => handleChange(e)}
                       />
@@ -364,14 +371,17 @@ const EmpPostAJobs = () => {
                         aria-readonly="true"
                         defaultValue="Pakistan"
                         className="shadow-none"
-                        required
                         name="secondary_skill1"
                         value={job.secondary_skill1}
                         onChange={(e) => handleChange(e)}
+                        disabled={!job.primary_skill}
                       >
                         <option>Select Secondary Skill 1</option>
-                        {skills.map((skill) => (
-                          <option value={skill.id}>{skill.description}</option>
+                        {skills.map((skill) =>(
+                          skill.id==job.primary_skill ?'' :
+
+                              <option value={skill.id}>{skill.description}</option>
+                         
                         ))}
                       </Form.Select>
                     </Form.Group>
@@ -385,12 +395,13 @@ const EmpPostAJobs = () => {
                         className="shadow-none"
                         defaultValue="Pakistan"
                         name="secondary_skill2"
-                        required
                         value={job.secondary_skill2}
                         onChange={(e) => handleChange(e)}
+                        disabled={!job.secondary_skill1}
                       >
-                        <option>Select Primary Skill 2</option>
+                        <option>Select Secondary Skill 2</option>
                         {skills.map((skill) => (
+                           (skill.id==job.primary_skill || skill.id==job.secondary_skill1)  ?'' :
                           <option value={skill.id}>{skill.description}</option>
                         ))}
                       </Form.Select>

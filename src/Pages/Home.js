@@ -247,7 +247,25 @@ const Home = () => {
       })
       .catch((err) => console.log(err));
   };
-
+ 
+  const searchJobByTitle = (tVal) => {
+    //https://api.zalimburgers.com
+    axios
+      .post(`http://localhost:8080/wop-api/joblistings/skill`, {
+        skill: tVal,
+      })
+      .then((result) => {
+        setJobs(result.data.data);
+        
+    navigate("/jobseekersearchjob", {
+          state: {
+            jobs: result.data.data,
+            title: title,
+          },
+        });
+      })
+      .catch((err) => console.log(err));
+  };
   const searchTalent = () => {
 
    
@@ -375,7 +393,7 @@ const Home = () => {
                 <div className="points-lists">
                   <ul>
                     <li>
-                      <a> {skill.description}</a>
+                      <a onClick={()=>searchJobByTitle(skill.id)}> {skill.description}</a>
                     </li>
                   </ul>
                 </div>

@@ -1,4 +1,3 @@
-
 import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
@@ -78,22 +77,35 @@ const SignUp = () => {
   const UserRegistration = (e) => {
     e.preventDefault();
     setSpinner(true);
+  
+ 
+    let errorData=Validation(users);
     setErrormessage(Validation(users));
-   
+  
+    if(errorData.fullname || errorData.password || errorData.email){
+      setSpinner(false);
+      return;
+    }
+
+  
     if (!pakerror && !error) {
       setPakErrorMsg(" Please Select The Pakistani Check box");
       setErrorMsg(" Please Select The Check box");
       setSpinner(false);
+      return;
     }
     else if (!pakerror) {
       setPakErrorMsg(" Please Select The Pakistani Check box");
       setSpinner(false);
+      return;
     } else if(!error){
       setErrorMsg(" Please Select The Check box");
       setSpinner(false);
+      return;
     } else {
+     
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
-      console.log(users);
+      
       //https://api.zalimburgers.com
       axios
         .post("https://api.zalimburgers.com/wop-api/employers", users, {})
@@ -134,21 +146,32 @@ const SignUp = () => {
     }
   }
   const JobSeekerRegistration = (e) => {
+    setErrormessage({})
     e.preventDefault();
     setSpinner(true);
+  
+    let errorData=Validation(users);
     setErrormessage(Validation(users));
+  
+    if(errorData.fullname || errorData.password || errorData.email){
+      setSpinner(false);
+      return;
+    }
    
     if (!pakerror && !error) {
       setPakErrorMsg(" Please Select The Pakistani Check box");
       setErrorMsg(" Please Select The Check box");
       setSpinner(false);
+      return;
     }
     else if (!pakerror) {
       setPakErrorMsg(" Please Select The Pakistani Check box");
       setSpinner(false);
+      return;
     } else if(!error){
       setErrorMsg(" Please Select The Check box");
       setSpinner(false);
+      return;
     }
     else {
       //https://975c-2a07-23c0-8-b000-00-bd1b.ngrok-free.app
@@ -187,6 +210,10 @@ const SignUp = () => {
         });
     }
   };
+
+  const refreshPage=()=>{
+    window.location.reload()
+  }
 
   return (
     <div>
@@ -465,6 +492,7 @@ const SignUp = () => {
                 Our team is able to provide guidance and support to ensure a
                 smooth and hassle-free experience.
               </p>
+              
               <Link className="worker-btns"  to="/contactus">Contact Us</Link>
             </div>
           </div>
@@ -481,7 +509,7 @@ const SignUp = () => {
     
         </ModalBody>
         <ModalFooter>
-        <Button  className="worker-btns" toggle={alertToggle} >Ok</Button>
+        <Button  className="worker-btns" onClick={refreshPage} >Ok</Button>
         </ModalFooter>
       </Modal>
     </div>

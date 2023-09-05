@@ -146,21 +146,21 @@ const RateYourSkils = () => {
                     />
                   </InputGroup>
                 </div>
-                {jobseekerSkills &&
-                <>
-                {jobseekerSkills.map(skill=>(
+                {jobseekerSkills && (
+                  <>
+                    {jobseekerSkills.map((skill) => (
                       <div className="SkilssShow-box">
-                      <BsFillArrowRightCircleFill />
-                      <p>{skill.description}</p>
+                        <BsFillArrowRightCircleFill />
+                        <p>{skill.description}</p>
                       </div>
-                ))
-                }
-                </>
-               
-                }
-                <Link className="step-btns" to="/jobseekerdashbaord">
-                  Next
-                </Link>
+                    ))}
+                  </>
+                )}
+                {jobseekerSkills.length > 0 && (
+                  <Link className="step-btns" to="/jobseekerdashbaord">
+                    Next
+                  </Link>
+                )}
               </div>
             </div>
           </div>

@@ -112,8 +112,10 @@ const DetailJobPost = () => {
   const submitApplication = (e) => {
     e.preventDefault();
     var formData = new FormData();
+    console.log("emIL",job.email)
     formData.append('pdfFile', applicant.attachment);
     formData.append('email',applicant.email);
+    formData.append('emp_email',job.email);
     formData.append('fullname',applicant.fullname);
     formData.append('job_id',applicant.job_id);
     formData.append('experience',applicant.experience);
@@ -130,7 +132,7 @@ const DetailJobPost = () => {
 
     axios
         .post(
-          `https://api.zalimburgers.com/wop-api/joblistings/addApplicant`,formData,{}
+          `http://localhost:8080/wop-api/joblistings/addApplicant`,formData,{}
         )
         .then((res) => {
           console.log("res",res.data)

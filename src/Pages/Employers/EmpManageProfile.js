@@ -2,6 +2,7 @@ import "../../styles/manageprofile.css";
 import Button from "react-bootstrap/Button";
 import React, { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
+import {  Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import axios from "axios";
@@ -25,7 +26,10 @@ const EmpManageProfile = () => {
     profile_photo: "",
     website: "",
   });
-
+  
+  const [alertMsg, setAlertMsg] = useState('');
+  const [isAlert, setIsAlert] = useState(false);
+  const alertToggle = () => setIsAlert(!isAlert);
   const [updateEmp, updatEemps] = useState();
   const [user, setUser] = useState();
   const [config, setConfig] = useState();
@@ -69,13 +73,18 @@ const EmpManageProfile = () => {
         config
       )
       .then((result) => {
-        alert(result.data.message);
+        setAlertMsg(result.data.message)
+        
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        setAlertMsg(err.response.data.message);
         console.log(err);
       });
   };
+
+  const refreshPage=()=>{
+    window.location.reload()
+  }
 
   return (
     <div>
@@ -270,6 +279,20 @@ const EmpManageProfile = () => {
         </div>
       </div>
       <div className="space2"></div>
+
+      <Modal isOpen={isAlert} toggle={alertToggle}>
+        <ModalHeader toggle={alertToggle} className="emp-box"></ModalHeader>
+        <h3 className="emp-heading">Notification!</h3>
+        <ModalBody>
+          <p>
+            {alertMsg}
+          </p>
+    
+        </ModalBody>
+        <ModalFooter>
+        <Button  className="worker-btns" onClick={refreshPage} >Ok</Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };
